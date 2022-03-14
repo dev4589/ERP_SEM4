@@ -1,12 +1,6 @@
-import 'package:erp_main_project/constants/constants.dart';
-import 'package:erp_main_project/database/database.dart';
-import 'package:erp_main_project/models/student_details_model.dart';
-import 'package:erp_main_project/models/student_document_snap_to_student.dart';
-import 'package:erp_main_project/provider/user_data_provider.dart';
-import 'package:erp_main_project/screens/dashboard.dart';
-import 'package:erp_main_project/utility/action_button.dart';
+import '../screens/dashboard.dart';
+import '../utility/action_button.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 //  White login form
@@ -34,7 +28,6 @@ class _LogInState extends State<LogIn> {
     );
   }
 
-  Database database = Database();
   String? userName;
   String? password;
   @override
@@ -96,7 +89,7 @@ class _LogInState extends State<LogIn> {
                           Container(
                             width: 30,
                             child: Divider(
-                              color: kPrimaryColor,
+                              color: Colors.blue,
                               thickness: 2,
                             ),
                           ),
@@ -170,48 +163,9 @@ class _LogInState extends State<LogIn> {
                                   Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => Dashboard(
-                                        student: Student(),
-                                      ),
+                                      builder: (context) => Dashboard(),
                                     ),
                                   );
-                                } else {
-                                  List<dynamic> val = await database.login(
-                                      userName!, password!);
-
-                                  if (val[0] == 1) {
-                                    print(val[1]);
-                                    Alert(
-                                      context: context,
-                                      type: AlertType.error,
-                                      desc: val[1].toString(),
-                                      alertAnimation: fadeAlertAnimation,
-                                    ).show();
-
-                                    // print('User doesn"t exists');
-                                  } else {
-                                    Provider.of<UserData>(context,
-                                        listen: false)
-                                        .setPagesData(
-                                        val[0].data()['pages']);
-                                    ConvertSnapshotToStudent kStudent =
-                                    ConvertSnapshotToStudent(val[0]);
-
-                                    Provider.of<UserData>(context,
-                                        listen: false)
-                                        .setStudentData(kStudent.getStudent());
-                                    Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => Dashboard(
-                                          student: kStudent.getStudent(),
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  setState(() {
-                                    loading = false;
-                                  });
                                 }
                               }
                             },

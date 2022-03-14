@@ -1,4 +1,3 @@
-import 'package:erp_main_project/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 Widget actionButton(String text) {
@@ -6,13 +5,13 @@ Widget actionButton(String text) {
     height: 50,
     width: double.infinity,
     decoration: BoxDecoration(
-      color: kPrimaryColor,
+      color: Colors.blue,
       borderRadius: BorderRadius.all(
         Radius.circular(25),
       ),
       boxShadow: [
         BoxShadow(
-          color: kPrimaryColor.withOpacity(0.2),
+          color: Colors.blue.withOpacity(0.2),
           spreadRadius: 4,
           blurRadius: 7,
           offset: Offset(0, 3),
