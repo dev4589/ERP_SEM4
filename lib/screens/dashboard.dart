@@ -6,13 +6,7 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
-void main() {
-  runApp(const MaterialApp(
-    useInheritedMediaQuery: true,
-    debugShowCheckedModeBanner: false,
-    home: Dashboard(),
-  ));
-}
+
 
 class Data {
   Data(this.Standard, this.TotalStudent, this.PresentStudent);
@@ -318,7 +312,7 @@ class _dashboardState extends State<dashboard> {
                     ResponsiveGridCol(
                       xs: 12,
                       child: Text(
-                          "Welcome- KAKA'S INTERNATIONAL SCHOOL|Super admin",
+                          "Welcome- INTERNATIONAL SCHOOL|Super admin",
                           style: TextStyle(
                               fontSize: 20.0, color: Colors.indigo.shade800)),
                     ),
@@ -468,23 +462,43 @@ class _dashboardState extends State<dashboard> {
                 ResponsiveGridCol(
                   xs: 6,
                   md: 3,
-                  child: Card(
-                    color: tColor[3],
-                    shadowColor: Colors.blueAccent.shade100,
-                    elevation: 20,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    child: ListTile(
-                      contentPadding: EdgeInsets.all(8),
-                      title: Text('Staffs',
-                          style: TextStyle(color: titleColor[3])),
-                      subtitle: Text('Total Staffs',
-                          style: TextStyle(color: subtitleColor[3])),
-                      trailing: Text(
-                        '205',
-                        style: TextStyle(
-                          color: trailColor[3],
-                          fontSize: 20,
+                  child: MouseRegion(
+                    onHover: (event) {
+                      setState(() {
+                        x = event.position.dx;
+                        y = event.position.dy;
+                        tColor[3] = Colors.deepPurple.shade900;
+                        titleColor[3] = Colors.white;
+                        subtitleColor[3] = Colors.white;
+                        trailColor[3] = Colors.white;
+                      });
+                    },
+                    onExit: (event) {
+                      setState(() {
+                        tColor[3] = Colors.white;
+                        titleColor[3] = Colors.black;
+                        subtitleColor[3] = Colors.grey;
+                        trailColor[3] = Colors.purple;
+                      });
+                    },
+                    child: Card(
+                      color: tColor[3],
+                      shadowColor: Colors.blueAccent.shade100,
+                      elevation: 20,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      child: ListTile(
+                        contentPadding: EdgeInsets.all(8),
+                        title: Text('Staffs',
+                            style: TextStyle(color: titleColor[3])),
+                        subtitle: Text('Total Staffs',
+                            style: TextStyle(color: subtitleColor[3])),
+                        trailing: Text(
+                          '205',
+                          style: TextStyle(
+                            color: trailColor[3],
+                            fontSize: 20,
+                          ),
                         ),
                       ),
                     ),

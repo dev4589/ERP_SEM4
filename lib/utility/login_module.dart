@@ -163,7 +163,7 @@ class _LogInState extends State<LogIn> {
                                   Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => Dashboard(),
+                                      builder: (context) => dashboard(),
                                     ),
                                   );
                                 }
