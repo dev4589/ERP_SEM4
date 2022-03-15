@@ -2,6 +2,7 @@ import '../screens/dashboard.dart';
 import '../utility/action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 //  White login form
 
@@ -28,8 +29,8 @@ class _LogInState extends State<LogIn> {
     );
   }
 
-  String? userName;
-  String? password;
+ late String email;
+  late String password;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -98,11 +99,11 @@ class _LogInState extends State<LogIn> {
                           ),
                           TextField(
                             onChanged: (val) {
-                              userName = val;
+                              email = val;
                             },
                             decoration: InputDecoration(
-                              hintText: 'e.g. a754821',
-                              labelText: 'User Name',
+                              hintText: 'e.g. name123@gmail.com',
+                              labelText: 'Email-id',
                               suffixIcon: Icon(
                                 Icons.person_outlined,
                               ),
@@ -138,15 +139,15 @@ class _LogInState extends State<LogIn> {
                           ),
                           InkWell(
                             onTap: () async {
-                              if (userName!.length == 0) {
+                              if (email.isEmpty) {
                                 Alert(
                                   context: context,
                                   type: AlertType.info,
-                                  title: "Username can't be empty",
-                                  desc: "please enter username",
+                                  title: "Email can't be empty",
+                                  desc: "please enter Email",
                                   alertAnimation: fadeAlertAnimation,
                                 ).show();
-                              } else if (password!.length == 0) {
+                              } else if (password.isEmpty) {
                                 Alert(
                                   context: context,
                                   type: AlertType.info,
@@ -156,10 +157,12 @@ class _LogInState extends State<LogIn> {
                                 ).show();
                               } else {
                                 setState(() {
-                                  loading = true;
+                                  loading=true;
                                 });
-                                if (userName == 'admin' &&
-                                    password == 'admin') {
+
+                                FirebaseAuth.instance.signInWithEmailAndPassword(
+                                    email: email, password: password).then((FirebaseUser)
+                                {
                                   Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
@@ -167,6 +170,7 @@ class _LogInState extends State<LogIn> {
                                     ),
                                   );
                                 }
+                                );
                               }
                             },
                             child: actionButton(
