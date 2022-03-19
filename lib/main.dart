@@ -1,3 +1,4 @@
+import 'package:erp_sem4/utility/login_module.dart';
 import 'package:flutter/material.dart';
 import 'screens/slash_screen.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -48,7 +49,7 @@ class MyApp extends StatelessWidget {
           textTheme: GoogleFonts.secularOneTextTheme(),
         ),
         debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+        home: LogIn(),
       );
   }
 }
