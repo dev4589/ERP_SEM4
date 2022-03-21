@@ -1,4 +1,5 @@
 import 'package:erp_sem4/screens/login.dart';
+import 'package:erp_sem4/screens/my_dashboard.dart';
 import 'package:erp_sem4/utility/demo.dart';
 import 'package:erp_sem4/utility/login_module.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.secularOneTextTheme(),
       ),
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: MyDashBoard(),
     );
   }
 }
