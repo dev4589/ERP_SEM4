@@ -2,14 +2,15 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
 
-
 class Data {
   Data(this.Standard, this.TotalStudent, this.PresentStudent);
+
   final String Standard;
   final num TotalStudent;
   final num PresentStudent;
@@ -141,6 +142,7 @@ class _DashBoardState extends State<DashBoard> {
       'expenses': 5466
     },
   ];
+
   List<Employee> getEmployeeData() {
     return [
       Employee(10001, 'James', 'Project Lead', 20000, 20000),
@@ -164,41 +166,82 @@ class _DashBoardState extends State<DashBoard> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery
+        .of(context)
+        .size;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.yellowAccent.shade100,
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(top: 10.0,right: 30.0,bottom: 10),
-          child:ResponsiveGridRow(
-            rowSegments: 12,
-            children: [
-              ResponsiveGridCol(
-                xl:2,
+            padding: const EdgeInsets.only(top: 10.0, right: 30.0, bottom: 10),
+            child: ResponsiveGridRow(
+              rowSegments: 12,
+              children: [
+                ResponsiveGridCol(
+                    xl: 2,
+                    child:
+                    SizedBox(
+                      height: size.height,
+
+                      child: ListView(
+                        children: [
+                          SizedBox(
+                            height: 100,
+                            child: ListTile(
+                              onTap: () {},
+                              title: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Text("DASHBOARD", style: TextStyle(
+                                    fontSize: 25, fontWeight: FontWeight.bold),
+                                  textAlign:TextAlign.center),
+                              ),
+                            ),
+                          ),
+                          ListTile(
+                            onTap: () {},
+                            leading: Icon(Icons.people_alt_rounded),
+                            title: Text("Student"),
+                            trailing: InkWell(
+                              onTap: (){},
+                              child: Icon(Icons.arrow_drop_down),
+                            ),
+                          ),
+                          ListTile(
+                            onTap: () {},
+                            leading: Icon(Icons.people_alt_rounded),
+                            title: Text("Teachers"),
+                            trailing: InkWell(
+                              onTap: (){},
+                              child: Icon(Icons.arrow_drop_down),
+                            ),
+                          ),
+                          ListTile(
+                            onTap: () {},
+                            leading: Icon(Icons.receipt),
+                            title: Text("Reports"),
+                            trailing: InkWell(
+                              onTap: (){},
+                              child: Icon(Icons.arrow_drop_down),
+                            ),
+                          ),
+                          ListTile(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            leading: Icon(Icons.logout),
+                            title: Text("Logout"),
+
+                          ),
+                      ]
+                      ),
+                    )
+
+                ),
+
+                ResponsiveGridCol(
+                  xl: 10,
                   child:
-                  SizedBox(
-                    height: size.height,
-
-                    child: ListView(
-                      children: [
-                        ListTile(
-                          onTap: (){},
-                          title: Text("Parth"),
-                        ),
-                        ListTile(
-                          onTap: (){},
-                          title: Text("Devansh"),
-                        ),
-                      ],
-                    ),
-                  )
-
-              ),
-
-              ResponsiveGridCol(
-                xl:10,
-                child:
                   Column(
                     children: [
                       ResponsiveGridRow(
@@ -223,7 +266,8 @@ class _DashBoardState extends State<DashBoard> {
                             xl: 1,
                             xs: 4,
                             child: Padding(
-                              padding: const EdgeInsets.only(right: 8.0, top: 8.0),
+                              padding: const EdgeInsets.only(
+                                  right: 8.0, top: 8.0),
                               child: TextButton(
                                 child: Text('WEBSITE'),
                                 style: TextButton.styleFrom(
@@ -241,7 +285,8 @@ class _DashBoardState extends State<DashBoard> {
                             xl: 1,
                             xs: 4,
                             child: Padding(
-                              padding: const EdgeInsets.only(right: 8.0, top: 8.0),
+                              padding: const EdgeInsets.only(
+                                  right: 8.0, top: 8.0),
                               child: TextButton(
                                 child: Text('DASHBOARD'),
                                 style: TextButton.styleFrom(
@@ -259,7 +304,8 @@ class _DashBoardState extends State<DashBoard> {
                             xs: 4,
                             xl: 1,
                             child: Padding(
-                              padding: const EdgeInsets.only(right: 8.0, top: 8.0),
+                              padding: const EdgeInsets.only(
+                                  right: 8.0, top: 8.0),
                               child: TextButton(
                                 child: Text('REPORTS'),
                                 style: TextButton.styleFrom(
@@ -277,10 +323,12 @@ class _DashBoardState extends State<DashBoard> {
                             xs: 4,
                             xl: 1,
                             child: Padding(
-                              padding: const EdgeInsets.only(right: 8.0, top: 8.0),
+                              padding: const EdgeInsets.only(
+                                  right: 8.0, top: 8.0),
                               child: TextButton(
                                   style: ButtonStyle(
-                                      foregroundColor: MaterialStateProperty.all<Color>(
+                                      foregroundColor: MaterialStateProperty
+                                          .all<Color>(
                                           Colors.indigo.shade800)),
                                   onPressed: () async {
                                     DateTime? date = DateTime(1900);
@@ -293,14 +341,16 @@ class _DashBoardState extends State<DashBoard> {
                                         firstDate: DateTime(1900),
                                         lastDate: DateTime.now());
                                   },
-                                  child: const Icon(Icons.calendar_today_outlined)),
+                                  child: const Icon(
+                                      Icons.calendar_today_outlined)),
                             ),
                           ),
                           ResponsiveGridCol(
                             xs: 4,
                             xl: 1,
                             child: Padding(
-                              padding: const EdgeInsets.only(right: 8.0, top: 8.0),
+                              padding: const EdgeInsets.only(
+                                  right: 8.0, top: 8.0),
                               child: TextButton(
                                 child: Icon(CupertinoIcons.bell),
                                 style: TextButton.styleFrom(
@@ -317,7 +367,8 @@ class _DashBoardState extends State<DashBoard> {
                             xs: 4,
                             xl: 1,
                             child: Padding(
-                              padding: const EdgeInsets.only(right: 8.0, top: 8.0),
+                              padding: const EdgeInsets.only(
+                                  right: 8.0, top: 8.0),
                               child: TextButton(
                                 child: Icon(Icons.person_rounded),
                                 style: TextButton.styleFrom(
@@ -342,7 +393,8 @@ class _DashBoardState extends State<DashBoard> {
                               child: Text(
                                   "Welcome- INTERNATIONAL SCHOOL|Super admin",
                                   style: TextStyle(
-                                      fontSize: 20.0, color: Colors.indigo.shade800)),
+                                      fontSize: 20.0,
+                                      color: Colors.indigo.shade800)),
                             ),
                           ],
                         ),
@@ -534,7 +586,8 @@ class _DashBoardState extends State<DashBoard> {
                         ),
                       ]),
                       Padding(
-                        padding: EdgeInsets.only(top: 30.0, bottom: 20.0, left: 10.0),
+                        padding: EdgeInsets.only(
+                            top: 30.0, bottom: 20.0, left: 10.0),
                         child: ResponsiveGridRow(
                           children: [
                             ResponsiveGridCol(
@@ -543,7 +596,8 @@ class _DashBoardState extends State<DashBoard> {
                                 "Income and Expences for Feb 2022 ",
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
-                                    fontSize: 20.0, color: Colors.indigo.shade800),
+                                    fontSize: 20.0,
+                                    color: Colors.indigo.shade800),
                                 textAlign: TextAlign.left,
                               ),
                             ),
@@ -567,7 +621,8 @@ class _DashBoardState extends State<DashBoard> {
                                 padding: const EdgeInsets.all(8.0),
                                 child: TextButton(
                                     onPressed: () {},
-                                    child: Icon(CupertinoIcons.multiply_circle_fill,
+                                    child: Icon(
+                                        CupertinoIcons.multiply_circle_fill,
                                         color: Colors.indigo.shade800)),
                               ),
                             ),
@@ -599,7 +654,8 @@ class _DashBoardState extends State<DashBoard> {
                             SplineSeries<Map, String>(
                                 dataSource: feesData,
                                 xValueMapper: (Map exp, _) => exp['month'],
-                                yValueMapper: (Map exp, _) => exp['pendingFees'],
+                                yValueMapper: (Map exp,
+                                    _) => exp['pendingFees'],
                                 // markerSettings: const MarkerSettings(isVisible: true),
                                 name: 'Pending Fees'),
                             SplineSeries<Map, String>(
@@ -619,7 +675,8 @@ class _DashBoardState extends State<DashBoard> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 30.0, bottom: 20.0, left: 10.0),
+                        padding: EdgeInsets.only(
+                            top: 30.0, bottom: 20.0, left: 10.0),
                         child: ResponsiveGridRow(
                           children: [
                             ResponsiveGridCol(
@@ -628,7 +685,8 @@ class _DashBoardState extends State<DashBoard> {
                               child: Text(
                                 "Attendence Data",
                                 style: TextStyle(
-                                    fontSize: 20.0, color: Colors.indigo.shade800),
+                                    fontSize: 20.0,
+                                    color: Colors.indigo.shade800),
                                 textAlign: TextAlign.left,
                               ),
                             ),
@@ -680,7 +738,8 @@ class _DashBoardState extends State<DashBoard> {
                                   fontWeight: FontWeight.bold,
                                 )),
                             legend:
-                            Legend(isVisible: true, position: LegendPosition.top),
+                            Legend(isVisible: true,
+                                position: LegendPosition.top),
                             series: <ChartSeries>[
                               ColumnSeries<Data, String>(
                                 dataSource: _chartData,
@@ -694,7 +753,8 @@ class _DashBoardState extends State<DashBoard> {
                               ColumnSeries<Data, String>(
                                 dataSource: _chartData,
                                 xValueMapper: (Data exp, _) => exp.Standard,
-                                yValueMapper: (Data exp, _) => exp.PresentStudent,
+                                yValueMapper: (Data exp, _) =>
+                                exp.PresentStudent,
                                 width: 0.4,
                                 name: 'Present Student',
                                 // dataLabelSettings: DataLabelSettings(isVisible: true),
@@ -706,13 +766,15 @@ class _DashBoardState extends State<DashBoard> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(top: 30.0, bottom: 20.0, left: 10.0),
+                        padding: EdgeInsets.only(
+                            top: 30.0, bottom: 20.0, left: 10.0),
                         child: Row(
                           children: [
                             Text(
                               "Notice Board",
                               style: TextStyle(
-                                  fontSize: 20.0, color: Colors.indigo.shade800),
+                                  fontSize: 20.0,
+                                  color: Colors.indigo.shade800),
                               textAlign: TextAlign.left,
                             ),
                           ],
@@ -732,7 +794,8 @@ class _DashBoardState extends State<DashBoard> {
                                     alignment: Alignment.center,
                                     child: Text(
                                       'ID',
-                                      style: TextStyle(fontWeight: FontWeight.bold),
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
                                     ))),
                             GridColumn(
                                 columnName: 'name',
@@ -741,7 +804,8 @@ class _DashBoardState extends State<DashBoard> {
                                     alignment: Alignment.center,
                                     child: Text('Name',
                                         style:
-                                        TextStyle(fontWeight: FontWeight.bold)))),
+                                        TextStyle(
+                                            fontWeight: FontWeight.bold)))),
                             GridColumn(
                                 columnName: 'designation',
                                 label: Container(
@@ -749,7 +813,8 @@ class _DashBoardState extends State<DashBoard> {
                                     alignment: Alignment.center,
                                     child: Text(
                                       'Designation',
-                                      style: TextStyle(fontWeight: FontWeight.bold),
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
                                       overflow: TextOverflow.ellipsis,
                                     ))),
                             GridColumn(
@@ -760,7 +825,8 @@ class _DashBoardState extends State<DashBoard> {
                                     alignment: Alignment.center,
                                     child: Text('Salary',
                                         style:
-                                        TextStyle(fontWeight: FontWeight.bold)))),
+                                        TextStyle(
+                                            fontWeight: FontWeight.bold)))),
                             GridColumn(
                                 columnName: 'amount',
                                 label: Container(
@@ -769,16 +835,17 @@ class _DashBoardState extends State<DashBoard> {
                                     alignment: Alignment.center,
                                     child: Text('Amount',
                                         style:
-                                        TextStyle(fontWeight: FontWeight.bold)))),
+                                        TextStyle(
+                                            fontWeight: FontWeight.bold)))),
                           ],
                         ),
                       ),
                     ],
                   ),
 
-              )
-            ],
-          )
+                )
+              ],
+            )
 
         ),
       ),
@@ -788,6 +855,7 @@ class _DashBoardState extends State<DashBoard> {
 
 class Employee {
   Employee(this.id, this.name, this.designation, this.salary, this.amount);
+
   final int id;
   final String name;
   final String designation;
@@ -799,14 +867,15 @@ class EmployeeDataSource extends DataGridSource {
   /// Creates the employee data source class with required details.
   EmployeeDataSource({required List<Employee> employeeData}) {
     _employeeData = employeeData
-        .map<DataGridRow>((e) => DataGridRow(cells: [
-      DataGridCell<int>(columnName: 'id', value: e.id),
-      DataGridCell<String>(columnName: 'name', value: e.name),
-      DataGridCell<String>(
-          columnName: 'designation', value: e.designation),
-      DataGridCell<int>(columnName: 'salary', value: e.salary),
-      DataGridCell<int>(columnName: 'salary', value: e.amount),
-    ]))
+        .map<DataGridRow>((e) =>
+        DataGridRow(cells: [
+          DataGridCell<int>(columnName: 'id', value: e.id),
+          DataGridCell<String>(columnName: 'name', value: e.name),
+          DataGridCell<String>(
+              columnName: 'designation', value: e.designation),
+          DataGridCell<int>(columnName: 'salary', value: e.salary),
+          DataGridCell<int>(columnName: 'salary', value: e.amount),
+        ]))
         .toList();
   }
 

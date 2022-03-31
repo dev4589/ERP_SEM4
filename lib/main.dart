@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.secularOneTextTheme(),
       ),
       debugShowCheckedModeBanner: false,
-      home: MyDashBoard(),
+      home: DashBoard(),
     );
   }
 }
