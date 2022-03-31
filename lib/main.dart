@@ -1,4 +1,9 @@
 import 'package:erp_sem4/screens/dashboard.dart';
+
+import 'package:erp_sem4/screens/login.dart';
+import 'package:erp_sem4/screens/my_dashboard.dart';
+import 'package:erp_sem4/utility/demo.dart';
+import 'package:erp_sem4/utility/login_module.dart';
 import 'package:flutter/material.dart';
 import 'screens/slash_screen.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -10,7 +15,7 @@ import 'screens/stud_dashboard.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-      options: FirebaseOptions(
+      options: const FirebaseOptions(
           apiKey: "AIzaSyCl2rclQDlZ7L8rIZxKUMI3qmUV7MB2rLk",
           authDomain: "erp-sem4.firebaseapp.com",
           projectId: "erp-sem4",
@@ -26,6 +31,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color kPrimaryColor = Colors.blue;
     return MaterialApp(
       builder: (context, widget) => ResponsiveWrapper.builder(
         BouncingScrollWrapper.builder(context, widget!),
@@ -48,7 +54,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.secularOneTextTheme(),
       ),
       debugShowCheckedModeBanner: false,
-      home: StudDash(),
+      home: MyDashBoard(),
     );
   }
 }

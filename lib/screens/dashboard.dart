@@ -15,14 +15,14 @@ class Data {
   final num PresentStudent;
 }
 
-class dashboard extends StatefulWidget {
-  const dashboard({Key? key}) : super(key: key);
+class DashBoard extends StatefulWidget {
+  const DashBoard({Key? key}) : super(key: key);
 
   @override
-  _dashboardState createState() => _dashboardState();
+  _DashBoardState createState() => _DashBoardState();
 }
 
-class _dashboardState extends State<dashboard> {
+class _DashBoardState extends State<DashBoard> {
   List<Employee> employees = <Employee>[];
   late EmployeeDataSource employeeDataSource;
   late TooltipBehavior _tooltipBehavior;
