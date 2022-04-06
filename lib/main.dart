@@ -1,5 +1,3 @@
-import 'package:erp_sem4/screens/dashboard.dart';
-
 import 'package:erp_sem4/screens/login.dart';
 import 'package:erp_sem4/screens/my_dashboard.dart';
 import 'package:erp_sem4/utility/demo.dart';
@@ -9,8 +7,6 @@ import 'screens/slash_screen.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
-
-import 'screens/stud_dashboard.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,7 +50,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.secularOneTextTheme(),
       ),
       debugShowCheckedModeBanner: false,
-      home: DashBoard(),
+      home: MyDashBoard(),
     );
   }
 }
