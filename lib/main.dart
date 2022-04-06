@@ -1,12 +1,15 @@
 import 'package:erp_sem4/screens/login.dart';
-import 'package:erp_sem4/screens/my_dashboard.dart';
+
 import 'package:erp_sem4/utility/demo.dart';
 import 'package:erp_sem4/utility/login_module.dart';
 import 'package:flutter/material.dart';
+import 'screens/dashboard.dart';
 import 'screens/slash_screen.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+import 'screens/student_profile.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,7 +53,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.secularOneTextTheme(),
       ),
       debugShowCheckedModeBanner: false,
-      home: MyDashBoard(),
+      home: DashBoard(),
     );
   }
 }
