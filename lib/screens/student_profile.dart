@@ -4,8 +4,6 @@ import '../utility/student_profile_module.dart';
 import 'package:flutter/material.dart';
 
 class StudentProfile extends StatefulWidget {
-  final Student student;
-  const StudentProfile({required this.student});
 
   @override
   _StudentProfileState createState() => _StudentProfileState();
@@ -34,7 +32,7 @@ class _StudentProfileState extends State<StudentProfile> {
                     color: Colors.white),
               ],
             ),
-            StudentProfileForm(widget.student),
+            StudentProfileForm(),
           ],
         ),
       ),

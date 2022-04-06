@@ -3,8 +3,6 @@ import '../models/student_details_model.dart';
 import 'package:flutter/material.dart';
 
 class StudentProfileForm extends StatefulWidget {
-  final Student student;
-  StudentProfileForm(this.student);
   @override
   _StudentProfileFormState createState() => _StudentProfileFormState();
 }
@@ -137,9 +135,9 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          Text(widget.student.firstName ?? ""),
-                                          Text(widget.student.middleName ?? ""),
-                                          Text(widget.student.lastName ?? ""),
+                                          Text("Devansh"),
+                                          Text("RajeshKumar"),
+                                          Text("Parmar"),
                                         ]),
                                         SizedBox(height: 8),
                                         Row(children: [
@@ -149,8 +147,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          Text(widget.student.studentBranch ??
-                                              ""),
+                                          Text("Science"),
                                         ]),
                                         SizedBox(height: 8),
                                         Row(children: [
@@ -160,7 +157,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          Text(widget.student.birthPlace ?? ""),
+                                          Text("Bharuch"),
                                         ]),
                                         SizedBox(height: 8),
                                         Row(children: [
@@ -170,7 +167,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          Text(widget.student.gender ?? ""),
+                                          Text("Male"),
                                         ]),
                                         SizedBox(height: 8),
                                         Row(children: [
@@ -180,8 +177,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          Text(
-                                              widget.student.nationality ?? ""),
+                                          Text("Indian"),
                                         ]),
                                         SizedBox(height: 8),
                                         Row(children: [
@@ -191,7 +187,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          Text(widget.student.religion ?? ""),
+                                          Text("Hindu"),
                                         ]),
                                       ],
                                     ),
@@ -213,8 +209,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          Text(widget.student.studentCourse ??
-                                              ""),
+                                          Text("Arts"),
                                         ]),
                                         SizedBox(height: 8),
                                         Row(children: [
@@ -224,7 +219,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          Text(widget.student.dob ?? ""),
+                                          Text("02-02-1998"),
                                         ]),
                                         SizedBox(height: 8),
                                         Row(children: [
@@ -234,7 +229,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          Text(widget.student.grNo ?? ""),
+                                          Text("0781"),
                                         ]),
                                         SizedBox(height: 8),
                                         Row(children: [
@@ -244,7 +239,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          Text(widget.student.email ?? ""),
+                                          Text("devparmar4589@gmail.com"),
                                         ]),
                                         SizedBox(height: 8),
                                         Row(children: [
@@ -254,8 +249,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          Text(widget.student.studentMobileNo ??
-                                              ""),
+                                          Text("6351775164"),
                                         ]),
                                         SizedBox(height: 8),
                                         Row(children: [
@@ -265,7 +259,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          Text(widget.student.bloodGroup ?? ""),
+                                          Text("AB+"),
                                         ]),
                                       ],
                                     ),
@@ -291,8 +285,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                                 fontSize: 17,
                                               ),
                                             ),
-                                            Text(widget.student.fatherName ??
-                                                ""),
+                                            Text("RajeshKumar C. Parma"),
                                           ]),
                                           SizedBox(height: 8),
                                           Row(children: [
@@ -302,9 +295,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                                 fontSize: 17,
                                               ),
                                             ),
-                                            Text(widget
-                                                    .student.fatherOccupation ??
-                                                ""),
+                                            Text("Job"),
                                           ]),
                                           SizedBox(height: 8),
                                           Row(children: [
@@ -314,9 +305,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                                 fontSize: 17,
                                               ),
                                             ),
-                                            Text(widget
-                                                    .student.fatherEducation ??
-                                                ""),
+                                            Text("PhD"),
                                           ]),
                                           SizedBox(height: 8),
                                           Row(children: [
@@ -326,8 +315,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                                 fontSize: 17,
                                               ),
                                             ),
-                                            Text(widget.student.motherName ??
-                                                ""),
+                                            Text("Geetaben R. Parmar"),
                                           ]),
                                           SizedBox(height: 8),
                                           Row(children: [
@@ -337,9 +325,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                                 fontSize: 17,
                                               ),
                                             ),
-                                            Text(widget
-                                                    .student.motherOccupation ??
-                                                ""),
+                                            Text("Housewife"),
                                           ]),
                                           SizedBox(height: 8),
                                           Row(children: [
@@ -349,9 +335,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                                 fontSize: 17,
                                               ),
                                             ),
-                                            Text(widget
-                                                    .student.motherEducation ??
-                                                ""),
+                                            Text("M.Com"),
                                           ]),
                                         ]),
                                     Column(children: [
@@ -369,8 +353,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                             fontSize: 17,
                                           ),
                                         ),
-                                        Text(widget.student.fatherContactNo ??
-                                            ""),
+                                        Text("9428519284"),
                                       ]),
                                       SizedBox(height: 8),
                                       Row(children: [
@@ -380,9 +363,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                             fontSize: 17,
                                           ),
                                         ),
-                                        Text(widget
-                                                .student.fatherOfficeAddress ??
-                                            ""),
+                                        Text("Ahmdedabad"),
                                       ]),
                                       SizedBox(height: 8),
                                       Text(""),
@@ -394,8 +375,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                             fontSize: 17,
                                           ),
                                         ),
-                                        Text(
-                                            widget.student.motherContact ?? ""),
+                                        Text("9825466192"),
                                       ]),
                                       SizedBox(height: 8),
                                       Row(children: [
@@ -405,9 +385,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                             fontSize: 17,
                                           ),
                                         ),
-                                        Text(widget
-                                                .student.motherOfficeAddress ??
-                                            ""),
+                                        Text("Home Sweet Home"),
                                       ]),
                                     ]),
                                     Column(children: [
@@ -425,7 +403,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                             fontSize: 17,
                                           ),
                                         ),
-                                        Text(widget.student.fatherEmail ?? ""),
+                                        Text("skjgvnseken@gmailc.com"),
                                       ]),
                                       SizedBox(height: 8),
                                       Row(children: [
@@ -435,9 +413,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                             fontSize: 17,
                                           ),
                                         ),
-                                        Text(widget.student
-                                                .fatherOfficeContactNo ??
-                                            ""),
+                                        Text("156165161"),
                                       ]),
                                       SizedBox(height: 8),
                                       Text(""),
@@ -449,7 +425,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                             fontSize: 17,
                                           ),
                                         ),
-                                        Text(widget.student.motherEmail ?? ""),
+                                        Text("skjdn@gmail.com"),
                                       ]),
                                       SizedBox(height: 8),
                                       Row(children: [
@@ -459,9 +435,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                             fontSize: 17,
                                           ),
                                         ),
-                                        Text(widget
-                                                .student.motherOfficeContact ??
-                                            ""),
+                                        Text("547985621"),
                                       ]),
                                     ]),
                                     Column(
@@ -486,7 +460,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                                 fontSize: 17,
                                               ),
                                             ),
-                                            Text(widget.student.caste ?? ""),
+                                            Text("FirMatPuchna"),
                                           ]),
                                           SizedBox(height: 8),
                                           Row(children: [
@@ -496,7 +470,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                                 fontSize: 17,
                                               ),
                                             ),
-                                            Text(widget.student.nonCremy ?? ""),
+                                            Text("whatCreamyLayer"),
                                           ]),
                                           SizedBox(height: 8),
                                           Row(children: [
@@ -506,9 +480,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                                 fontSize: 17,
                                               ),
                                             ),
-                                            Text(widget.student
-                                                    .previousSchoolBoard ??
-                                                ""),
+                                            Text("CBSC"),
                                           ]),
                                           SizedBox(height: 8),
                                           Row(children: [
@@ -518,7 +490,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                                 fontSize: 17,
                                               ),
                                             ),
-                                            Text(widget.student.seatNo ?? ""),
+                                            Text("541"),
                                           ]),
                                           SizedBox(height: 8),
                                           Row(children: [
@@ -528,9 +500,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                                 fontSize: 17,
                                               ),
                                             ),
-                                            Text(widget.student
-                                                    .previousExamPercentage ??
-                                                ""),
+                                            Text("98%"),
                                           ]),
                                           SizedBox(height: 8),
                                           Row(children: [
@@ -540,9 +510,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                                 fontSize: 17,
                                               ),
                                             ),
-                                            Text(widget.student
-                                                    .previousExamPercentage ??
-                                                ""),
+                                            Text("78%"),
                                           ]),
                                         ]),
                                     Column(children: [
@@ -560,7 +528,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                             fontSize: 17,
                                           ),
                                         ),
-                                        Text(widget.student.subCaste ?? ""),
+                                        Text("sjkngf"),
                                       ]),
                                       SizedBox(height: 8),
                                       Row(children: [
@@ -570,8 +538,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                             fontSize: 17,
                                           ),
                                         ),
-                                        Text(widget.student.previousExamName ??
-                                            ""),
+                                        Text("skhdn"),
                                       ]),
                                       SizedBox(height: 8),
                                       Row(children: [
@@ -581,7 +548,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                             fontSize: 17,
                                           ),
                                         ),
-                                        Text(widget.student.passYear ?? ""),
+                                        Text("1500"),
                                       ]),
                                       SizedBox(height: 8),
                                       Row(children: [
@@ -591,9 +558,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                             fontSize: 17,
                                           ),
                                         ),
-                                        Text(widget
-                                                .student.previousSchoolBoard ??
-                                            ""),
+                                        Text("1489"),
                                       ]),
                                       SizedBox(height: 8),
                                       Row(children: [
@@ -603,8 +568,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                             fontSize: 17,
                                           ),
                                         ),
-                                        Text(widget.student.previousExamName ??
-                                            ""),
+                                        Text("janine su karse"),
                                       ]),
                                       SizedBox(height: 8),
                                       Row(children: [
@@ -614,7 +578,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                             fontSize: 17,
                                           ),
                                         ),
-                                        Text(widget.student.feesAmount ?? ""),
+                                        Text("5000000"),
                                       ]),
                                     ]),
                                     Column(
@@ -633,9 +597,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          Text(widget.student
-                                                  .isPhysicallyChallenged ??
-                                              ""),
+                                          Text("YES"),
                                         ]),
                                         SizedBox(height: 8),
                                         Row(children: [
@@ -645,7 +607,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          Text(widget.student.address ?? ""),
+                                          Text("gali ka naka"),
                                         ]),
                                         SizedBox(height: 8),
                                         Row(children: [
@@ -655,7 +617,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          Text(widget.student.state ?? ""),
+                                          Text("Andaman"),
                                         ]),
                                         SizedBox(height: 8),
                                         Row(children: [
@@ -665,7 +627,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          Text(widget.student.isMinority ?? ""),
+                                          Text("hell no"),
                                         ]),
                                         SizedBox(height: 8),
                                         Row(children: [
@@ -675,7 +637,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          Text(widget.student.gapDetail ?? ""),
+                                          Text("500"),
                                         ]),
                                         SizedBox(height: 8),
                                         Row(
@@ -686,8 +648,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                                 fontSize: 17,
                                               ),
                                             ),
-                                            Text(
-                                                widget.student.transport ?? ""),
+                                            Text("doge to achha hoga"),
                                           ],
                                         ),
                                       ],
