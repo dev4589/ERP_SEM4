@@ -1,5 +1,4 @@
 import '../constants/constants.dart';
-import '../models/student_details_model.dart';
 import '../utility/student_profile_module.dart';
 import 'package:flutter/material.dart';
 

@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'package:provider/provider.dart';
-import 'package:erp_sem4/provider/user_data_provider.dart';
 import 'package:erp_sem4/screens/stud_dashboard.dart';
 import 'package:erp_sem4/screens/student_registration.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,8 +9,6 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 import 'package:getwidget/getwidget.dart';
-
-import '../models/student_details_model.dart';
 import '../utility/pre_admission_module.dart';
 import 'pre_admission.dart';
 import 'show_student_registration.dart';

@@ -1,5 +1,4 @@
 import '../constants/constants.dart';
-import '../models/student_details_model.dart';
 import 'package:flutter/material.dart';
 
 class StudentProfileForm extends StatefulWidget {
