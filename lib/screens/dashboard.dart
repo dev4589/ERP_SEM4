@@ -6,6 +6,8 @@ import 'package:flutter/rendering.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:responsive_grid/responsive_grid.dart';
+import 'package:getwidget/getwidget.dart';
+
 
 
 class Data {
@@ -186,53 +188,108 @@ class _DashBoardState extends State<DashBoard> {
 
                       child: ListView(
                         children: [
-                          SizedBox(
-                            height: 100,
-                            child: ListTile(
-                              onTap: () {},
-                              title: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Text("DASHBOARD", style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
-                                  textAlign:TextAlign.center),
-                              ),
-                            ),
+                          // SizedBox(
+                          //   height: 100,
+                          //   child: ListTile(
+                          //     onTap: () {},
+                          //     title: Padding(
+                          //       padding: const EdgeInsets.all(10.0),
+                          //       child: Text("DASHBOARD", style: TextStyle(
+                          //           fontSize: 25, fontWeight: FontWeight.bold),
+                          //         textAlign:TextAlign.center),
+                          //     ),
+                          //   ),
+                          // ),
+                          // ListTile(
+                          //   onTap: () {},
+                          //   leading: Icon(Icons.people_alt_rounded),
+                          //   title: Text("Student"),
+                          //   trailing: InkWell(
+                          //     onTap: (){},
+                          //     child: Icon(Icons.arrow_drop_down),
+                          //   ),
+                          // ),
+                          // ListTile(
+                          //   onTap: () {},
+                          //   leading: Icon(Icons.people_alt_rounded),
+                          //   title: Text("Teachers"),
+                          //   trailing: InkWell(
+                          //     onTap: (){},
+                          //     child: Icon(Icons.arrow_drop_down),
+                          //   ),
+                          // ),
+                          // ListTile(
+                          //   onTap: () {},
+                          //   leading: Icon(Icons.receipt),
+                          //   title: Text("Reports"),
+                          //   trailing: InkWell(
+                          //     onTap: (){},
+                          //     child: Icon(Icons.arrow_drop_down),
+                          //   ),
+                          // ),
+                          // ListTile(
+                          //   onTap: () {
+                          //     Navigator.pop(context);
+                          //   },
+                          //   leading: Icon(Icons.logout),
+                          //   title: Text("Logout"),
+                          //
+                          // ),
+                      SizedBox(
+                        height: 100,
+                        child: ListTile(
+                          onTap: () {},
+                          title: Padding(
+                            padding: const EdgeInsets.only(top:20.0,left: 10,right: 10,bottom: 20),
+                            child: Text("DASHBOARD", style: TextStyle(
+                                fontSize: 25, fontWeight: FontWeight.bold),
+                              textAlign:TextAlign.center),
                           ),
-                          ListTile(
-                            onTap: () {},
-                            leading: Icon(Icons.people_alt_rounded),
-                            title: Text("Student"),
-                            trailing: InkWell(
-                              onTap: (){},
-                              child: Icon(Icons.arrow_drop_down),
-                            ),
-                          ),
-                          ListTile(
-                            onTap: () {},
-                            leading: Icon(Icons.people_alt_rounded),
-                            title: Text("Teachers"),
-                            trailing: InkWell(
-                              onTap: (){},
-                              child: Icon(Icons.arrow_drop_down),
-                            ),
-                          ),
-                          ListTile(
-                            onTap: () {},
-                            leading: Icon(Icons.receipt),
-                            title: Text("Reports"),
-                            trailing: InkWell(
-                              onTap: (){},
-                              child: Icon(Icons.arrow_drop_down),
-                            ),
-                          ),
-                          ListTile(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            leading: Icon(Icons.logout),
-                            title: Text("Logout"),
+                        ),
+                      ),
+                          GFAccordion(
+                            title: "Student",
+                            contentChild: Column(
+                              children: [
+                                ListTile(
+                                  onTap: (){},
+                                  title: Text("Student Registration"),
+                                ),
+                                ListTile(
+                                  onTap: (){},
+                                  title: Text("Student Registration"),
+                                ),
+                                ListTile(
+                                  onTap: (){},
+                                  title: Text("Student Registration"),
+                                ),
+                              ],
+                            )
+                            ,
+                            expandedIcon: Icon(Icons.arrow_drop_down),
 
                           ),
+                          GFAccordion(
+                            title: "Teachers",
+                            expandedIcon: Icon(Icons.arrow_drop_down),
+
+                          ),
+                          GFAccordion(
+                            title: "Report",
+                            expandedIcon: Icon(Icons.arrow_drop_down),
+
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: ListTile(
+                              tileColor: Colors.white,
+                              leading: Icon(Icons.logout),
+                              title: Text("Logout"),
+                              onTap: (){
+                                Navigator.pop(context);
+                              },
+                            ),
+                          )
                       ]
                       ),
                     )
