@@ -23,7 +23,7 @@ class _PreAdmissionState extends State<PreAdmission> {
                 Container(
                   height: double.infinity,
                   width: size.width / 2,
-                  color: kPrimaryColor,
+                  color: bColor,
                 ),
                 Container(
                     height: double.infinity,
