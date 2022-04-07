@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:erp_sem4/screens/teacher_profile.dart';
 import 'package:provider/provider.dart';
 import 'package:erp_sem4/screens/stud_dashboard.dart';
 import 'package:erp_sem4/screens/student_registration.dart';
@@ -297,6 +298,17 @@ class _DashBoardState extends State<DashBoard> {
                           GFAccordion(
                             title: "Teachers",
                             expandedIcon: Icon(Icons.arrow_drop_down),
+                            contentChild: Column(
+                              children: [
+                                ListTile(
+                                  onTap: (){
+                                    Navigator.pushReplacement(context, MaterialPageRoute(builder:(context)=>TeacherProfile()));
+                                  },
+                                  leading: Text("Teachers Profile",style: TextStyle(fontSize: 14),),
+
+                                )
+                              ],
+                            ),
 
                           ),
                           GFAccordion(
