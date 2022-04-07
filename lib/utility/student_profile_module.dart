@@ -459,7 +459,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                                 fontSize: 17,
                                               ),
                                             ),
-                                            Text("FirMatPuchna"),
+                                            Text("Hindu"),
                                           ]),
                                           SizedBox(height: 8),
                                           Row(children: [
@@ -469,7 +469,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                                 fontSize: 17,
                                               ),
                                             ),
-                                            Text("whatCreamyLayer"),
+                                            Text("Yes"),
                                           ]),
                                           SizedBox(height: 8),
                                           Row(children: [
@@ -527,7 +527,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                             fontSize: 17,
                                           ),
                                         ),
-                                        Text("sjkngf"),
+                                        Text("non-applicable"),
                                       ]),
                                       SizedBox(height: 8),
                                       Row(children: [
@@ -537,7 +537,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                             fontSize: 17,
                                           ),
                                         ),
-                                        Text("skhdn"),
+                                        Text("hsc"),
                                       ]),
                                       SizedBox(height: 8),
                                       Row(children: [
@@ -547,7 +547,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                             fontSize: 17,
                                           ),
                                         ),
-                                        Text("1500"),
+                                        Text("2000"),
                                       ]),
                                       SizedBox(height: 8),
                                       Row(children: [
@@ -567,7 +567,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                             fontSize: 17,
                                           ),
                                         ),
-                                        Text("janine su karse"),
+                                        Text("Bcom"),
                                       ]),
                                       SizedBox(height: 8),
                                       Row(children: [
@@ -577,7 +577,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                             fontSize: 17,
                                           ),
                                         ),
-                                        Text("5000000"),
+                                        Text("250000"),
                                       ]),
                                     ]),
                                     Column(
@@ -596,7 +596,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          Text("YES"),
+                                          Text("no"),
                                         ]),
                                         SizedBox(height: 8),
                                         Row(children: [
@@ -606,7 +606,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          Text("gali ka naka"),
+                                          Text("Ahmedabad"),
                                         ]),
                                         SizedBox(height: 8),
                                         Row(children: [
@@ -616,7 +616,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          Text("Andaman"),
+                                          Text("Gujarat"),
                                         ]),
                                         SizedBox(height: 8),
                                         Row(children: [
@@ -626,7 +626,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          Text("hell no"),
+                                          Text("no"),
                                         ]),
                                         SizedBox(height: 8),
                                         Row(children: [
@@ -636,7 +636,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                               fontSize: 17,
                                             ),
                                           ),
-                                          Text("500"),
+                                          Text("0"),
                                         ]),
                                         SizedBox(height: 8),
                                         Row(
@@ -647,7 +647,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
                                                 fontSize: 17,
                                               ),
                                             ),
-                                            Text("doge to achha hoga"),
+                                            Text("no"),
                                           ],
                                         ),
                                       ],

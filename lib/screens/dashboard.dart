@@ -277,7 +277,7 @@ class _DashBoardState extends State<DashBoard> {
                                 ),
                                 ListTile(
                                   onTap: (){
-                                     // Navigator.pushReplacement(context, MaterialPageRoute(builder:(context)=>StudentProfile(student: student,)));
+                                      Navigator.pushReplacement(context, MaterialPageRoute(builder:(context)=>StudentProfile()));
 
                                   },
                                   title: Text("Student Profile",style: TextStyle(fontSize: 14)),
