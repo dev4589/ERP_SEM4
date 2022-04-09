@@ -1,14 +1,16 @@
-import '../constants/constants.dart';
-import '../utility/teacher_profile_module.dart';
+import 'package:erp_sem4/constants/constants.dart';
+
+
+import '../utility/student_profile_module.dart';
 import 'package:flutter/material.dart';
-class TeacherProfile extends StatefulWidget {
-  const TeacherProfile({Key? key}) : super(key: key);
+
+class StudentProfile extends StatefulWidget {
 
   @override
-  _TeacherProfileState createState() => _TeacherProfileState();
+  _StudentProfileState createState() => _StudentProfileState();
 }
 
-class _TeacherProfileState extends State<TeacherProfile> {
+class _StudentProfileState extends State<StudentProfile> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -22,7 +24,7 @@ class _TeacherProfileState extends State<TeacherProfile> {
               children: [
                 Container(
                   height: double.infinity,
-                  width: size.width /2,
+                  width: size.width / 2,
                   color: kPrimaryColor,
                 ),
                 Container(
@@ -31,9 +33,7 @@ class _TeacherProfileState extends State<TeacherProfile> {
                     color: Colors.white),
               ],
             ),
-
-            TeacherProfileForm(),
-
+            StudentProfileForm(),
           ],
         ),
       ),
