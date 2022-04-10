@@ -167,1042 +167,1044 @@ class _StudentFormState extends State<StudentForm> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     final bool displayMobileLayout = MediaQuery.of(context).size.width < 800;
-    return Padding(
-      padding: EdgeInsets.all(16),
-      child: Center(
-        child: Card(
-          elevation: 4,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(25),
+    return Scaffold(
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: Center(
+          child: Card(
+            elevation: 4,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(25),
+              ),
             ),
-          ),
-          child: AnimatedContainer(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            duration: Duration(milliseconds: 200),
-            height: size.height * 0.9,
-            width: 1400,
-            child: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding:
-                              EdgeInsets.only(left: 40, right: 40, top: 20),
-                          child: TextButton.icon(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              icon:
-                                  Icon(Icons.arrow_back, color: kPrimaryColor),
-                              label: Text("Back",
-                                  style: TextStyle(color: kPrimaryColor))),
-                        ),
-                        Padding(
-                          padding:
-                              EdgeInsets.only(left: 40, right: 40, top: 20),
-                          child: Text(" Student Admission Form",
-                              style: TextStyle(
-                                  fontSize: 20, color: kPrimaryColor)),
-                        ),
-                        Padding(
-                          padding:
-                              EdgeInsets.only(left: 350, right: 40, top: 20),
-                          child: Center(
-                            child: FlatButton.icon(
-                              icon:
-                                  Icon(Icons.arrow_upward, color: Colors.white),
-                              label: Text("Upload Excel",
-                                  style: TextStyle(
-                                      fontSize: 17, color: Colors.white)),
-                              height: 45,
-                              minWidth: 150,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(18.0)),
-                              color: kPrimaryColor,
-                              onPressed: () {},
+            child: AnimatedContainer(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              duration: Duration(milliseconds: 200),
+              height: size.height * 0.9,
+              width: 1400,
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsets.only(left: 40, right: 40, top: 20),
+                            child: TextButton.icon(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                icon:
+                                    Icon(Icons.arrow_back, color: kPrimaryColor),
+                                label: Text("Back",
+                                    style: TextStyle(color: kPrimaryColor))),
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsets.only(left: 40, right: 40, top: 20),
+                            child: Text(" Student Admission Form",
+                                style: TextStyle(
+                                    fontSize: 20, color: kPrimaryColor)),
+                          ),
+                          Padding(
+                            padding:
+                                EdgeInsets.only(left: 350, right: 40, top: 20),
+                            child: Center(
+                              child: FlatButton.icon(
+                                icon:
+                                    Icon(Icons.arrow_upward, color: Colors.white),
+                                label: Text("Upload Excel",
+                                    style: TextStyle(
+                                        fontSize: 17, color: Colors.white)),
+                                height: 45,
+                                minWidth: 150,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0)),
+                                color: kPrimaryColor,
+                                onPressed: () {},
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  isLoading
-                      ? Center(child: CircularProgressIndicator())
-                      : Expanded(
-                          child: ListView(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(
-                                  left: 40,
-                                  right: 40,
-                                ),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(7),
+                    isLoading
+                        ? Center(child: CircularProgressIndicator())
+                        : Expanded(
+                            child: ListView(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    left: 40,
+                                    right: 40,
                                   ),
-                                  //padding: (displayMobileLayout==true)?EdgeInsets.only(top:15,left: 10,right:10,bottom: 15):(MediaQuery.of(context).size.width<1024)?EdgeInsets.only(top:20,left: 25,right:25,bottom: 20):EdgeInsets.only(top:25,left: 30,right:30,bottom: 25),
-                                  width: MediaQuery.of(context).size.width,
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(7),
-                                        ),
-                                        padding: (displayMobileLayout == true)
-                                            ? EdgeInsets.only(
-                                                top: 15,
-                                                left: 10,
-                                                right: 10,
-                                                bottom: 15)
-                                            : (MediaQuery.of(context)
-                                                        .size
-                                                        .width <
-                                                    1024)
-                                                ? EdgeInsets.only(
-                                                    top: 20,
-                                                    left: 25,
-                                                    right: 25,
-                                                    bottom: 20)
-                                                : EdgeInsets.only(
-                                                    top: 25,
-                                                    left: 30,
-                                                    right: 30,
-                                                    bottom: 25),
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        child: Container(
-                                          child: GridView.count(
-                                            physics:
-                                                NeverScrollableScrollPhysics(),
-                                            childAspectRatio:
-                                                MediaQuery.of(context)
-                                                            .size
-                                                            .width >
-                                                        1024
-                                                    ? (1 / 0.18)
-                                                    : MediaQuery.of(context)
-                                                                .size
-                                                                .width >
-                                                            640
-                                                        ? (1 / 0.09)
-                                                        : (1 / 0.13),
-                                            crossAxisCount:
-                                                (displayMobileLayout == true)
-                                                    ? 1
-                                                    : (MediaQuery.of(context)
-                                                                .size
-                                                                .width <
-                                                            1050)
-                                                        ? 1
-                                                        : (MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .width <
-                                                                1200)
-                                                            ? 2
-                                                            : 3,
-                                            mainAxisSpacing: 0,
-                                            crossAxisSpacing: 18,
-                                            shrinkWrap: true,
-                                            children: [
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    "PERSONAL INFO ",
-                                                    style: TextStyle(
-                                                        fontSize: 18,
-                                                        color: kPrimaryColor),
-                                                  ),
-                                                  Divider(
-                                                    thickness: 5,
-                                                    color: kPrimaryColor,
-                                                  ),
-                                                ],
-                                              ),
-                                              if (MediaQuery.of(context)
-                                                      .size
-                                                      .width >=
-                                                  1200)
-                                                Text(""),
-                                              if (MediaQuery.of(context)
-                                                      .size
-                                                      .width >
-                                                  1050)
-                                                Text(""),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                // controller: fname,
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "First Name",
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "Middle Name",
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "Last Name",
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                readOnly: true,
-                                                controller: dob,
-                                                decoration: InputDecoration(
-                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                    labelText: "Date Of Birth",
-                                                    hintText:
-                                                        "Date Format must be DD-MM-YYYY",
-                                                    suffixIcon: IconButton(
-                                                        onPressed: () async {
-                                                          DateTime? date =
-                                                              DateTime(1900);
-                                                          FocusScope.of(context)
-                                                              .requestFocus(
-                                                                  new FocusNode());
-                                                          date =
-                                                              await showDatePicker(
-                                                            helpText:
-                                                                "Select Date Of Birth",
-                                                            context: context,
-                                                            initialDate:
-                                                                DateTime.now(),
-                                                            firstDate:
-                                                                DateTime(1900),
-                                                            lastDate:
-                                                                DateTime.now(),
-                                                          );
-                                                        },
-                                                        icon: Icon(Icons
-                                                            .calendar_today_outlined))),
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "Birth Place",
-                                                ),
-                                              ),
-                                              DropdownButton<String>(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                hint: Text(
-                                                    "Select Academic Year"),
-                                                value: Dropdown.academicyear.elementAt(0),
-                                                isExpanded: true,
-                                                items: Dropdown.academicyear
-                                                    .map((String val) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: val,
-                                                    child: Text(val),
-                                                  );
-                                                }).toList(),
-                                                onChanged: (String? num) {},
-                                              ),
-                                              DropdownButton<String>(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                hint:
-                                                    Text("Select Blood Group"),
-                                                value: Dropdown.bloodgrp.elementAt(0),
-                                                isExpanded: true,
-                                                items: Dropdown.bloodgrp
-                                                    .map((String val) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: val,
-                                                    child: Text(val),
-                                                  );
-                                                }).toList(),
-                                                onChanged: (String? num) {},
-                                              ),
-                                              DropdownButton<String>(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                hint: Text("Select Gender"),
-                                                value: Dropdown.gender.elementAt(0),
-                                                isExpanded: true,
-                                                items: Dropdown.gender
-                                                    .map((String val) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: val,
-                                                    child: Text(val),
-                                                  );
-                                                }).toList(),
-                                                onChanged: (String? num) {},
-                                              ),
-                                              TextFormField(
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "Nationality",
-                                                ),
-                                              ),
-                                              DropdownButton<String>(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                value: Dropdown.religion.elementAt(0),
-                                                hint: Text(
-                                                  religion,
-                                                ),
-                                                isExpanded: true,
-                                                items: Dropdown.religion
-                                                    .map((String val) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: val,
-                                                    child: Text(val),
-                                                  );
-                                                }).toList(),
-                                                onChanged: (String? num) {},
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "Caste",
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "Sub Caste",
-                                                ),
-                                              ),
-                                              DropdownButton<String>(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                hint: Text(
-                                                    "Non creamylayer Attached "),
-                                                value: Dropdown.noncrymelayer.elementAt(0),
-                                                isExpanded: true,
-                                                items: Dropdown.noncrymelayer
-                                                    .map((String val) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: val,
-                                                    child: Text(val),
-                                                  );
-                                                }).toList(),
-                                                onChanged: (String? num) {},
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText:
-                                                      "Qualifying exam board",
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText:
-                                                      "Qualifying Exam name ",
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "Seat Number ",
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText:
-                                                      "Qualifying Exam Percentage  ",
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "Passing Year ",
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "State",
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                maxLines: 3,
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "Address ",
-                                                ),
-                                              ),
-                                              DropdownButton<String>(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                hint: Text(
-                                                    "Is physically handicapped "),
-                                                value: Dropdown.physically.elementAt(0),
-                                                isExpanded: true,
-                                                items: Dropdown.physically
-                                                    .map((String val) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: val,
-                                                    child: Text(val),
-                                                  );
-                                                }).toList(),
-                                                onChanged: (String? num) {},
-                                              ),
-                                              DropdownButton<String>(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                hint: Text("Is Minority "),
-                                                value: Dropdown.minority.elementAt(0),
-                                                isExpanded: true,
-                                                items: Dropdown.minority
-                                                    .map((String val) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: val,
-                                                    child: Text(val),
-                                                  );
-                                                }).toList(),
-                                                onChanged: (String? num) {},
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "GR Number ",
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                maxLines: 2,
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "Gap Details",
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "Mobile Number",
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "Email Address",
-                                                ),
-                                              ),
-
-                                              if (MediaQuery.of(context)
-                                                      .size
-                                                      .width >=
-                                                  1200)
-                                                Text(""),
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    "ADMISSION INFO ",
-                                                    style: TextStyle(
-                                                        fontSize: 18,
-                                                        color: kPrimaryColor),
-                                                  ),
-                                                  Divider(
-                                                    thickness: 5,
-                                                    color: kPrimaryColor,
-                                                  ),
-                                                ],
-                                              ),
-                                              if (MediaQuery.of(context)
-                                                      .size
-                                                      .width >=
-                                                  1200)
-                                                Text(""),
-                                              if (MediaQuery.of(context)
-                                                      .size
-                                                      .width >=
-                                                  1024)
-                                                Text(""),
-                                              DropdownButton<String>(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                hint: Text("Degree"),
-                                                value: degree,
-                                                isExpanded: true,
-                                                items: Dropdown.degree
-                                                    .map((String val) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: val,
-                                                    child: Text(val),
-                                                  );
-                                                }).toList(),
-                                                onChanged: (String? num) async {
-                                                  if (num != null) {
-                                                    setState(() {
-                                                      degree = num;
-                                                    });
-                                                  }
-                                                },
-                                              ),
-                                              DropdownButton<String>(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                hint: Text("University"),
-                                                value: university,
-                                                isExpanded: true,
-                                                items: Dropdown.university
-                                                    .map((String val) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: val,
-                                                    child: Text(val),
-                                                  );
-                                                }).toList(),
-                                                onChanged: (String? num) async {
-                                                  if (num != null) {
-                                                    setState(() {
-                                                      university = num;
-                                                    });
-                                                  }
-                                                },
-                                              ),
-                                              DropdownButton<String>(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                hint: Text("Branch"),
-                                                value: branch,
-                                                isExpanded: true,
-                                                items: Dropdown.branch
-                                                    .map((String val) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: val,
-                                                    child: Text(val),
-                                                  );
-                                                }).toList(),
-                                                onChanged: (String? num) async {
-                                                  if (num != null) {
-                                                    setState(() {
-                                                      branch = num;
-                                                    });
-                                                  }
-                                                },
-                                              ),
-                                              DropdownButton<String>(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                hint: Text("Shift"),
-                                                value: Shift,
-                                                isExpanded: true,
-                                                items: Dropdown.shift
-                                                    .map((String val) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: val,
-                                                    child: Text(val),
-                                                  );
-                                                }).toList(),
-                                                onChanged: (String? num) async {
-                                                  if (num != null) {
-                                                    setState(() {
-                                                      Shift = num;
-                                                    });
-                                                  }
-                                                },
-                                              ),
-                                              DropdownButton<String>(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                hint: Text("Year"),
-                                                value: year,
-                                                isExpanded: true,
-                                                items: Dropdown.year
-                                                    .map((String val) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: val,
-                                                    child: Text(val),
-                                                  );
-                                                }).toList(),
-                                                onChanged: (String? num) async {
-                                                  if (num != null) {
-                                                    setState(() {
-                                                      year = num;
-                                                    });
-                                                  }
-                                                },
-                                              ),
-                                              DropdownButton<String>(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                hint: Text("Batch"),
-                                                value: batch,
-                                                isExpanded: true,
-                                                items: Dropdown.batch
-                                                    .map((String val) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: val,
-                                                    child: Text(val),
-                                                  );
-                                                }).toList(),
-                                                onChanged: (String? num) async {
-                                                  if (num != null) {
-                                                    setState(() {
-                                                      batch = num;
-                                                    });
-                                                  }
-                                                },
-                                              ),
-                                              DropdownButton<String>(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                hint: Text("Sub Batch"),
-                                                value: subbranch,
-                                                isExpanded: true,
-                                                items: Dropdown.subbatch
-                                                    .map((String val) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: val,
-                                                    child: Text(val),
-                                                  );
-                                                }).toList(),
-                                                onChanged: (String? num) async {
-                                                  if (num != null) {
-                                                    setState(() {
-                                                      subbranch = num;
-                                                    });
-                                                  }
-                                                },
-                                              ),
-                                              if (MediaQuery.of(context)
-                                                      .size
-                                                      .width >=
-                                                  1200)
-                                                Text(""),
-                                              if (MediaQuery.of(context)
-                                                      .size
-                                                      .width >=
-                                                  1024)
-                                                Text(""),
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    "PARENT/GUARDIAN INFO ",
-                                                    style: TextStyle(
-                                                        fontSize: 18,
-                                                        color: kPrimaryColor),
-                                                  ),
-                                                  Divider(
-                                                    thickness: 5,
-                                                    color: kPrimaryColor,
-                                                  ),
-                                                ],
-                                              ),
-                                              if (MediaQuery.of(context)
-                                                      .size
-                                                      .width >=
-                                                  1200)
-                                                Text(""),
-                                              if (MediaQuery.of(context)
-                                                      .size
-                                                      .width >=
-                                                  1024)
-                                                Text(""),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "Father's Name",
-                                                ),
-                                              ),
-                                              DropdownButton<String>(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                hint: Text(
-                                                    "Father's Occupation "),
-                                                value: Dropdown.foccupation.elementAt(0),
-                                                isExpanded: true,
-                                                items: Dropdown.foccupation
-                                                    .map((String val) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: val,
-                                                    child: Text(val),
-                                                  );
-                                                }).toList(),
-                                                onChanged: (String? num) {},
-                                              ),
-                                              DropdownButton<String>(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                hint:
-                                                    Text("Father's Education "),
-                                                value: Dropdown.feducation.elementAt(0),
-                                                isExpanded: true,
-                                                items: Dropdown.feducation
-                                                    .map((String val) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: val,
-                                                    child: Text(val),
-                                                  );
-                                                }).toList(),
-                                                onChanged:
-                                                    (String? num) async {},
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "Annuoal Income",
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "Email id",
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "Contact No",
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                maxLines: 3,
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText:
-                                                      "Father's Office Address",
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText:
-                                                      "Father's Office Contact No",
-                                                ),
-                                              ),
-                                              if (MediaQuery.of(context)
-                                                      .size
-                                                      .width >=
-                                                  1200)
-                                                Text(""),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "Mother's Name",
-                                                ),
-                                              ),
-                                              DropdownButton<String>(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                hint: Text(
-                                                    "Mother's Occupation "),
-                                                value: Dropdown.moccupation.elementAt(0),
-                                                isExpanded: true,
-                                                items: Dropdown.moccupation
-                                                    .map((String val) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: val,
-                                                    child: Text(val),
-                                                  );
-                                                }).toList(),
-                                                onChanged: (String? num) {},
-                                              ),
-                                              DropdownButton<String>(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                hint:
-                                                    Text("Mother's Education "),
-                                                value: Dropdown.meducation.elementAt(0),
-                                                isExpanded: true,
-                                                items: Dropdown.meducation
-                                                    .map((String val) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: val,
-                                                    child: Text(val),
-                                                  );
-                                                }).toList(),
-                                                onChanged:
-                                                    (String? num) async {},
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "Annuoal Income",
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "Email id",
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "Contact No",
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                maxLines: 3,
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText:
-                                                      "Mother's Office Address",
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText:
-                                                      "Mother's Office Contact No",
-                                                ),
-                                              ),
-                                              if (MediaQuery.of(context)
-                                                      .size
-                                                      .width >=
-                                                  1200)
-                                                Text(""),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                maxLines: 3,
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText:
-                                                      "Residential Address",
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                onChanged: (value) {},
-                                                maxLines: 3,
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText:
-                                                      "Permanent Address",
-                                                ),
-                                              ),
-                                              DropdownButton<String>(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                hint: Text("Transport "),
-                                                value: Dropdown.transport.elementAt(0),
-                                                isExpanded: true,
-                                                items: Dropdown.transport
-                                                    .map((String val) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: val,
-                                                    child: Text(val),
-                                                  );
-                                                }).toList(),
-                                                onChanged: (String? num) {},
-                                              ),
-                                              // if (MediaQuery.of(context).size.width >=
-                                              //     1200)
-                                              //   Text(""),
-                                              if (MediaQuery.of(context)
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(7),
+                                    ),
+                                    //padding: (displayMobileLayout==true)?EdgeInsets.only(top:15,left: 10,right:10,bottom: 15):(MediaQuery.of(context).size.width<1024)?EdgeInsets.only(top:20,left: 25,right:25,bottom: 20):EdgeInsets.only(top:25,left: 30,right:30,bottom: 25),
+                                    width: MediaQuery.of(context).size.width,
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(7),
+                                          ),
+                                          padding: (displayMobileLayout == true)
+                                              ? EdgeInsets.only(
+                                                  top: 15,
+                                                  left: 10,
+                                                  right: 10,
+                                                  bottom: 15)
+                                              : (MediaQuery.of(context)
                                                           .size
-                                                          .width >=
-                                                      1050 &&
+                                                          .width <
+                                                      1024)
+                                                  ? EdgeInsets.only(
+                                                      top: 20,
+                                                      left: 25,
+                                                      right: 25,
+                                                      bottom: 20)
+                                                  : EdgeInsets.only(
+                                                      top: 25,
+                                                      left: 30,
+                                                      right: 30,
+                                                      bottom: 25),
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          child: Container(
+                                            child: GridView.count(
+                                              physics:
+                                                  NeverScrollableScrollPhysics(),
+                                              childAspectRatio:
                                                   MediaQuery.of(context)
-                                                          .size
-                                                          .width <=
-                                                      1200)
-                                                Text(""),
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    "UPLOAD DOCUMENTS ",
-                                                    style: TextStyle(
-                                                        fontSize: 18,
-                                                        color: kPrimaryColor),
+                                                              .size
+                                                              .width >
+                                                          1024
+                                                      ? (1 / 0.18)
+                                                      : MediaQuery.of(context)
+                                                                  .size
+                                                                  .width >
+                                                              640
+                                                          ? (1 / 0.09)
+                                                          : (1 / 0.13),
+                                              crossAxisCount:
+                                                  (displayMobileLayout == true)
+                                                      ? 1
+                                                      : (MediaQuery.of(context)
+                                                                  .size
+                                                                  .width <
+                                                              1050)
+                                                          ? 1
+                                                          : (MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width <
+                                                                  1200)
+                                                              ? 2
+                                                              : 3,
+                                              mainAxisSpacing: 0,
+                                              crossAxisSpacing: 18,
+                                              shrinkWrap: true,
+                                              children: [
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      "PERSONAL INFO ",
+                                                      style: TextStyle(
+                                                          fontSize: 18,
+                                                          color: kPrimaryColor),
+                                                    ),
+                                                    Divider(
+                                                      thickness: 5,
+                                                      color: kPrimaryColor,
+                                                    ),
+                                                  ],
+                                                ),
+                                                if (MediaQuery.of(context)
+                                                        .size
+                                                        .width >=
+                                                    1200)
+                                                  Text(""),
+                                                if (MediaQuery.of(context)
+                                                        .size
+                                                        .width >
+                                                    1050)
+                                                  Text(""),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  // controller: fname,
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "First Name",
                                                   ),
-                                                  Divider(
-                                                    thickness: 5,
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "Middle Name",
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "Last Name",
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  readOnly: true,
+                                                  controller: dob,
+                                                  decoration: InputDecoration(
+                                                      //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                      labelText: "Date Of Birth",
+                                                      hintText:
+                                                          "Date Format must be DD-MM-YYYY",
+                                                      suffixIcon: IconButton(
+                                                          onPressed: () async {
+                                                            DateTime? date =
+                                                                DateTime(1900);
+                                                            FocusScope.of(context)
+                                                                .requestFocus(
+                                                                    new FocusNode());
+                                                            date =
+                                                                await showDatePicker(
+                                                              helpText:
+                                                                  "Select Date Of Birth",
+                                                              context: context,
+                                                              initialDate:
+                                                                  DateTime.now(),
+                                                              firstDate:
+                                                                  DateTime(1900),
+                                                              lastDate:
+                                                                  DateTime.now(),
+                                                            );
+                                                          },
+                                                          icon: Icon(Icons
+                                                              .calendar_today_outlined))),
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "Birth Place",
+                                                  ),
+                                                ),
+                                                DropdownButton<String>(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  hint: Text(
+                                                      "Select Academic Year"),
+                                                  value: Dropdown.academicyear.elementAt(0),
+                                                  isExpanded: true,
+                                                  items: Dropdown.academicyear
+                                                      .map((String val) {
+                                                    return DropdownMenuItem<
+                                                        String>(
+                                                      value: val,
+                                                      child: Text(val),
+                                                    );
+                                                  }).toList(),
+                                                  onChanged: (String? num) {},
+                                                ),
+                                                DropdownButton<String>(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  hint:
+                                                      Text("Select Blood Group"),
+                                                  value: Dropdown.bloodgrp.elementAt(0),
+                                                  isExpanded: true,
+                                                  items: Dropdown.bloodgrp
+                                                      .map((String val) {
+                                                    return DropdownMenuItem<
+                                                        String>(
+                                                      value: val,
+                                                      child: Text(val),
+                                                    );
+                                                  }).toList(),
+                                                  onChanged: (String? num) {},
+                                                ),
+                                                DropdownButton<String>(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  hint: Text("Select Gender"),
+                                                  value: Dropdown.gender.elementAt(0),
+                                                  isExpanded: true,
+                                                  items: Dropdown.gender
+                                                      .map((String val) {
+                                                    return DropdownMenuItem<
+                                                        String>(
+                                                      value: val,
+                                                      child: Text(val),
+                                                    );
+                                                  }).toList(),
+                                                  onChanged: (String? num) {},
+                                                ),
+                                                TextFormField(
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "Nationality",
+                                                  ),
+                                                ),
+                                                DropdownButton<String>(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  value: Dropdown.religion.elementAt(0),
+                                                  hint: Text(
+                                                    religion,
+                                                  ),
+                                                  isExpanded: true,
+                                                  items: Dropdown.religion
+                                                      .map((String val) {
+                                                    return DropdownMenuItem<
+                                                        String>(
+                                                      value: val,
+                                                      child: Text(val),
+                                                    );
+                                                  }).toList(),
+                                                  onChanged: (String? num) {},
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "Caste",
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "Sub Caste",
+                                                  ),
+                                                ),
+                                                DropdownButton<String>(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  hint: Text(
+                                                      "Non creamylayer Attached "),
+                                                  value: Dropdown.noncrymelayer.elementAt(0),
+                                                  isExpanded: true,
+                                                  items: Dropdown.noncrymelayer
+                                                      .map((String val) {
+                                                    return DropdownMenuItem<
+                                                        String>(
+                                                      value: val,
+                                                      child: Text(val),
+                                                    );
+                                                  }).toList(),
+                                                  onChanged: (String? num) {},
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText:
+                                                        "Qualifying exam board",
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText:
+                                                        "Qualifying Exam name ",
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "Seat Number ",
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText:
+                                                        "Qualifying Exam Percentage  ",
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "Passing Year ",
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "State",
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  maxLines: 3,
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "Address ",
+                                                  ),
+                                                ),
+                                                DropdownButton<String>(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  hint: Text(
+                                                      "Is physically handicapped "),
+                                                  value: Dropdown.physically.elementAt(0),
+                                                  isExpanded: true,
+                                                  items: Dropdown.physically
+                                                      .map((String val) {
+                                                    return DropdownMenuItem<
+                                                        String>(
+                                                      value: val,
+                                                      child: Text(val),
+                                                    );
+                                                  }).toList(),
+                                                  onChanged: (String? num) {},
+                                                ),
+                                                DropdownButton<String>(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  hint: Text("Is Minority "),
+                                                  value: Dropdown.minority.elementAt(0),
+                                                  isExpanded: true,
+                                                  items: Dropdown.minority
+                                                      .map((String val) {
+                                                    return DropdownMenuItem<
+                                                        String>(
+                                                      value: val,
+                                                      child: Text(val),
+                                                    );
+                                                  }).toList(),
+                                                  onChanged: (String? num) {},
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "GR Number ",
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  maxLines: 2,
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "Gap Details",
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "Mobile Number",
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "Email Address",
+                                                  ),
+                                                ),
+
+                                                if (MediaQuery.of(context)
+                                                        .size
+                                                        .width >=
+                                                    1200)
+                                                  Text(""),
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      "ADMISSION INFO ",
+                                                      style: TextStyle(
+                                                          fontSize: 18,
+                                                          color: kPrimaryColor),
+                                                    ),
+                                                    Divider(
+                                                      thickness: 5,
+                                                      color: kPrimaryColor,
+                                                    ),
+                                                  ],
+                                                ),
+                                                if (MediaQuery.of(context)
+                                                        .size
+                                                        .width >=
+                                                    1200)
+                                                  Text(""),
+                                                if (MediaQuery.of(context)
+                                                        .size
+                                                        .width >=
+                                                    1024)
+                                                  Text(""),
+                                                DropdownButton<String>(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  hint: Text("Degree"),
+                                                  value: degree,
+                                                  isExpanded: true,
+                                                  items: Dropdown.degree
+                                                      .map((String val) {
+                                                    return DropdownMenuItem<
+                                                        String>(
+                                                      value: val,
+                                                      child: Text(val),
+                                                    );
+                                                  }).toList(),
+                                                  onChanged: (String? num) async {
+                                                    if (num != null) {
+                                                      setState(() {
+                                                        degree = num;
+                                                      });
+                                                    }
+                                                  },
+                                                ),
+                                                DropdownButton<String>(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  hint: Text("University"),
+                                                  value: university,
+                                                  isExpanded: true,
+                                                  items: Dropdown.university
+                                                      .map((String val) {
+                                                    return DropdownMenuItem<
+                                                        String>(
+                                                      value: val,
+                                                      child: Text(val),
+                                                    );
+                                                  }).toList(),
+                                                  onChanged: (String? num) async {
+                                                    if (num != null) {
+                                                      setState(() {
+                                                        university = num;
+                                                      });
+                                                    }
+                                                  },
+                                                ),
+                                                DropdownButton<String>(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  hint: Text("Branch"),
+                                                  value: branch,
+                                                  isExpanded: true,
+                                                  items: Dropdown.branch
+                                                      .map((String val) {
+                                                    return DropdownMenuItem<
+                                                        String>(
+                                                      value: val,
+                                                      child: Text(val),
+                                                    );
+                                                  }).toList(),
+                                                  onChanged: (String? num) async {
+                                                    if (num != null) {
+                                                      setState(() {
+                                                        branch = num;
+                                                      });
+                                                    }
+                                                  },
+                                                ),
+                                                DropdownButton<String>(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  hint: Text("Shift"),
+                                                  value: Shift,
+                                                  isExpanded: true,
+                                                  items: Dropdown.shift
+                                                      .map((String val) {
+                                                    return DropdownMenuItem<
+                                                        String>(
+                                                      value: val,
+                                                      child: Text(val),
+                                                    );
+                                                  }).toList(),
+                                                  onChanged: (String? num) async {
+                                                    if (num != null) {
+                                                      setState(() {
+                                                        Shift = num;
+                                                      });
+                                                    }
+                                                  },
+                                                ),
+                                                DropdownButton<String>(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  hint: Text("Year"),
+                                                  value: year,
+                                                  isExpanded: true,
+                                                  items: Dropdown.year
+                                                      .map((String val) {
+                                                    return DropdownMenuItem<
+                                                        String>(
+                                                      value: val,
+                                                      child: Text(val),
+                                                    );
+                                                  }).toList(),
+                                                  onChanged: (String? num) async {
+                                                    if (num != null) {
+                                                      setState(() {
+                                                        year = num;
+                                                      });
+                                                    }
+                                                  },
+                                                ),
+                                                DropdownButton<String>(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  hint: Text("Batch"),
+                                                  value: batch,
+                                                  isExpanded: true,
+                                                  items: Dropdown.batch
+                                                      .map((String val) {
+                                                    return DropdownMenuItem<
+                                                        String>(
+                                                      value: val,
+                                                      child: Text(val),
+                                                    );
+                                                  }).toList(),
+                                                  onChanged: (String? num) async {
+                                                    if (num != null) {
+                                                      setState(() {
+                                                        batch = num;
+                                                      });
+                                                    }
+                                                  },
+                                                ),
+                                                DropdownButton<String>(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  hint: Text("Sub Batch"),
+                                                  value: subbranch,
+                                                  isExpanded: true,
+                                                  items: Dropdown.subbatch
+                                                      .map((String val) {
+                                                    return DropdownMenuItem<
+                                                        String>(
+                                                      value: val,
+                                                      child: Text(val),
+                                                    );
+                                                  }).toList(),
+                                                  onChanged: (String? num) async {
+                                                    if (num != null) {
+                                                      setState(() {
+                                                        subbranch = num;
+                                                      });
+                                                    }
+                                                  },
+                                                ),
+                                                if (MediaQuery.of(context)
+                                                        .size
+                                                        .width >=
+                                                    1200)
+                                                  Text(""),
+                                                if (MediaQuery.of(context)
+                                                        .size
+                                                        .width >=
+                                                    1024)
+                                                  Text(""),
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      "PARENT/GUARDIAN INFO ",
+                                                      style: TextStyle(
+                                                          fontSize: 18,
+                                                          color: kPrimaryColor),
+                                                    ),
+                                                    Divider(
+                                                      thickness: 5,
+                                                      color: kPrimaryColor,
+                                                    ),
+                                                  ],
+                                                ),
+                                                if (MediaQuery.of(context)
+                                                        .size
+                                                        .width >=
+                                                    1200)
+                                                  Text(""),
+                                                if (MediaQuery.of(context)
+                                                        .size
+                                                        .width >=
+                                                    1024)
+                                                  Text(""),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "Father's Name",
+                                                  ),
+                                                ),
+                                                DropdownButton<String>(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  hint: Text(
+                                                      "Father's Occupation "),
+                                                  value: Dropdown.foccupation.elementAt(0),
+                                                  isExpanded: true,
+                                                  items: Dropdown.foccupation
+                                                      .map((String val) {
+                                                    return DropdownMenuItem<
+                                                        String>(
+                                                      value: val,
+                                                      child: Text(val),
+                                                    );
+                                                  }).toList(),
+                                                  onChanged: (String? num) {},
+                                                ),
+                                                DropdownButton<String>(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  hint:
+                                                      Text("Father's Education "),
+                                                  value: Dropdown.feducation.elementAt(0),
+                                                  isExpanded: true,
+                                                  items: Dropdown.feducation
+                                                      .map((String val) {
+                                                    return DropdownMenuItem<
+                                                        String>(
+                                                      value: val,
+                                                      child: Text(val),
+                                                    );
+                                                  }).toList(),
+                                                  onChanged:
+                                                      (String? num) async {},
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "Annuoal Income",
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "Email id",
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "Contact No",
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  maxLines: 3,
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText:
+                                                        "Father's Office Address",
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText:
+                                                        "Father's Office Contact No",
+                                                  ),
+                                                ),
+                                                if (MediaQuery.of(context)
+                                                        .size
+                                                        .width >=
+                                                    1200)
+                                                  Text(""),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "Mother's Name",
+                                                  ),
+                                                ),
+                                                DropdownButton<String>(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  hint: Text(
+                                                      "Mother's Occupation "),
+                                                  value: Dropdown.moccupation.elementAt(0),
+                                                  isExpanded: true,
+                                                  items: Dropdown.moccupation
+                                                      .map((String val) {
+                                                    return DropdownMenuItem<
+                                                        String>(
+                                                      value: val,
+                                                      child: Text(val),
+                                                    );
+                                                  }).toList(),
+                                                  onChanged: (String? num) {},
+                                                ),
+                                                DropdownButton<String>(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  hint:
+                                                      Text("Mother's Education "),
+                                                  value: Dropdown.meducation.elementAt(0),
+                                                  isExpanded: true,
+                                                  items: Dropdown.meducation
+                                                      .map((String val) {
+                                                    return DropdownMenuItem<
+                                                        String>(
+                                                      value: val,
+                                                      child: Text(val),
+                                                    );
+                                                  }).toList(),
+                                                  onChanged:
+                                                      (String? num) async {},
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "Annuoal Income",
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "Email id",
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "Contact No",
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  maxLines: 3,
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText:
+                                                        "Mother's Office Address",
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText:
+                                                        "Mother's Office Contact No",
+                                                  ),
+                                                ),
+                                                if (MediaQuery.of(context)
+                                                        .size
+                                                        .width >=
+                                                    1200)
+                                                  Text(""),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  maxLines: 3,
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText:
+                                                        "Residential Address",
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  onChanged: (value) {},
+                                                  maxLines: 3,
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText:
+                                                        "Permanent Address",
+                                                  ),
+                                                ),
+                                                DropdownButton<String>(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  hint: Text("Transport "),
+                                                  value: Dropdown.transport.elementAt(0),
+                                                  isExpanded: true,
+                                                  items: Dropdown.transport
+                                                      .map((String val) {
+                                                    return DropdownMenuItem<
+                                                        String>(
+                                                      value: val,
+                                                      child: Text(val),
+                                                    );
+                                                  }).toList(),
+                                                  onChanged: (String? num) {},
+                                                ),
+                                                // if (MediaQuery.of(context).size.width >=
+                                                //     1200)
+                                                //   Text(""),
+                                                if (MediaQuery.of(context)
+                                                            .size
+                                                            .width >=
+                                                        1050 &&
+                                                    MediaQuery.of(context)
+                                                            .size
+                                                            .width <=
+                                                        1200)
+                                                  Text(""),
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      "UPLOAD DOCUMENTS ",
+                                                      style: TextStyle(
+                                                          fontSize: 18,
+                                                          color: kPrimaryColor),
+                                                    ),
+                                                    Divider(
+                                                      thickness: 5,
+                                                      color: kPrimaryColor,
+                                                    ),
+                                                  ],
+                                                ),
+                                                if (MediaQuery.of(context)
+                                                        .size
+                                                        .width >=
+                                                    1200)
+                                                  Text(""),
+                                                if (MediaQuery.of(context)
+                                                        .size
+                                                        .width >
+                                                    1050)
+                                                  Text(""),
+                                                TextFormField(
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "10th Marksheet",
+                                                    hintText:
+                                                        "10th marksheet seat no",
+                                                    suffix: IconButton(
+                                                      icon: Icon(Icons
+                                                          .add_photo_alternate_outlined),
+                                                      onPressed: () => pickimage(
+                                                          ImageSource.gallery),
+                                                    ),
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText: "12th Markshhet",
+                                                    hintText:
+                                                        "12th marksheet seat no",
+                                                    suffix: IconButton(
+                                                      icon: Icon(Icons
+                                                          .add_photo_alternate_outlined),
+                                                      onPressed: () => pickimage(
+                                                          ImageSource.gallery),
+                                                    ),
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText:
+                                                        "Leaving Certificate",
+                                                    hintText:
+                                                        "leaving certificate doc no",
+                                                    suffix: IconButton(
+                                                      icon: Icon(Icons
+                                                          .add_photo_alternate_outlined),
+                                                      onPressed: () => pickimage(
+                                                          ImageSource.gallery),
+                                                    ),
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText:
+                                                        "Caste Certificate",
+                                                    hintText:
+                                                        "caste certificate doc no",
+                                                    suffix: IconButton(
+                                                      icon: Icon(Icons
+                                                          .add_photo_alternate_outlined),
+                                                      onPressed: () => pickimage(
+                                                          ImageSource.gallery),
+                                                    ),
+                                                  ),
+                                                ),
+                                                TextFormField(
+                                                  decoration: InputDecoration(
+                                                    //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                    labelText:
+                                                        "Income Certificate",
+                                                    hintText:
+                                                        "income certificate doc no",
+                                                    suffix: IconButton(
+                                                      icon: Icon(Icons
+                                                          .add_photo_alternate_outlined),
+                                                      onPressed: () => pickimage(
+                                                          ImageSource.gallery),
+                                                    ),
+                                                  ),
+                                                ),
+
+                                                if (MediaQuery.of(context)
+                                                        .size
+                                                        .width >=
+                                                    1024)
+                                                  Text(""),
+                                                if (MediaQuery.of(context)
+                                                        .size
+                                                        .width >=
+                                                    1200)
+                                                  Text(""),
+
+                                                Center(
+                                                  child: FlatButton(
+                                                    height: 45,
+                                                    minWidth: 150,
+                                                    shape: RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                                18.0)),
                                                     color: kPrimaryColor,
-                                                  ),
-                                                ],
-                                              ),
-                                              if (MediaQuery.of(context)
-                                                      .size
-                                                      .width >=
-                                                  1200)
-                                                Text(""),
-                                              if (MediaQuery.of(context)
-                                                      .size
-                                                      .width >
-                                                  1050)
-                                                Text(""),
-                                              TextFormField(
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "10th Marksheet",
-                                                  hintText:
-                                                      "10th marksheet seat no",
-                                                  suffix: IconButton(
-                                                    icon: Icon(Icons
-                                                        .add_photo_alternate_outlined),
-                                                    onPressed: () => pickimage(
-                                                        ImageSource.gallery),
+                                                    onPressed: () {},
+                                                    child: Text(
+                                                      "Save Student",
+                                                      style: TextStyle(
+                                                          fontSize: 17,
+                                                          color: Colors.white),
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                              TextFormField(
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "12th Markshhet",
-                                                  hintText:
-                                                      "12th marksheet seat no",
-                                                  suffix: IconButton(
-                                                    icon: Icon(Icons
-                                                        .add_photo_alternate_outlined),
-                                                    onPressed: () => pickimage(
-                                                        ImageSource.gallery),
-                                                  ),
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText:
-                                                      "Leaving Certificate",
-                                                  hintText:
-                                                      "leaving certificate doc no",
-                                                  suffix: IconButton(
-                                                    icon: Icon(Icons
-                                                        .add_photo_alternate_outlined),
-                                                    onPressed: () => pickimage(
-                                                        ImageSource.gallery),
-                                                  ),
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText:
-                                                      "Caste Certificate",
-                                                  hintText:
-                                                      "caste certificate doc no",
-                                                  suffix: IconButton(
-                                                    icon: Icon(Icons
-                                                        .add_photo_alternate_outlined),
-                                                    onPressed: () => pickimage(
-                                                        ImageSource.gallery),
-                                                  ),
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText:
-                                                      "Income Certificate",
-                                                  hintText:
-                                                      "income certificate doc no",
-                                                  suffix: IconButton(
-                                                    icon: Icon(Icons
-                                                        .add_photo_alternate_outlined),
-                                                    onPressed: () => pickimage(
-                                                        ImageSource.gallery),
-                                                  ),
-                                                ),
-                                              ),
-
-                                              if (MediaQuery.of(context)
-                                                      .size
-                                                      .width >=
-                                                  1024)
-                                                Text(""),
-                                              if (MediaQuery.of(context)
-                                                      .size
-                                                      .width >=
-                                                  1200)
-                                                Text(""),
-
-                                              Center(
-                                                child: FlatButton(
-                                                  height: 45,
-                                                  minWidth: 150,
-                                                  shape: RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              18.0)),
-                                                  color: kPrimaryColor,
-                                                  onPressed: () {},
-                                                  child: Text(
-                                                    "Save Student",
-                                                    style: TextStyle(
-                                                        fontSize: 17,
-                                                        color: Colors.white),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

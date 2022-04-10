@@ -6,3 +6,10 @@ Color kPrimaryColor = Color.fromRGBO(55, 105, 151, 1);
 Color bColor= Colors.yellowAccent.shade100;
 
 TextStyle gridviewtext = new TextStyle(fontSize: 16);
+
+String dashboardR='/dashboard';
+String preAdmR='/preAdmission';
+String showRegDataR='/showRegisterData';
+String studProfR='/studentProfile';
+String studRegR='/studentRegistration';
+String teachProfR='/teacherProfile';
