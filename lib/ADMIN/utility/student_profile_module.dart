@@ -1,4 +1,4 @@
-import '../constants/constants.dart';
+import 'package:erp_sem4/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class StudentProfileForm extends StatefulWidget {
@@ -18,7 +18,7 @@ class _StudentProfileFormState extends State<StudentProfileForm> {
     final bool displayMobileLayout = MediaQuery.of(context).size.width < 800;
     return Padding(
       padding: EdgeInsets.all(16),
-      child: Center( 
+      child: Center(
         child: Card(
           elevation: 4,
           shape: RoundedRectangleBorder(

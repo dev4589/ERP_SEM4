@@ -1,8 +1,8 @@
 import 'package:erp_sem4/constants/constants.dart';
 
-
 import '../utility/teacher_profile_module.dart';
 import 'package:flutter/material.dart';
+
 class TeacherProfile extends StatefulWidget {
   const TeacherProfile({Key? key}) : super(key: key);
 
@@ -24,7 +24,7 @@ class _TeacherProfileState extends State<TeacherProfile> {
               children: [
                 Container(
                   height: double.infinity,
-                  width: size.width /2,
+                  width: size.width / 2,
                   color: kPrimaryColor,
                 ),
                 Container(
@@ -33,9 +33,7 @@ class _TeacherProfileState extends State<TeacherProfile> {
                     color: Colors.white),
               ],
             ),
-
             TeacherProfileForm(),
-
           ],
         ),
       ),

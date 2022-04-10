@@ -1,10 +1,10 @@
 import 'dart:io';
 import 'package:csv/csv.dart';
-import '../constants/dropdown_values.dart';
+import 'package:erp_sem4/constants/constants.dart';
+import 'package:erp_sem4/constants/dropdown_values.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import '../constants/constants.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:random_string/random_string.dart';
@@ -409,7 +409,8 @@ class _StudentFormState extends State<StudentForm> {
                                                     BorderRadius.circular(5),
                                                 hint: Text(
                                                     "Select Academic Year"),
-                                                value: Dropdown.academicyear.elementAt(0),
+                                                value: Dropdown.academicyear
+                                                    .elementAt(0),
                                                 isExpanded: true,
                                                 items: Dropdown.academicyear
                                                     .map((String val) {
@@ -426,7 +427,8 @@ class _StudentFormState extends State<StudentForm> {
                                                     BorderRadius.circular(5),
                                                 hint:
                                                     Text("Select Blood Group"),
-                                                value: Dropdown.bloodgrp.elementAt(0),
+                                                value: Dropdown.bloodgrp
+                                                    .elementAt(0),
                                                 isExpanded: true,
                                                 items: Dropdown.bloodgrp
                                                     .map((String val) {
@@ -442,7 +444,8 @@ class _StudentFormState extends State<StudentForm> {
                                                 borderRadius:
                                                     BorderRadius.circular(5),
                                                 hint: Text("Select Gender"),
-                                                value: Dropdown.gender.elementAt(0),
+                                                value: Dropdown.gender
+                                                    .elementAt(0),
                                                 isExpanded: true,
                                                 items: Dropdown.gender
                                                     .map((String val) {
@@ -463,7 +466,8 @@ class _StudentFormState extends State<StudentForm> {
                                               DropdownButton<String>(
                                                 borderRadius:
                                                     BorderRadius.circular(5),
-                                                value: Dropdown.religion.elementAt(0),
+                                                value: Dropdown.religion
+                                                    .elementAt(0),
                                                 hint: Text(
                                                   religion,
                                                 ),
@@ -497,7 +501,8 @@ class _StudentFormState extends State<StudentForm> {
                                                     BorderRadius.circular(5),
                                                 hint: Text(
                                                     "Non creamylayer Attached "),
-                                                value: Dropdown.noncrymelayer.elementAt(0),
+                                                value: Dropdown.noncrymelayer
+                                                    .elementAt(0),
                                                 isExpanded: true,
                                                 items: Dropdown.noncrymelayer
                                                     .map((String val) {
@@ -567,7 +572,8 @@ class _StudentFormState extends State<StudentForm> {
                                                     BorderRadius.circular(5),
                                                 hint: Text(
                                                     "Is physically handicapped "),
-                                                value: Dropdown.physically.elementAt(0),
+                                                value: Dropdown.physically
+                                                    .elementAt(0),
                                                 isExpanded: true,
                                                 items: Dropdown.physically
                                                     .map((String val) {
@@ -583,7 +589,8 @@ class _StudentFormState extends State<StudentForm> {
                                                 borderRadius:
                                                     BorderRadius.circular(5),
                                                 hint: Text("Is Minority "),
-                                                value: Dropdown.minority.elementAt(0),
+                                                value: Dropdown.minority
+                                                    .elementAt(0),
                                                 isExpanded: true,
                                                 items: Dropdown.minority
                                                     .map((String val) {
@@ -858,7 +865,8 @@ class _StudentFormState extends State<StudentForm> {
                                                     BorderRadius.circular(5),
                                                 hint: Text(
                                                     "Father's Occupation "),
-                                                value: Dropdown.foccupation.elementAt(0),
+                                                value: Dropdown.foccupation
+                                                    .elementAt(0),
                                                 isExpanded: true,
                                                 items: Dropdown.foccupation
                                                     .map((String val) {
@@ -875,7 +883,8 @@ class _StudentFormState extends State<StudentForm> {
                                                     BorderRadius.circular(5),
                                                 hint:
                                                     Text("Father's Education "),
-                                                value: Dropdown.feducation.elementAt(0),
+                                                value: Dropdown.feducation
+                                                    .elementAt(0),
                                                 isExpanded: true,
                                                 items: Dropdown.feducation
                                                     .map((String val) {
@@ -943,7 +952,8 @@ class _StudentFormState extends State<StudentForm> {
                                                     BorderRadius.circular(5),
                                                 hint: Text(
                                                     "Mother's Occupation "),
-                                                value: Dropdown.moccupation.elementAt(0),
+                                                value: Dropdown.moccupation
+                                                    .elementAt(0),
                                                 isExpanded: true,
                                                 items: Dropdown.moccupation
                                                     .map((String val) {
@@ -960,7 +970,8 @@ class _StudentFormState extends State<StudentForm> {
                                                     BorderRadius.circular(5),
                                                 hint:
                                                     Text("Mother's Education "),
-                                                value: Dropdown.meducation.elementAt(0),
+                                                value: Dropdown.meducation
+                                                    .elementAt(0),
                                                 isExpanded: true,
                                                 items: Dropdown.meducation
                                                     .map((String val) {
@@ -1038,7 +1049,8 @@ class _StudentFormState extends State<StudentForm> {
                                                 borderRadius:
                                                     BorderRadius.circular(5),
                                                 hint: Text("Transport "),
-                                                value: Dropdown.transport.elementAt(0),
+                                                value: Dropdown.transport
+                                                    .elementAt(0),
                                                 isExpanded: true,
                                                 items: Dropdown.transport
                                                     .map((String val) {

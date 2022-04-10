@@ -12,7 +12,7 @@ class TeacherHomePage extends StatefulWidget {
 class _TeacherHomePageState extends State<TeacherHomePage> {
   @override
   Widget build(BuildContext context) {
-    String name="Parth Lashkari";
+    String name = "Parth Lashkari";
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
@@ -22,7 +22,6 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
           children: [
             Row(
               children: [
-
                 Container(
                   height: double.infinity,
                   width: size.width / 2,
@@ -39,7 +38,7 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
               child: Padding(
                 padding: EdgeInsets.all(5),
                 child: Text(
-                  "Welcome "+name,
+                  "Welcome " + name,
                   style: TextStyle(
                     color: kPrimaryColor,
                     fontSize: 20,

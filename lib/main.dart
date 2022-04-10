@@ -1,15 +1,15 @@
-import 'package:erp_sem4/screens/login.dart';
-
-import 'package:erp_sem4/utility/demo.dart';
-import 'package:erp_sem4/utility/login_module.dart';
+import 'package:erp_sem4/ADMIN/screens/teacher_profile.dart';
 import 'package:flutter/material.dart';
-import 'screens/dashboard.dart';
-import 'screens/slash_screen.dart';
+import 'ADMIN/screens/dashboard.dart';
+import 'ADMIN/screens/login.dart';
+import 'ADMIN/screens/pre_admission.dart';
+import 'ADMIN/screens/show_student_registration.dart';
+import 'ADMIN/screens/student_profile.dart';
+import 'ADMIN/screens/student_registration.dart';
+import 'constants/constants.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
-
-import 'screens/student_profile.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -53,7 +53,16 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.secularOneTextTheme(),
       ),
       debugShowCheckedModeBanner: false,
-      home: DashBoard(),
+      // initialRoute: dashboardR,
+      routes: {
+        dashboardR: (context) => const DashBoard(),
+        preAdmR: (context) => PreAdmission(),
+        showRegDataR: (context) => ShowRegisterData(),
+        studProfR: (context) => StudentProfile(),
+        studRegR: (context) => StudentRegistration(),
+        teachProfR: (context) => TeacherProfile(),
+      },
+      home: LoginPage(),
     );
   }
 }

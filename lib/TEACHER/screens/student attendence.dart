@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:erp_sem4/constants/constants.dart';
 
-import '../../constants/constants.dart';
+import '../utility/Student Attencence Form.dart';
 
 class StudentAttendance extends StatefulWidget {
   @override
@@ -30,7 +31,7 @@ class _StudentAttendanceState extends State<StudentAttendance> {
                     color: Colors.white),
               ],
             ),
-            // StudentAttendanceForm(),
+            StudentAttendanceForm(),
           ],
         ),
       ),
