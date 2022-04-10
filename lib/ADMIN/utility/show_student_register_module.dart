@@ -1,5 +1,5 @@
-import '../constants/constants.dart';
-import '../constants/dropdown_values.dart';
+import 'package:erp_sem4/constants/constants.dart';
+
 import 'package:flutter/material.dart';
 
 class TableRow1 extends StatelessWidget {

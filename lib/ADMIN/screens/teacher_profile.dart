@@ -1,14 +1,16 @@
-import '../constants/constants.dart';
-import '../utility/pre_admission_module.dart';
+import 'package:erp_sem4/constants/constants.dart';
 
+
+import '../utility/teacher_profile_module.dart';
 import 'package:flutter/material.dart';
+class TeacherProfile extends StatefulWidget {
+  const TeacherProfile({Key? key}) : super(key: key);
 
-class PreAdmission extends StatefulWidget {
   @override
-  _PreAdmissionState createState() => _PreAdmissionState();
+  _TeacherProfileState createState() => _TeacherProfileState();
 }
 
-class _PreAdmissionState extends State<PreAdmission> {
+class _TeacherProfileState extends State<TeacherProfile> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -22,8 +24,8 @@ class _PreAdmissionState extends State<PreAdmission> {
               children: [
                 Container(
                   height: double.infinity,
-                  width: size.width / 2,
-                  color: bColor,
+                  width: size.width /2,
+                  color: kPrimaryColor,
                 ),
                 Container(
                     height: double.infinity,
@@ -31,7 +33,9 @@ class _PreAdmissionState extends State<PreAdmission> {
                     color: Colors.white),
               ],
             ),
-            PreAdmissionForm(),
+
+            TeacherProfileForm(),
+
           ],
         ),
       ),

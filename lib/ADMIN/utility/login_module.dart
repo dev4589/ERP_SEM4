@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 
 import '../screens/dashboard.dart';
-import '../utility/action_button.dart';
+import 'action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';

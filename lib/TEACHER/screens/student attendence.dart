@@ -1,15 +1,13 @@
-import '../constants/constants.dart';
-import '../utility/show_student_register_module.dart';
-// import '../utility/student_attendace_module.dart';
-
 import 'package:flutter/material.dart';
 
-class ShowRegisterData extends StatefulWidget {
+import '../../constants/constants.dart';
+
+class StudentAttendance extends StatefulWidget {
   @override
-  _ShowRegisterDataState createState() => _ShowRegisterDataState();
+  _StudentAttendanceState createState() => _StudentAttendanceState();
 }
 
-class _ShowRegisterDataState extends State<ShowRegisterData> {
+class _StudentAttendanceState extends State<StudentAttendance> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -24,7 +22,7 @@ class _ShowRegisterDataState extends State<ShowRegisterData> {
                 Container(
                   height: double.infinity,
                   width: size.width / 2,
-                  color: Colors.amberAccent,
+                  color: bColor,
                 ),
                 Container(
                     height: double.infinity,
@@ -32,7 +30,7 @@ class _ShowRegisterDataState extends State<ShowRegisterData> {
                     color: Colors.white),
               ],
             ),
-            ShowRegisterDataForm(),
+            // StudentAttendanceForm(),
           ],
         ),
       ),
