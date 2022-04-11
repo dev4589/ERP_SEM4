@@ -1,8 +1,8 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:erp_sem4/constants/constants.dart';
 import 'package:erp_sem4/constants/dropdown_values.dart';
-
 
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,7 @@ class PreAdmissionForm extends StatefulWidget {
 
 class _PreAdmissionFormState extends State<PreAdmissionForm> {
   TextEditingController formno = TextEditingController();
-  TextEditingController admissiondate = TextEditingController();
+  TextEditingController admissionDate = TextEditingController();
   TextEditingController adyear = TextEditingController();
   TextEditingController name = TextEditingController();
   TextEditingController fname = TextEditingController();
@@ -63,6 +63,46 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
 
   @override
   Widget build(BuildContext context) {
+    CollectionReference preAdmission =
+        FirebaseFirestore.instance.collection('pre_admission_forms');
+
+    Future<void> addPreAdmission() {
+      // Call the user's CollectionReference to add a new user
+      return preAdmission
+          .add({
+            // 'full_name': fullName, // John Doe
+            // 'company': company, // Stokes and Sons
+            // 'age': age, // 42
+
+            'form_no': formno.text,
+            'admission_date': admissionDate.text,
+            'adyear': adyear.text,
+            'name': name.text,
+            'fname': fname.text,
+            'sname': sname.text,
+            'mname': mname.text,
+            'cno1': cno1.text,
+            'cno2': cno2.text,
+            'email': email.text,
+            'dob': dob.text,
+            'attentedclass': attentedclass.text,
+            'genderc': genderc.text,
+            'nosibbling': nosibbling.text,
+            'sphoto': sphoto.text,
+            'address': address.text,
+            'pcode': pcode.text,
+            'foccupation': foccupation.text,
+            'moccupation': moccupation.text,
+            'reference': reference.text,
+            'source': source.text,
+            'previosschooldet': previosschooldet.text,
+            'desc': desc.text,
+            'childname': childname.text
+          })
+          .then((value) => print("User Added"))
+          .catchError((error) => print("Failed to add user: $error"));
+    }
+
     Size size = MediaQuery.of(context).size;
     final bool displayMobileLayout = MediaQuery.of(context).size.width < 800;
     return Scaffold(
@@ -92,7 +132,7 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                         InkWell(
                           onTap: () {
                             Navigator.pop(context);
-                            },
+                          },
                           child: Padding(
                             padding:
                                 EdgeInsets.only(left: 40, right: 40, top: 20),
@@ -107,10 +147,11 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 40, right: 40, top: 20),
+                          padding:
+                              EdgeInsets.only(left: 40, right: 40, top: 20),
                           child: Text(" Pre-Admission Form",
-                              style:
-                                  TextStyle(fontSize: 20, color: kPrimaryColor)),
+                              style: TextStyle(
+                                  fontSize: 20, color: kPrimaryColor)),
                         ),
                       ],
                     ),
@@ -155,27 +196,30 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                                     width: MediaQuery.of(context).size.width,
                                     child: Container(
                                       child: GridView.count(
-                                        childAspectRatio: MediaQuery.of(context)
-                                                    .size
-                                                    .width >
-                                                1024
-                                            ? (1 / 0.18)
-                                            : MediaQuery.of(context).size.width >
-                                                    640
-                                                ? (1 / 0.09)
-                                                : (1 / 0.13),
-                                        crossAxisCount: (displayMobileLayout ==
-                                                true)
-                                            ? 1
-                                            : (MediaQuery.of(context).size.width <
-                                                    1050)
+                                        childAspectRatio:
+                                            MediaQuery.of(context).size.width >
+                                                    1024
+                                                ? (1 / 0.18)
+                                                : MediaQuery.of(context)
+                                                            .size
+                                                            .width >
+                                                        640
+                                                    ? (1 / 0.09)
+                                                    : (1 / 0.13),
+                                        crossAxisCount:
+                                            (displayMobileLayout == true)
                                                 ? 1
                                                 : (MediaQuery.of(context)
                                                             .size
                                                             .width <
-                                                        1200)
-                                                    ? 2
-                                                    : 3,
+                                                        1050)
+                                                    ? 1
+                                                    : (MediaQuery.of(context)
+                                                                .size
+                                                                .width <
+                                                            1200)
+                                                        ? 2
+                                                        : 3,
                                         mainAxisSpacing: 0,
                                         crossAxisSpacing: 18,
                                         shrinkWrap: true,
@@ -196,10 +240,14 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                                               ),
                                             ],
                                           ),
-                                          if (MediaQuery.of(context).size.width >=
+                                          if (MediaQuery.of(context)
+                                                  .size
+                                                  .width >=
                                               1200)
                                             Text(""),
-                                          if (MediaQuery.of(context).size.width >
+                                          if (MediaQuery.of(context)
+                                                  .size
+                                                  .width >
                                               1050)
                                             Text(""),
                                           TextFormField(
@@ -211,7 +259,7 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                                             ),
                                           ),
                                           TextFormField(
-                                            controller: admissiondate,
+                                            controller: admissionDate,
                                             decoration: InputDecoration(
                                                 //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
                                                 labelText: "Date",
@@ -234,8 +282,13 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                                                               DateTime(1900),
                                                           lastDate:
                                                               DateTime.now());
-                                                      admissiondate.text =
-                                                          date!.toString();
+                                                      admissionDate.text = date!.day
+                                                          .toString() +
+                                                          "-" +
+                                                          date.month
+                                                              .toString() +
+                                                          "-" +
+                                                          date.year.toString();
                                                     },
                                                     icon: Icon(Icons
                                                         .calendar_today_outlined))),
@@ -259,6 +312,7 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                                                   ayear = num;
                                                 });
                                               }
+                                              adyear.text=num.toString();
                                             },
                                           ),
                                           TextFormField(
@@ -337,9 +391,10 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                                                               DateTime.now());
                                                       dob.text = date!.day
                                                               .toString() +
-                                                          "/" +
-                                                          date.month.toString() +
-                                                          "/" +
+                                                          "-" +
+                                                          date.month
+                                                              .toString() +
+                                                          "-" +
                                                           date.year.toString();
                                                       dob.text = dob.text +
                                                           " ( " +
@@ -365,8 +420,8 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                                             hint: Text("Select Gender"),
                                             value: gender,
                                             isExpanded: true,
-                                            items:
-                                                Dropdown.gender.map((String val) {
+                                            items: Dropdown.gender
+                                                .map((String val) {
                                               return DropdownMenuItem<String>(
                                                 value: val,
                                                 child: Text(val),
@@ -378,6 +433,7 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                                                   gender = num;
                                                 });
                                               }
+                                              genderc.text=num.toString();
                                             },
                                           ),
                                           TextFormField(
@@ -397,13 +453,15 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                                                     IconButton(
                                                       icon: Icon(Icons
                                                           .add_a_photo_outlined),
-                                                      onPressed: () => pickimage(
-                                                          ImageSource.camera),
+                                                      onPressed: () =>
+                                                          pickimage(ImageSource
+                                                              .camera),
                                                     ),
                                                     IconButton(
                                                         onPressed: () =>
-                                                            pickimage(ImageSource
-                                                                .gallery),
+                                                            pickimage(
+                                                                ImageSource
+                                                                    .gallery),
                                                         icon: Icon(Icons
                                                             .add_photo_alternate_outlined))
                                                   ],
@@ -411,11 +469,11 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                                           ),
                                           image != null
                                               ? Image.file(image!,
-                                              width: 70,
-                                              height: 70,
-                                              fit: BoxFit.fill)
+                                                  width: 70,
+                                                  height: 70,
+                                                  fit: BoxFit.fill)
                                               : Text(
-                                              "Your captured image will appear here..."),
+                                                  "Your captured image will appear here..."),
                                           TextFormField(
                                             controller: address,
                                             maxLines: 3,
@@ -471,6 +529,7 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                                                   sources = num;
                                                 });
                                               }
+                                              source.text=num.toString();
                                             },
                                           ),
                                           TextFormField(
@@ -496,13 +555,19 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                                               labelText: "Child Full Name",
                                             ),
                                           ),
-                                          if (MediaQuery.of(context).size.width >=
+                                          if (MediaQuery.of(context)
+                                                  .size
+                                                  .width >=
                                               1200)
                                             Text(""),
-                                          if (MediaQuery.of(context).size.width >=
+                                          if (MediaQuery.of(context)
+                                                  .size
+                                                  .width >=
                                               1024)
                                             Text(""),
-                                          if (MediaQuery.of(context).size.width >=
+                                          if (MediaQuery.of(context)
+                                                  .size
+                                                  .width >=
                                               1200)
                                             Text(""),
                                           Center(
@@ -514,32 +579,33 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                                                       BorderRadius.circular(
                                                           18.0)),
                                               color: kPrimaryColor,
-                                              onPressed: () {
-                                                print(formno.text +
-                                                    admissiondate.text +
-                                                    adyear.text +
-                                                    name.text +
-                                                    fname.text +
-                                                    sname.text +
-                                                    mname.text +
-                                                    cno1.text +
-                                                    cno2.text +
-                                                    email.text +
-                                                    dob.text +
-                                                    attentedclass.text +
-                                                    gender +
-                                                    nosibbling.text +
-                                                    sphoto.text +
-                                                    address.text +
-                                                    pcode.text +
-                                                    foccupation.text +
-                                                    moccupation.text +
-                                                    reference.text +
-                                                    sources +
-                                                    previosschooldet.text +
-                                                    desc.text +
-                                                    childname.text);
-                                              },
+                                              onPressed: addPreAdmission,
+                                              // {
+                                              //   print(formno.text +
+                                              //       admissiondate.text +
+                                              //       adyear.text +
+                                              //       name.text +
+                                              //       fname.text +
+                                              //       sname.text +
+                                              //       mname.text +
+                                              //       cno1.text +
+                                              //       cno2.text +
+                                              //       email.text +
+                                              //       dob.text +
+                                              //       attentedclass.text +
+                                              //       gender +
+                                              //       nosibbling.text +
+                                              //       sphoto.text +
+                                              //       address.text +
+                                              //       pcode.text +
+                                              //       foccupation.text +
+                                              //       moccupation.text +
+                                              //       reference.text +
+                                              //       sources +
+                                              //       previosschooldet.text +
+                                              //       desc.text +
+                                              //       childname.text);
+                                              // },
                                               child: Text(
                                                 "Save Student",
                                                 style: TextStyle(

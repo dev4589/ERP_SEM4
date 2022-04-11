@@ -16,8 +16,6 @@ class StudentForm extends StatefulWidget {
 
 class _StudentFormState extends State<StudentForm> {
   File? image;
-  String bloddgrp = "Select Blood Group";
-  String gender = "Select Gender";
   String degree = "Degree";
   String university = "University";
   String branch = "Branch";
@@ -26,75 +24,14 @@ class _StudentFormState extends State<StudentForm> {
   String subbranch = "Sub Batch";
   String batch = "Batch";
   String religion = "Select Religion";
-  String noncremylayer = "Non Creamylayer Attached";
-  String isphysically = "Is Physically Handicapped";
-  String isminority = "Is Minority";
-  String feespackage = "Fees Package";
-  String foccupation = "Father's Occupation";
-  String feducation = "Father's Education";
-  String moccupation = "Mother's Occupation";
-  String meducation = "Mother's Education";
-  String transport = "Transport";
-  TextEditingController dob = TextEditingController();
   bool isLoading = false;
-  List<String> fieldsNames = [
-    "type",
-    "firstName",
-    "middleName",
-    "lastName",
-    "studentUniversity",
-    "studentCourse",
-    "studentBranch",
-    "courseYear",
-    "dob",
-    "academicYear",
-    "birthPlace",
-    "bloodGroup",
-    "gender",
-    "nationality",
-    "religion",
-    "caste",
-    "subCaste",
-    "nonCremy",
-    "previousSchoolBoard",
-    "previousExamName",
-    "password",
-    "previousExamPercentage",
-    "seatNo",
-    "passYear",
-    "state",
-    "address",
-    "isPhysicallyChallenged",
-    "isMinority",
-    "grNo",
-    "gapDetail",
-    "studentMobileNo",
-    "email",
-    "feesAmount",
-    "fatherName",
-    "fatherOccupation",
-    "fatherEducation",
-    "fatherAnnualIncome",
-    "fatherEmail",
-    "fatherContactNo",
-    "fatherOfficeAddress",
-    "fatherOfficeContactNo",
-    "motherName",
-    "motherOccupation",
-    "motherEducation",
-    "motherAnnualIncome",
-    "motherEmail",
-    "motherContact",
-    "motherOfficeAddress",
-    "motherOfficeContact",
-    "ressidencialAddress",
-    "permanentAddress",
-    "transport",
-    "birthCertificate",
-    "transferCertificate",
-    "markSheet",
-    "uid",
-  ];
+
+  TextEditingController fname = TextEditingController();
+  TextEditingController mname = TextEditingController();
+  TextEditingController lname = TextEditingController();
+  TextEditingController dob = TextEditingController();
+  TextEditingController birthPlace = TextEditingController();
+
 
   Future pickimage(ImageSource src) async {
     try {
@@ -108,60 +45,6 @@ class _StudentFormState extends State<StudentForm> {
       print("Failed to pick image : $e");
     }
   }
-
-  // Future<dynamic> excelToJson() async {
-  //   FilePickerResult? result = await FilePicker.platform.pickFiles(
-  //     type: FileType.custom,
-  //     allowedExtensions: ['xls', 'xlsx', 'csv'],
-  //   );
-  //   var csvFile;
-  //   var bytes;
-  //   if (result != null) {
-  //     if (kIsWeb) {
-  //       bytes = result.files.first.bytes!;
-  //     } else {
-  //       csvFile = File(result.files.single.path!);
-  //       bytes = File(csvFile.path).readAsBytesSync();
-  //     }
-  //     // csvFile = File(result.files.single.path!);
-  //     // var bytes = File(csvFile.path).readAsBytesSync();
-  //     String s = String.fromCharCodes(bytes);
-  //     List<List<dynamic>> rowsAsListOfValues =
-  //         const CsvToListConverter().convert(s);
-  //     int i = 0;
-  //     List<String> keys = [];
-  //     var jsonMap = [];
-  //
-  //     for (var row in rowsAsListOfValues) {
-  //       if (i == 0) {
-  //         for (var rowData in row) {
-  //           if (fieldsNames.contains(rowData)) {
-  //             keys.add(rowData);
-  //           } else {
-  //             print("In Excel sheet, header $rowData has wrongly spelled");
-  //             return null;
-  //           }
-  //         }
-  //         i++;
-  //       } else {
-  //         Map<String, dynamic> temp = {};
-  //         int j = 0;
-  //         String tk = '';
-  //         for (var key in keys) {
-  //           tk = key;
-  //           temp[tk] = row[j] == null ? "" : row[j].toString();
-  //           j++;
-  //         }
-  //         temp["uid"] = temp["firstName"][0].toLowerCase() + randomNumeric(6);
-  //         Student studentModel = Student.fromJson(temp);
-  //         jsonMap.add(studentModel);
-  //       }
-  //     }
-  //
-  //     print(jsonMap);
-  //     return jsonMap;
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -218,21 +101,21 @@ class _StudentFormState extends State<StudentForm> {
                         Padding(
                           padding:
                               EdgeInsets.only(left: 350, right: 40, top: 20),
-                          child: Center(
-                            child: FlatButton.icon(
-                              icon:
-                                  Icon(Icons.arrow_upward, color: Colors.white),
-                              label: Text("Upload Excel",
-                                  style: TextStyle(
-                                      fontSize: 17, color: Colors.white)),
-                              height: 45,
-                              minWidth: 150,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(18.0)),
-                              color: kPrimaryColor,
-                              onPressed: () {},
-                            ),
-                          ),
+                          // child: Center(
+                          //   child: FlatButton.icon(
+                          //     icon:
+                          //         Icon(Icons.arrow_upward, color: Colors.white),
+                          //     label: Text("Upload Excel",
+                          //         style: TextStyle(
+                          //             fontSize: 17, color: Colors.white)),
+                          //     height: 45,
+                          //     minWidth: 150,
+                          //     shape: RoundedRectangleBorder(
+                          //         borderRadius: BorderRadius.circular(18.0)),
+                          //     color: kPrimaryColor,
+                          //     onPressed: () {},
+                          //   ),
+                          // ),
                         ),
                       ],
                     ),
@@ -344,30 +227,40 @@ class _StudentFormState extends State<StudentForm> {
                                                   1050)
                                                 Text(""),
                                               TextFormField(
-                                                onChanged: (value) {},
-                                                // controller: fname,
+                                                controller: fname,
+                                                onSaved: (val) {
+                                                  fname.text=val.toString();
+                                                },
                                                 decoration: InputDecoration(
                                                   //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
                                                   labelText: "First Name",
                                                 ),
                                               ),
                                               TextFormField(
-                                                onChanged: (value) {},
+                                                controller: mname,
+                                                onSaved: (val) {
+                                                  mname.text=val.toString();
+                                                },
                                                 decoration: InputDecoration(
                                                   //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
                                                   labelText: "Middle Name",
                                                 ),
                                               ),
                                               TextFormField(
-                                                onChanged: (value) {},
+                                                controller: lname,
+                                                onSaved: (val) {
+                                                  lname.text=val.toString();
+                                                },
                                                 decoration: InputDecoration(
                                                   //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
                                                   labelText: "Last Name",
                                                 ),
                                               ),
                                               TextFormField(
-                                                onChanged: (value) {},
-                                                readOnly: true,
+                                                onSaved: (val) {
+                                                  dob.text=val.toString();
+                                                },
+                                                // readOnly: true,
                                                 controller: dob,
                                                 decoration: InputDecoration(
                                                     //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
@@ -398,13 +291,17 @@ class _StudentFormState extends State<StudentForm> {
                                                             .calendar_today_outlined))),
                                               ),
                                               TextFormField(
-                                                onChanged: (value) {},
+                                                controller: birthPlace,
+                                                onSaved: (val) {
+                                                  birthPlace.text=val.toString();
+                                                },
                                                 decoration: InputDecoration(
                                                   //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
                                                   labelText: "Birth Place",
                                                 ),
                                               ),
                                               DropdownButton<String>(
+
                                                 borderRadius:
                                                     BorderRadius.circular(5),
                                                 hint: Text(
@@ -420,7 +317,14 @@ class _StudentFormState extends State<StudentForm> {
                                                     child: Text(val),
                                                   );
                                                 }).toList(),
-                                                onChanged: (String? num) {},
+                                                onChanged: (String? num) {
+                                                  // if (num != null) {
+                                                  //   setState(() {
+                                                  //     student.academicYear =
+                                                  //         num;
+                                                  //   });
+                                                  // }
+                                                },
                                               ),
                                               DropdownButton<String>(
                                                 borderRadius:
@@ -827,21 +731,24 @@ class _StudentFormState extends State<StudentForm> {
                                                       .width >=
                                                   1024)
                                                 Text(""),
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    "PARENT/GUARDIAN INFO ",
-                                                    style: TextStyle(
-                                                        fontSize: 18,
-                                                        color: kPrimaryColor),
-                                                  ),
-                                                  Divider(
-                                                    thickness: 5,
-                                                    color: kPrimaryColor,
-                                                  ),
-                                                ],
+                                              Padding(
+                                                padding: const EdgeInsets.only(top: 20.0),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      "PARENT/GUARDIAN INFO ",
+                                                      style: TextStyle(
+                                                          fontSize: 18,
+                                                          color: kPrimaryColor),
+                                                    ),
+                                                    Divider(
+                                                      thickness: 5,
+                                                      color: kPrimaryColor,
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                               if (MediaQuery.of(context)
                                                       .size
@@ -1045,26 +952,26 @@ class _StudentFormState extends State<StudentForm> {
                                                       "Permanent Address",
                                                 ),
                                               ),
-                                              DropdownButton<String>(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                hint: Text("Transport "),
-                                                value: Dropdown.transport
-                                                    .elementAt(0),
-                                                isExpanded: true,
-                                                items: Dropdown.transport
-                                                    .map((String val) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: val,
-                                                    child: Text(val),
-                                                  );
-                                                }).toList(),
-                                                onChanged: (String? num) {},
-                                              ),
+                                              // DropdownButton<String>(
+                                              //   borderRadius:
+                                              //       BorderRadius.circular(5),
+                                              //   hint: Text("Transport "),
+                                              //   value: Dropdown.transport
+                                              //       .elementAt(0),
+                                              //   isExpanded: true,
+                                              //   items: Dropdown.transport
+                                              //       .map((String val) {
+                                              //     return DropdownMenuItem<
+                                              //         String>(
+                                              //       value: val,
+                                              //       child: Text(val),
+                                              //     );
+                                              //   }).toList(),
+                                              //   onChanged: (String? num) {},
+                                              // ),
                                               // if (MediaQuery.of(context).size.width >=
                                               //     1200)
-                                              //   Text(""),
+                                                Text(""),
                                               if (MediaQuery.of(context)
                                                           .size
                                                           .width >=
@@ -1074,21 +981,24 @@ class _StudentFormState extends State<StudentForm> {
                                                           .width <=
                                                       1200)
                                                 Text(""),
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    "UPLOAD DOCUMENTS ",
-                                                    style: TextStyle(
-                                                        fontSize: 18,
-                                                        color: kPrimaryColor),
-                                                  ),
-                                                  Divider(
-                                                    thickness: 5,
-                                                    color: kPrimaryColor,
-                                                  ),
-                                                ],
+                                              Padding(
+                                                padding: const EdgeInsets.only(top: 20.0),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      "UPLOAD DOCUMENTS ",
+                                                      style: TextStyle(
+                                                          fontSize: 18,
+                                                          color: kPrimaryColor),
+                                                    ),
+                                                    Divider(
+                                                      thickness: 5,
+                                                      color: kPrimaryColor,
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                               if (MediaQuery.of(context)
                                                       .size
@@ -1100,34 +1010,34 @@ class _StudentFormState extends State<StudentForm> {
                                                       .width >
                                                   1050)
                                                 Text(""),
-                                              TextFormField(
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "10th Marksheet",
-                                                  hintText:
-                                                      "10th marksheet seat no",
-                                                  suffix: IconButton(
-                                                    icon: Icon(Icons
-                                                        .add_photo_alternate_outlined),
-                                                    onPressed: () => pickimage(
-                                                        ImageSource.gallery),
-                                                  ),
-                                                ),
-                                              ),
-                                              TextFormField(
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText: "12th Markshhet",
-                                                  hintText:
-                                                      "12th marksheet seat no",
-                                                  suffix: IconButton(
-                                                    icon: Icon(Icons
-                                                        .add_photo_alternate_outlined),
-                                                    onPressed: () => pickimage(
-                                                        ImageSource.gallery),
-                                                  ),
-                                                ),
-                                              ),
+                                              // TextFormField(
+                                              //   decoration: InputDecoration(
+                                              //     //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                              //     labelText: "10th Marksheet",
+                                              //     hintText:
+                                              //         "10th marksheet seat no",
+                                              //     suffix: IconButton(
+                                              //       icon: Icon(Icons
+                                              //           .add_photo_alternate_outlined),
+                                              //       onPressed: () => pickimage(
+                                              //           ImageSource.gallery),
+                                              //     ),
+                                              //   ),
+                                              // ),
+                                              // TextFormField(
+                                              //   decoration: InputDecoration(
+                                              //     //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                              //     labelText: "12th Markshhet",
+                                              //     hintText:
+                                              //         "12th marksheet seat no",
+                                              //     suffix: IconButton(
+                                              //       icon: Icon(Icons
+                                              //           .add_photo_alternate_outlined),
+                                              //       onPressed: () => pickimage(
+                                              //           ImageSource.gallery),
+                                              //     ),
+                                              //   ),
+                                              // ),
                                               TextFormField(
                                                 decoration: InputDecoration(
                                                   //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
@@ -1158,21 +1068,21 @@ class _StudentFormState extends State<StudentForm> {
                                                   ),
                                                 ),
                                               ),
-                                              TextFormField(
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText:
-                                                      "Income Certificate",
-                                                  hintText:
-                                                      "income certificate doc no",
-                                                  suffix: IconButton(
-                                                    icon: Icon(Icons
-                                                        .add_photo_alternate_outlined),
-                                                    onPressed: () => pickimage(
-                                                        ImageSource.gallery),
-                                                  ),
-                                                ),
-                                              ),
+                                              // TextFormField(
+                                              //   decoration: InputDecoration(
+                                              //     //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                              //     labelText:
+                                              //         "Income Certificate",
+                                              //     hintText:
+                                              //         "income certificate doc no",
+                                              //     suffix: IconButton(
+                                              //       icon: Icon(Icons
+                                              //           .add_photo_alternate_outlined),
+                                              //       onPressed: () => pickimage(
+                                              //           ImageSource.gallery),
+                                              //     ),
+                                              //   ),
+                                              // ),
 
                                               if (MediaQuery.of(context)
                                                       .size
@@ -1194,7 +1104,9 @@ class _StudentFormState extends State<StudentForm> {
                                                           BorderRadius.circular(
                                                               18.0)),
                                                   color: kPrimaryColor,
-                                                  onPressed: () {},
+                                                  onPressed: () {
+                                                    print(birthPlace.text);
+                                                  },
                                                   child: Text(
                                                     "Save Student",
                                                     style: TextStyle(
@@ -1223,3 +1135,128 @@ class _StudentFormState extends State<StudentForm> {
     );
   }
 }
+
+
+
+// List<String> fieldsNames = [
+//   "type",
+//   "firstName",
+//   "middleName",
+//   "lastName",
+//   "studentUniversity",
+//   "studentCourse",
+//   "studentBranch",
+//   "courseYear",
+//   "dob",
+//   "academicYear",
+//   "birthPlace",
+//   "bloodGroup",
+//   "gender",
+//   "nationality",
+//   "religion",
+//   "caste",
+//   "subCaste",
+//   "nonCremy",
+//   "previousSchoolBoard",
+//   "previousExamName",
+//   "password",
+//   "previousExamPercentage",
+//   "seatNo",
+//   "passYear",
+//   "state",
+//   "address",
+//   "isPhysicallyChallenged",
+//   "isMinority",
+//   "grNo",
+//   "gapDetail",
+//   "studentMobileNo",
+//   "email",
+//   "feesAmount",
+//   "fatherName",
+//   "fatherOccupation",
+//   "fatherEducation",
+//   "fatherAnnualIncome",
+//   "fatherEmail",
+//   "fatherContactNo",
+//   "fatherOfficeAddress",
+//   "fatherOfficeContactNo",
+//   "motherName",
+//   "motherOccupation",
+//   "motherEducation",
+//   "motherAnnualIncome",
+//   "motherEmail",
+//   "motherContact",
+//   "motherOfficeAddress",
+//   "motherOfficeContact",
+//   "ressidencialAddress",
+//   "permanentAddress",
+//   "transport",
+//   "birthCertificate",
+//   "transferCertificate",
+//   "markSheet",
+//   "uid",
+// ];
+// Future<dynamic> excelToJson() async {
+//   FilePickerResult? result = await FilePicker.platform.pickFiles(
+//     type: FileType.custom,
+//     allowedExtensions: ['xls', 'xlsx', 'csv'],
+//   );
+//   var csvFile;
+//   var bytes;
+//   if (result != null) {
+//     if (kIsWeb) {
+//       bytes = result.files.first.bytes!;
+//     } else {
+//       csvFile = File(result.files.single.path!);
+//       bytes = File(csvFile.path).readAsBytesSync();
+//     }
+//     // csvFile = File(result.files.single.path!);
+//     // var bytes = File(csvFile.path).readAsBytesSync();
+//     String s = String.fromCharCodes(bytes);
+//     List<List<dynamic>> rowsAsListOfValues =
+//         const CsvToListConverter().convert(s);
+//     int i = 0;
+//     List<String> keys = [];
+//     var jsonMap = [];
+//
+//     for (var row in rowsAsListOfValues) {
+//       if (i == 0) {
+//         for (var rowData in row) {
+//           if (fieldsNames.contains(rowData)) {
+//             keys.add(rowData);
+//           } else {
+//             print("In Excel sheet, header $rowData has wrongly spelled");
+//             return null;
+//           }
+//         }
+//         i++;
+//       } else {
+//         Map<String, dynamic> temp = {};
+//         int j = 0;
+//         String tk = '';
+//         for (var key in keys) {
+//           tk = key;
+//           temp[tk] = row[j] == null ? "" : row[j].toString();
+//           j++;
+//         }
+//         temp["uid"] = temp["firstName"][0].toLowerCase() + randomNumeric(6);
+//         Student studentModel = Student.fromJson(temp);
+//         jsonMap.add(studentModel);
+//       }
+//     }
+//
+//     print(jsonMap);
+//     return jsonMap;
+//   }
+// }
+// String bloddgrp = "Select Blood Group";
+// String gender = "Select Gender";
+// String noncremylayer = "Non Creamylayer Attached";
+// String isphysically = "Is Physically Handicapped";
+// String isminority = "Is Minority";
+// String feespackage = "Fees Package";
+// String foccupation = "Father's Occupation";
+// String feducation = "Father's Education";
+// String moccupation = "Mother's Occupation";
+// String meducation = "Mother's Education";
+// String transport = "Transport";
