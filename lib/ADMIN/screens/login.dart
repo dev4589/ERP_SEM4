@@ -62,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                       width: 8,
                     ),
                     Text(
-                      "Copyright 2021",
+                      "Copyright 2022",
                       style: TextStyle(
                         color: Colors.grey,
                         fontSize: 14,
