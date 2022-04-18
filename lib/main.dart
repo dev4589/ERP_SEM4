@@ -1,4 +1,7 @@
+import 'package:erp_sem4/ADMIN/screens/StudentFees.dart';
 import 'package:erp_sem4/ADMIN/screens/teacher_profile.dart';
+import 'package:erp_sem4/TEACHER/screens/homepage.dart';
+import 'package:erp_sem4/TEACHER/screens/student%20attendence.dart';
 import 'package:flutter/material.dart';
 import 'ADMIN/screens/dashboard.dart';
 import 'ADMIN/screens/login.dart';
@@ -61,6 +64,9 @@ class MyApp extends StatelessWidget {
         studProfR: (context) => StudentProfile(),
         studRegR: (context) => StudentRegistration(),
         teachProfR: (context) => TeacherProfile(),
+        loginpage:(context)=> LoginPage(),
+        teacherdash:(context)=>TeacherHomePage(),
+        feesdetail:(context)=>ShowFeesDeatails()
       },
       home: LoginPage(),
     );

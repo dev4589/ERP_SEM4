@@ -8,11 +8,13 @@ class StudentAttendanceForm extends StatefulWidget {
   _StudentAttendanceFormState createState() => _StudentAttendanceFormState();
 }
 
+enum Attendence { present, absent }
+
 class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
   TextStyle gridviewtext = new TextStyle(fontSize: 16);
   String class2 = "";
   String section = "";
-  int val = 1;
+  Attendence? _val = Attendence.present;
   TextEditingController academicdate = TextEditingController();
 
   @override
@@ -253,24 +255,6 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                         Wrap(
                                           //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
-                                            FlatButton(
-                                                height: 45,
-
-                                                // minWidth: 180,
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10.0)),
-                                                color: kPrimaryColor,
-                                                onPressed: () {},
-                                                child: Text(
-                                                  "Mark Holiday",
-                                                  style: TextStyle(
-                                                      fontSize: 17,
-                                                      color: Colors.white,
-                                                      overflow:
-                                                          TextOverflow.visible),
-                                                )),
                                             (size.width > 450)
                                                 ? SizedBox(width: 20)
                                                 : SizedBox(
@@ -309,13 +293,13 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                           columnWidths: {
                                             0: FixedColumnWidth(120.0),
                                             1: FixedColumnWidth(120.0),
-                                            2: FixedColumnWidth(250.0),
-                                            4: FixedColumnWidth(250.0),
+                                            2: FixedColumnWidth(120.0),
+                                            // 4: FixedColumnWidth(.),
                                           },
                                           defaultVerticalAlignment:
                                               TableCellVerticalAlignment.middle,
                                           defaultColumnWidth:
-                                              FixedColumnWidth(540.0),
+                                              FixedColumnWidth(550.0),
                                           border: TableBorder(
                                               horizontalInside: BorderSide(
                                                   width: 1,
@@ -390,7 +374,8 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                                 child: Padding(
                                                   padding:
                                                       const EdgeInsets.all(8.0),
-                                                  child: Text("Krisha Patel"),
+                                                  child: Text(
+                                                      "chinna swami muttu swami venn gopal iyer"),
                                                 ),
                                               ),
                                               TableCell(
@@ -403,25 +388,49 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                                         Radio(
                                                             activeColor:
                                                                 Colors.blue,
-                                                            value: 1,
-                                                            groupValue: val,
-                                                            onChanged: null),
+                                                            value: Attendence
+                                                                .present,
+                                                            groupValue: _val,
+                                                            onChanged:
+                                                                (Attendence?
+                                                                    value) {
+                                                              setState(() {
+                                                                _val = value;
+                                                              });
+                                                            }),
                                                         Text("Present"),
                                                         Radio(
-                                                            value: 2,
-                                                            groupValue: val,
-                                                            onChanged: null),
+                                                            activeColor:
+                                                                Colors.blue,
+                                                            value: Attendence
+                                                                .absent,
+                                                            groupValue: _val,
+                                                            onChanged:
+                                                                (Attendence?
+                                                                    value) {
+                                                              setState(() {
+                                                                _val = value;
+                                                              });
+                                                            }),
                                                         Text("Late"),
-                                                        Radio(
-                                                            value: 3,
-                                                            groupValue: val,
-                                                            onChanged: null),
-                                                        Text("Absent"),
-                                                        Radio(
-                                                            value: 4,
-                                                            groupValue: val,
-                                                            onChanged: null),
-                                                        Text("Half Day"),
+                                                        // Radio(
+                                                        //     activeColor:
+                                                        //     Colors.blue,
+                                                        //     value: 3,
+                                                        //     groupValue: _val,
+                                                        //   onChanged: (int? value){
+                                                        //     _val= value!;
+                                                        //   }),
+                                                        // Text("Absent"),
+                                                        // Radio(
+                                                        //     activeColor:
+                                                        //     Colors.blue,
+                                                        //     value: 4,
+                                                        //     groupValue: _val,
+                                                        //     onChanged: (int? value){
+                                                        //       _val= value!;
+                                                        //     }),
+                                                        // Text("Half Day"),
                                                       ],
                                                     )),
                                               ),
@@ -429,7 +438,11 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                                 child: Padding(
                                                   padding:
                                                       const EdgeInsets.all(8.0),
-                                                  child: Text("Add not here"),
+                                                  child: TextField(
+                                                    decoration: InputDecoration(
+                                                        hintText:
+                                                            "Enter note here"),
+                                                  ),
                                                 ),
                                               ),
                                             ]),

@@ -1,3 +1,4 @@
+import 'package:erp_sem4/ADMIN/screens/login.dart';
 import 'package:erp_sem4/ADMIN/screens/teacher_profile.dart';
 import 'package:erp_sem4/constants/constants.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ class TeacherHomePageLayout extends StatefulWidget {
 class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
   @override
   Widget build(BuildContext context) {
+
     Size size = MediaQuery.of(context).size;
     final bool displayMobileLayout = MediaQuery.of(context).size.width < 800;
     return Padding(
@@ -212,11 +214,12 @@ class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
                                           hoverColor: Colors.cyan[50],
                                           splashColor: Colors.cyan[100],
                                           onTap: () {
-                                            Navigator.pushReplacement(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        TeacherProfile()));
+                                            Navigator.pushNamed(context, teachProfR);
+                                            // Navigator.pushReplacement(
+                                            //     context,
+                                            //     MaterialPageRoute(
+                                            //         builder: (context) =>
+                                            //             TeacherProfile()));
                                           },
                                           child: Column(
                                             mainAxisAlignment:
@@ -320,11 +323,12 @@ class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
                                           hoverColor: Colors.cyan[50],
                                           splashColor: Colors.cyan[100],
                                           onTap: () {
-                                            // Navigator.push(
-                                            //     context,
-                                            //     MaterialPageRoute(
-                                            //         builder: (context) =>
-                                            //             ManageSemester()));
+                                            // Navigator.pushNamed(context, loginpage);
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        LoginPage()));
                                           },
                                           child: Column(
                                             mainAxisAlignment:
