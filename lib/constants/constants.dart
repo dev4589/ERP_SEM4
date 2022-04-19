@@ -17,3 +17,4 @@ String loginpage='/loginpage';
 String teacherdash='/teacherHomePage';
 String feesdetail='/ShowFeesDeatails';
 String dailyWork='/DailyWork';
+String teacherWork='/TeacherWork';

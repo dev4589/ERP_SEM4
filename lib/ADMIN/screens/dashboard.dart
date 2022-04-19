@@ -250,6 +250,7 @@ class _DashBoardState extends State<DashBoard> {
                                 title: Text("Fees Details",
                                     style: TextStyle(fontSize: 14)),
                               ),
+
                             ],
                           ),
                           expandedIcon: Icon(Icons.arrow_drop_down),
@@ -267,7 +268,14 @@ class _DashBoardState extends State<DashBoard> {
                                   "Teachers Profile",
                                   style: TextStyle(fontSize: 14),
                                 ),
-                              )
+                              ),
+                              ListTile(
+                                onTap: () {
+                                  Navigator.pushNamed(context, teacherWork);
+                                },
+                                title: Text("Teacher's Work",
+                                    style: TextStyle(fontSize: 14)),
+                              ),
                             ],
                           ),
                         ),

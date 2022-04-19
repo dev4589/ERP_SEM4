@@ -1,4 +1,5 @@
 import 'package:erp_sem4/ADMIN/screens/StudentFees.dart';
+import 'package:erp_sem4/ADMIN/screens/teacherWork.dart';
 import 'package:erp_sem4/ADMIN/screens/teacher_profile.dart';
 import 'package:erp_sem4/TEACHER/screens/dailywork.dart';
 import 'package:erp_sem4/TEACHER/screens/homepage.dart';
@@ -68,9 +69,10 @@ class MyApp extends StatelessWidget {
         loginpage:(context)=> LoginPage(),
         teacherdash:(context)=>TeacherHomePage(),
         feesdetail:(context)=>ShowFeesDeatails(),
-        dailyWork:(context)=>DailyWork()
+        dailyWork:(context)=>DailyWork(),
+        teacherWork:(context)=>TeacherWork()
       },
-      home: TeacherHomePage(),
+      home: DashBoard(),
     );
   }
 }
