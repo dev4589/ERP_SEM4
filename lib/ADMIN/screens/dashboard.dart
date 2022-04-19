@@ -178,7 +178,9 @@ class _DashBoardState extends State<DashBoard> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Colors.yellowAccent.shade100,
+      // Colors.blue.shade50,
+
+      backgroundColor:Colors.yellowAccent.shade100,
       body: SingleChildScrollView(
         child: Padding(
             padding: const EdgeInsets.only(right: 30.0, bottom: 10),
@@ -233,11 +235,19 @@ class _DashBoardState extends State<DashBoard> {
                                 title: Text("Student Profile",
                                     style: TextStyle(fontSize: 14)),
                               ),
+
                               ListTile(
                                 onTap: () {
                                   Navigator.pushNamed(context, studRegR);
                                 },
                                 title: Text("Student Registration",
+                                    style: TextStyle(fontSize: 14)),
+                              ),
+                              ListTile(
+                                onTap: () {
+                                  Navigator.pushNamed(context, feesdetail);
+                                },
+                                title: Text("Fees Details",
                                     style: TextStyle(fontSize: 14)),
                               ),
                             ],
