@@ -267,7 +267,9 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                                         BorderRadius.circular(
                                                             10.0)),
                                                 color: kPrimaryColor,
-                                                onPressed: () {},
+                                                onPressed: () {
+                                                  print("$class2\n" +"$section\n"+"$academicdate\n"+"$_val");
+                                                },
                                                 child: Text(
                                                   "Save Attendance",
                                                   style: TextStyle(
@@ -412,7 +414,7 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                                                 _val = value;
                                                               });
                                                             }),
-                                                        Text("Late"),
+                                                        Text("Absent"),
                                                         // Radio(
                                                         //     activeColor:
                                                         //     Colors.blue,

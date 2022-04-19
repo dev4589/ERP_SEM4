@@ -2,6 +2,7 @@ import 'package:erp_sem4/ADMIN/screens/login.dart';
 import 'package:erp_sem4/ADMIN/screens/teacher_profile.dart';
 import 'package:erp_sem4/constants/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../screens/student attendence.dart';
 
@@ -15,7 +16,8 @@ class TeacherHomePageLayout extends StatefulWidget {
 class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
   @override
   Widget build(BuildContext context) {
-
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat('yyyy-MM-dd – kk:mm').format(now);
     Size size = MediaQuery.of(context).size;
     final bool displayMobileLayout = MediaQuery.of(context).size.width < 800;
     return Padding(
@@ -90,6 +92,8 @@ class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
                                   crossAxisSpacing: 10,
                                   shrinkWrap: true,
                                   children: [
+
+
                                     Card(
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
@@ -138,6 +142,8 @@ class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
                                           hoverColor: Colors.cyan[50],
                                           splashColor: Colors.cyan[100],
                                           onTap: () {
+                                            Navigator.pushNamed(
+                                                context, dailyWork);
                                             // Navigator.push(
                                             //     context,
                                             //     MaterialPageRoute(
@@ -161,7 +167,7 @@ class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
                                               SizedBox(
                                                 height: 10,
                                               ),
-                                              Text("Show Routine",
+                                              Text("Submit Work",
                                                   style: gridviewtext)
                                             ],
                                           ),
@@ -214,7 +220,8 @@ class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
                                           hoverColor: Colors.cyan[50],
                                           splashColor: Colors.cyan[100],
                                           onTap: () {
-                                            Navigator.pushNamed(context, teachProfR);
+                                            Navigator.pushNamed(
+                                                context, teachProfR);
                                             // Navigator.pushReplacement(
                                             //     context,
                                             //     MaterialPageRoute(
@@ -239,76 +246,6 @@ class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
                                                 height: 10,
                                               ),
                                               Text("Manage Profile",
-                                                  style: gridviewtext)
-                                            ],
-                                          ),
-                                        )),
-                                    Card(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(12),
-                                        ),
-                                        elevation: 3,
-                                        child: InkWell(
-                                          hoverColor: Colors.cyan[50],
-                                          splashColor: Colors.cyan[100],
-                                          onTap: () {
-                                            // Navigator.push(
-                                            //     context,
-                                            //     MaterialPageRoute(
-                                            //         builder: (context) =>
-                                            //             ViewStudent()));
-                                          },
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                height: 100,
-                                                decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'assets/images/settings/Manage Subjects.png'),
-                                                    fit: BoxFit.contain,
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: 10,
-                                              ),
-                                              Text("Manage Course",
-                                                  style: gridviewtext)
-                                            ],
-                                          ),
-                                        )),
-                                    Card(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(12),
-                                        ),
-                                        elevation: 3,
-                                        child: InkWell(
-                                          hoverColor: Colors.cyan[50],
-                                          splashColor: Colors.cyan[100],
-                                          onTap: () {},
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                height: 100,
-                                                decoration: BoxDecoration(
-                                                  image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'assets/images/settings/Add Faculty.png'),
-                                                    fit: BoxFit.contain,
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: 10,
-                                              ),
-                                              Text("Manage Leave",
                                                   style: gridviewtext)
                                             ],
                                           ),
@@ -352,6 +289,7 @@ class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
                                             ],
                                           ),
                                         )),
+
                                   ],
                                 )),
                               )
