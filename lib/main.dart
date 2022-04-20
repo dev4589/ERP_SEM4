@@ -1,3 +1,4 @@
+import 'package:erp_sem4/ADMIN/screens/StaffRegistration.dart';
 import 'package:erp_sem4/ADMIN/screens/StudentFees.dart';
 import 'package:erp_sem4/ADMIN/screens/teacherWork.dart';
 import 'package:erp_sem4/ADMIN/screens/teacher_profile.dart';
@@ -70,7 +71,8 @@ class MyApp extends StatelessWidget {
         teacherdash:(context)=>TeacherHomePage(),
         feesdetail:(context)=>ShowFeesDeatails(),
         dailyWork:(context)=>DailyWork(),
-        teacherWork:(context)=>TeacherWork()
+        teacherWork:(context)=>TeacherWork(),
+        staffRegistration:(context)=>StaffRegistration()
       },
       home: DashBoard(),
     );

@@ -271,6 +271,15 @@ class _DashBoardState extends State<DashBoard> {
                               ),
                               ListTile(
                                 onTap: () {
+                                  Navigator.pushNamed(context,staffRegistration);
+                                },
+                                leading: Text(
+                                  "Staff Registration",
+                                  style: TextStyle(fontSize: 14),
+                                ),
+                              ),
+                              ListTile(
+                                onTap: () {
                                   Navigator.pushNamed(context, teacherWork);
                                 },
                                 title: Text("Teacher's Work",

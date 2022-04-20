@@ -18,3 +18,4 @@ String teacherdash='/teacherHomePage';
 String feesdetail='/ShowFeesDeatails';
 String dailyWork='/DailyWork';
 String teacherWork='/TeacherWork';
+String staffRegistration='/StaffRegistration';
