@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:erp_sem4/constants/constants.dart';
 import 'package:erp_sem4/constants/dropdown_values.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,8 +18,22 @@ class StaffRegistrationForm extends StatefulWidget {
 }
 
 class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
+  Widget fadeAlertAnimation(
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child,
+  ) {
+    return Align(
+      child: FadeTransition(
+        opacity: animation,
+        child: child,
+      ),
+    );
+  }
+
   TextEditingController formno = TextEditingController();
-  TextEditingController admissiondate = TextEditingController();
+  TextEditingController joiningDate = TextEditingController();
   TextEditingController adyear = TextEditingController();
   TextEditingController name = TextEditingController();
   TextEditingController fname = TextEditingController();
@@ -29,19 +43,13 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
   TextEditingController cno2 = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController dob = TextEditingController();
-  TextEditingController attentedclass = TextEditingController();
+  TextEditingController lastjob = TextEditingController();
   TextEditingController genderc = TextEditingController();
-  TextEditingController nosibbling = TextEditingController();
   TextEditingController sphoto = TextEditingController();
   TextEditingController address = TextEditingController();
   TextEditingController pcode = TextEditingController();
-  TextEditingController foccupation = TextEditingController();
-  TextEditingController moccupation = TextEditingController();
   TextEditingController reference = TextEditingController();
   TextEditingController source = TextEditingController();
-  TextEditingController previosschooldet = TextEditingController();
-  TextEditingController desc = TextEditingController();
-  TextEditingController childname = TextEditingController();
 
   File? image;
   String gender = "Select Gender";
@@ -64,6 +72,46 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
   @override
   Widget build(BuildContext context) {
     CollectionReference staff = FirebaseFirestore.instance.collection('Staff');
+    Future<void> addStaff() {
+      // Call the user's CollectionReference to add a new user
+      return staff.add({
+        'form_no': formno.text,
+        'join_date': joiningDate.text,
+        'joinyear': adyear.text,
+        'name': name.text,
+        'fathername': fname.text,
+        'surname': sname.text,
+        'mothername': mname.text,
+        'cno1': cno1.text,
+        'cno2': cno2.text,
+        'email': email.text,
+        'dob': dob.text,
+        'lastjob': lastjob.text,
+        'gender': genderc.text,
+        'photo': sphoto.text,
+        'address': address.text,
+        'pincode': pcode.text,
+        'reference': reference.text,
+        'source': source.text,
+      }).then((value) =>
+          Alert(context: context, type: AlertType.info, title: "Staff Added")
+              .show()
+              .catchError((error) => Alert(
+                  context: context,
+                  type: AlertType.info,
+                  title: "Failed To Add Staff",
+                  alertAnimation: fadeAlertAnimation)));
+//     Alert(
+      //   context: context,
+      //   type: AlertType.info,
+      //   title: "Email can't be empty",
+      //   desc: "please enter Email",
+      //   alertAnimation: fadeAlertAnimation,
+      // ).show()
+// print("Staff Added"))
+    }
+    //
+
     Size size = MediaQuery.of(context).size;
     final bool displayMobileLayout = MediaQuery.of(context).size.width < 800;
     return Scaffold(
@@ -96,7 +144,7 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
                           },
                           child: Padding(
                             padding:
-                            EdgeInsets.only(left: 40, right: 40, top: 20),
+                                EdgeInsets.only(left: 40, right: 40, top: 20),
                             child: Row(children: [
                               Icon(
                                 Icons.arrow_back,
@@ -108,10 +156,11 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 40, right: 40, top: 20),
+                          padding:
+                              EdgeInsets.only(left: 40, right: 40, top: 20),
                           child: Text("Staff Registration Form",
-                              style:
-                              TextStyle(fontSize: 20, color: kPrimaryColor)),
+                              style: TextStyle(
+                                  fontSize: 20, color: kPrimaryColor)),
                         ),
                       ],
                     ),
@@ -137,53 +186,56 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
                                     ),
                                     padding: (displayMobileLayout == true)
                                         ? EdgeInsets.only(
-                                        top: 15,
-                                        left: 10,
-                                        right: 10,
-                                        bottom: 15)
+                                            top: 15,
+                                            left: 10,
+                                            right: 10,
+                                            bottom: 15)
                                         : (MediaQuery.of(context).size.width <
-                                        1024)
-                                        ? EdgeInsets.only(
-                                        top: 20,
-                                        left: 25,
-                                        right: 25,
-                                        bottom: 20)
-                                        : EdgeInsets.only(
-                                        top: 25,
-                                        left: 30,
-                                        right: 30,
-                                        bottom: 25),
+                                                1024)
+                                            ? EdgeInsets.only(
+                                                top: 20,
+                                                left: 25,
+                                                right: 25,
+                                                bottom: 20)
+                                            : EdgeInsets.only(
+                                                top: 25,
+                                                left: 30,
+                                                right: 30,
+                                                bottom: 25),
                                     width: MediaQuery.of(context).size.width,
                                     child: Container(
                                       child: GridView.count(
-                                        childAspectRatio: MediaQuery.of(context)
-                                            .size
-                                            .width >
-                                            1024
-                                            ? (1 / 0.18)
-                                            : MediaQuery.of(context).size.width >
-                                            640
-                                            ? (1 / 0.09)
-                                            : (1 / 0.13),
-                                        crossAxisCount: (displayMobileLayout ==
-                                            true)
-                                            ? 1
-                                            : (MediaQuery.of(context).size.width <
-                                            1050)
-                                            ? 1
-                                            : (MediaQuery.of(context)
-                                            .size
-                                            .width <
-                                            1200)
-                                            ? 2
-                                            : 3,
+                                        childAspectRatio:
+                                            MediaQuery.of(context).size.width >
+                                                    1024
+                                                ? (1 / 0.18)
+                                                : MediaQuery.of(context)
+                                                            .size
+                                                            .width >
+                                                        640
+                                                    ? (1 / 0.09)
+                                                    : (1 / 0.13),
+                                        crossAxisCount:
+                                            (displayMobileLayout == true)
+                                                ? 1
+                                                : (MediaQuery.of(context)
+                                                            .size
+                                                            .width <
+                                                        1050)
+                                                    ? 1
+                                                    : (MediaQuery.of(context)
+                                                                .size
+                                                                .width <
+                                                            1200)
+                                                        ? 2
+                                                        : 3,
                                         mainAxisSpacing: 0,
                                         crossAxisSpacing: 18,
                                         shrinkWrap: true,
                                         children: [
                                           Column(
                                             crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                                CrossAxisAlignment.start,
                                             children: [
                                               Text(
                                                 "PERSONAL INFO ",
@@ -197,10 +249,14 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
                                               ),
                                             ],
                                           ),
-                                          if (MediaQuery.of(context).size.width >=
+                                          if (MediaQuery.of(context)
+                                                  .size
+                                                  .width >=
                                               1200)
                                             Text(""),
-                                          if (MediaQuery.of(context).size.width >
+                                          if (MediaQuery.of(context)
+                                                  .size
+                                                  .width >
                                               1050)
                                             Text(""),
                                           TextFormField(
@@ -212,30 +268,30 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
                                             ),
                                           ),
                                           TextFormField(
-                                            controller: admissiondate,
+                                            controller: joiningDate,
                                             decoration: InputDecoration(
-                                              //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
                                                 labelText: "Date",
                                                 hintText:
-                                                "Date Format must be DD-MM-YYYY",
+                                                    "Date Format must be DD-MM-YYYY",
                                                 suffixIcon: IconButton(
                                                     onPressed: () async {
                                                       DateTime? date =
-                                                      DateTime(1900);
+                                                          DateTime(1900);
                                                       FocusScope.of(context)
                                                           .requestFocus(
-                                                          new FocusNode());
+                                                              new FocusNode());
                                                       date = await showDatePicker(
                                                           helpText:
-                                                          "Select Date Of joining",
+                                                              "Select Date Of joining",
                                                           context: context,
                                                           initialDate:
-                                                          DateTime.now(),
+                                                              DateTime.now(),
                                                           firstDate:
-                                                          DateTime(1900),
+                                                              DateTime(1900),
                                                           lastDate:
-                                                          DateTime.now());
-                                                      admissiondate.text =
+                                                              DateTime.now());
+                                                      joiningDate.text =
                                                           date!.toString();
                                                     },
                                                     icon: Icon(Icons
@@ -243,8 +299,9 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
                                           ),
                                           DropdownButton<String>(
                                             borderRadius:
-                                            BorderRadius.circular(5),
-                                            hint: Text("Select Year of Joining"),
+                                                BorderRadius.circular(5),
+                                            hint:
+                                                Text("Select Year of Joining"),
                                             value: ayear,
                                             isExpanded: true,
                                             items: Dropdown.academicyear
@@ -260,6 +317,7 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
                                                   ayear = num;
                                                 });
                                               }
+                                              adyear.text = num.toString();
                                             },
                                           ),
                                           TextFormField(
@@ -315,37 +373,38 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
                                             controller: dob,
                                             readOnly: true,
                                             decoration: InputDecoration(
-                                              //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
                                                 labelText: "Date Of Birth",
                                                 hintText:
-                                                "Date Format must be DD-MM-YYYY",
+                                                    "Date Format must be DD-MM-YYYY",
                                                 suffixIcon: IconButton(
                                                     onPressed: () async {
                                                       DateTime? date =
-                                                      DateTime(1900);
+                                                          DateTime(1900);
                                                       FocusScope.of(context)
                                                           .requestFocus(
-                                                          new FocusNode());
+                                                              new FocusNode());
                                                       date = await showDatePicker(
                                                           helpText:
-                                                          "Select Date Of Birth",
+                                                              "Select Date Of Birth",
                                                           context: context,
                                                           initialDate:
-                                                          DateTime.now(),
+                                                              DateTime.now(),
                                                           firstDate:
-                                                          DateTime(1900),
+                                                              DateTime(1900),
                                                           lastDate:
-                                                          DateTime.now());
+                                                              DateTime.now());
                                                       dob.text = date!.day
-                                                          .toString() +
+                                                              .toString() +
                                                           "/" +
-                                                          date.month.toString() +
+                                                          date.month
+                                                              .toString() +
                                                           "/" +
                                                           date.year.toString();
                                                       dob.text = dob.text +
                                                           " ( " +
                                                           (DateTime.now().year -
-                                                              date.year)
+                                                                  date.year)
                                                               .toString() +
                                                           " year " +
                                                           " old )";
@@ -354,7 +413,7 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
                                                         .calendar_today_outlined))),
                                           ),
                                           TextFormField(
-                                            controller: attentedclass,
+                                            controller: lastjob,
                                             decoration: InputDecoration(
                                               //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
                                               labelText: "Last Job Detail",
@@ -362,12 +421,12 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
                                           ),
                                           DropdownButton<String>(
                                             borderRadius:
-                                            BorderRadius.circular(5),
+                                                BorderRadius.circular(5),
                                             hint: Text("Select Gender"),
                                             value: gender,
                                             isExpanded: true,
-                                            items:
-                                            Dropdown.gender.map((String val) {
+                                            items: Dropdown.gender
+                                                .map((String val) {
                                               return DropdownMenuItem<String>(
                                                 value: val,
                                                 child: Text(val),
@@ -379,26 +438,28 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
                                                   gender = num;
                                                 });
                                               }
+                                              genderc.text = num.toString();
                                             },
                                           ),
-
                                           TextFormField(
                                             controller: sphoto,
                                             decoration: InputDecoration(
-                                              //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                                //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
                                                 labelText: "Upload Photo",
                                                 suffixIcon: Wrap(
                                                   children: [
                                                     IconButton(
                                                       icon: Icon(Icons
                                                           .add_a_photo_outlined),
-                                                      onPressed: () => pickimage(
-                                                          ImageSource.camera),
+                                                      onPressed: () =>
+                                                          pickimage(ImageSource
+                                                              .camera),
                                                     ),
                                                     IconButton(
                                                         onPressed: () =>
-                                                            pickimage(ImageSource
-                                                                .gallery),
+                                                            pickimage(
+                                                                ImageSource
+                                                                    .gallery),
                                                         icon: Icon(Icons
                                                             .add_photo_alternate_outlined))
                                                   ],
@@ -406,11 +467,11 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
                                           ),
                                           image != null
                                               ? Image.file(image!,
-                                              width: 70,
-                                              height: 70,
-                                              fit: BoxFit.fill)
+                                                  width: 70,
+                                                  height: 70,
+                                                  fit: BoxFit.fill)
                                               : Text(
-                                              "Your captured image will appear here..."),
+                                                  "Your captured image will appear here..."),
                                           TextFormField(
                                             controller: address,
                                             maxLines: 3,
@@ -435,7 +496,7 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
                                           ),
                                           DropdownButton<String>(
                                             borderRadius:
-                                            BorderRadius.circular(5),
+                                                BorderRadius.circular(5),
                                             hint: Text("Select Designation"),
                                             value: sources,
                                             isExpanded: true,
@@ -452,16 +513,22 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
                                                   sources = num;
                                                 });
                                               }
+                                              source.text = num.toString();
                                             },
                                           ),
-
-                                          if (MediaQuery.of(context).size.width >=
+                                          if (MediaQuery.of(context)
+                                                  .size
+                                                  .width >=
                                               1200)
                                             Text(""),
-                                          if (MediaQuery.of(context).size.width >=
+                                          if (MediaQuery.of(context)
+                                                  .size
+                                                  .width >=
                                               1024)
                                             Text(""),
-                                          if (MediaQuery.of(context).size.width >=
+                                          if (MediaQuery.of(context)
+                                                  .size
+                                                  .width >=
                                               1200)
                                             Text(""),
                                           Center(
@@ -470,35 +537,10 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
                                               minWidth: 150,
                                               shape: RoundedRectangleBorder(
                                                   borderRadius:
-                                                  BorderRadius.circular(
-                                                      18.0)),
+                                                      BorderRadius.circular(
+                                                          18.0)),
                                               color: kPrimaryColor,
-                                              onPressed: () {
-                                                print(formno.text +
-                                                    admissiondate.text +
-                                                    adyear.text +
-                                                    name.text +
-                                                    fname.text +
-                                                    sname.text +
-                                                    mname.text +
-                                                    cno1.text +
-                                                    cno2.text +
-                                                    email.text +
-                                                    dob.text +
-                                                    attentedclass.text +
-                                                    gender +
-                                                    nosibbling.text +
-                                                    sphoto.text +
-                                                    address.text +
-                                                    pcode.text +
-                                                    foccupation.text +
-                                                    moccupation.text +
-                                                    reference.text +
-                                                    sources +
-                                                    previosschooldet.text +
-                                                    desc.text +
-                                                    childname.text);
-                                              },
+                                              onPressed: addStaff,
                                               child: Text(
                                                 "Save",
                                                 style: TextStyle(

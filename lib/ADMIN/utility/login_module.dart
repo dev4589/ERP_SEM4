@@ -137,7 +137,7 @@ Future<UserCredential>  fireauth(){
                           InkWell(
                             onTap: () async {
                               if (email.isEmpty) {
-                                Alert(
+                               Alert(
                                   context: context,
                                   type: AlertType.info,
                                   title: "Email can't be empty",
