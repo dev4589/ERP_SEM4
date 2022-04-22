@@ -74,7 +74,7 @@ class MyApp extends StatelessWidget {
         teacherWork:(context)=>TeacherWork(),
         staffRegistration:(context)=>StaffRegistration()
       },
-      home: DashBoard(),
+      home: ShowFeesDeatails(),
     );
   }
 }
