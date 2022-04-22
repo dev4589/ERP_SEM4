@@ -14,20 +14,20 @@ class Dropdown {
     
   ];
   static List<String> academicyear = [
-    "Select Academic Year",
-    '2020-21',
-    '2019-20',
-    '2018-19',
-    '2017-18',
-    '2016-17',
+    "Select Joining Year",
+    '2022',
+    '2021',
+    '2020',
+    '2019',
+    '2018',
   ];
   static List<String> sources = [
-    "Select Sources",
-    'Facebook',
-    'LinkedIn',
-    'Google',
-    'Website',
-    'Just Dial',
+    "Select Designation",
+    'Teacher',
+    'Principal',
+    'Peon',
+    'Clerk',
+    'Security Guard',
     'Others',
   ];
   static List<String> bloodgrp = [

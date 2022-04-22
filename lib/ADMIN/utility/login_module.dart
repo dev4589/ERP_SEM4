@@ -35,9 +35,14 @@ class _LogInState extends State<LogIn> {
 
   late String email;
   late String password;
-
+Future<UserCredential>  fireauth(){
+  var fire = FirebaseAuth.instance
+      .signInWithEmailAndPassword(email: email, password: password);
+  return fire;
+}
   @override
   Widget build(BuildContext context) {
+
     Size size = MediaQuery.of(context).size;
 
     return Stack(
@@ -132,7 +137,7 @@ class _LogInState extends State<LogIn> {
                           InkWell(
                             onTap: () async {
                               if (email.isEmpty) {
-                                Alert(
+                               Alert(
                                   context: context,
                                   type: AlertType.info,
                                   title: "Email can't be empty",
@@ -148,21 +153,27 @@ class _LogInState extends State<LogIn> {
                                   alertAnimation: fadeAlertAnimation,
                                 ).show();
                               } else {
-                                setState(() {
-                                  loading = true;
-                                });
-
-                                FirebaseAuth.instance
-                                    .signInWithEmailAndPassword(
-                                        email: email, password: password)
-                                    .then((FirebaseUser) {
+                                if (fireauth() != null) {
+                                  print("\n\n\n\n"+fireauth().toString());
                                   Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => DashBoard(),
+
                                     ),
                                   );
-                                });
+                                } else {
+                                  print("Invalid u-id");
+                                  setState(() {
+                                    Alert(
+                                            context: context,
+                                            desc:
+                                                "Invalid User-Name or Password",
+                                            type: AlertType.error,
+                                            alertAnimation: fadeAlertAnimation)
+                                        .show();
+                                  });
+                                }
                               }
                             },
                             child: actionButton(
@@ -192,3 +203,8 @@ class _LogInState extends State<LogIn> {
     );
   }
 }
+
+//
+//
+
+//

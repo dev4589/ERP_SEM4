@@ -1,11 +1,31 @@
 import 'package:erp_sem4/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_grid/responsive_grid.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 
 void main() {
   runApp(MaterialApp(home: ShowFeesDeatails()));
 }
+
+TextEditingController classc=new TextEditingController();
+TextEditingController division= new TextEditingController();
+TextEditingController name= new TextEditingController();
+TextEditingController payment= new TextEditingController();
+TextEditingController amountc=new TextEditingController();
+TextEditingController datec=new TextEditingController(text: DateTime.now().toString());
+TextEditingController chequeno= new TextEditingController();
+TextEditingController chequedate= new TextEditingController();
+TextEditingController bankname= new TextEditingController();
+TextEditingController bankaccount= new TextEditingController();
+TextEditingController transaction= new TextEditingController();
+TextEditingController patmenttype= new TextEditingController();
+TextEditingController ddno= new TextEditingController();
+TextEditingController ddDate= new TextEditingController();
+
+
+
 
 class ShowFeesDeatails extends StatefulWidget {
   const ShowFeesDeatails({Key? key}) : super(key: key);
@@ -15,7 +35,8 @@ class ShowFeesDeatails extends StatefulWidget {
 }
 
 class _ShowFeesDeatailsState extends State<ShowFeesDeatails> {
-  String dropdownValue = 'Payment Type';
+
+
   late int index = 0;
   List<Widget> showDetails = [getCash(), getCheque(), getOnline(), getDd()];
   final _userid = TextEditingController();
@@ -28,6 +49,7 @@ class _ShowFeesDeatailsState extends State<ShowFeesDeatails> {
   String dropdownValueClass = 'Choose Class';
   String dropdownValueDivision = 'Choose Division';
   String dropdownValueStudent = 'Choose Student';
+  String dropdownValue = 'Payment Type';
   List<String> _DivisionList = ['Choose Division', 'A', 'B', 'C', 'D'];
   List<String> _StudentList = [
     'Choose Student',
@@ -46,9 +68,59 @@ class _ShowFeesDeatailsState extends State<ShowFeesDeatails> {
     'Class 5',
     'Class 6'
   ];
-
+  Widget fadeAlertAnimation(
+      BuildContext context,
+      Animation<double> animation,
+      Animation<double> secondaryAnimation,
+      Widget child,
+      ) {
+    return Align(
+      child: FadeTransition(
+        opacity: animation,
+        child: child,
+      ),
+    );
+  }
   @override
   Widget build(BuildContext context) {
+    CollectionReference fees = FirebaseFirestore.instance.collection('fees');
+    Future<void> addFees() {
+
+      return fees.add({
+        'Standard': classc.text,
+        'Division': division.text,
+        'Student_name': name,
+        'Payment_mode': payment.text,
+        'Amount': amountc.text,
+        'Date': datec.text,
+        'Cheque_no': chequeno.text,
+        'Cheque_date': chequedate.text,
+        'Bank_name': bankname.text,
+        'Bank_account_no': bankaccount.text,
+        'Transection_id': transaction.text,
+        'Payment_Platform': patmenttype.text,
+        'DD-No': ddno.text,
+        'DD-Date': ddDate.text,
+
+      }).then((value) =>
+          Alert(context: context, type: AlertType.info, title: "Fees Record Added")
+              .show()
+              .catchError((error) => Alert(
+              context: context,
+              type: AlertType.info,
+              title: "Failed To Add Record",
+              alertAnimation: fadeAlertAnimation)));
+//     Alert(
+      //   context: context,
+      //   type: AlertType.info,
+      //   title: "Email can't be empty",
+      //   desc: "please enter Email",
+      //   alertAnimation: fadeAlertAnimation,
+      // ).show()
+// print("Staff Added"))
+    }
+    //
+
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Stack(
@@ -131,10 +203,12 @@ class _ShowFeesDeatailsState extends State<ShowFeesDeatails> {
                                                 );
                                               }).toList(),
                                           value: dropdownValueClass,
-                                          onChanged: (String? newValue) {
+                                          onChanged: (String? newValue) async{
                                             setState(() {
                                               dropdownValueClass = newValue!;
+
                                             });
+                                            classc.text = dropdownValueClass.toString();
                                           }),
                                     ),
                                   ),
@@ -165,6 +239,8 @@ class _ShowFeesDeatailsState extends State<ShowFeesDeatails> {
                                             setState(() {
                                               dropdownValueDivision = newValue!;
                                             });
+                                            division.text = dropdownValueDivision.toString();
+
                                           }),
                                     ),
                                   ),
@@ -195,6 +271,7 @@ class _ShowFeesDeatailsState extends State<ShowFeesDeatails> {
                                             setState(() {
                                               dropdownValueStudent = newValue!;
                                             });
+                                            name = dropdownValueStudent.toString();
                                           }),
                                     ),
                                   ),
@@ -350,7 +427,9 @@ class _ShowFeesDeatailsState extends State<ShowFeesDeatails> {
                                                 if (newValue == 'DD') {
                                                   index = 3;
                                                 }
+
                                               });
+                                               payment.text = dropdownValue.toString();
                                             },
                                             items: <String>[
                                               'Payment Type',
@@ -394,9 +473,7 @@ class _ShowFeesDeatailsState extends State<ShowFeesDeatails> {
                                                     BorderRadius
                                                         .circular(
                                                         30.0)))),
-                                            onPressed: () {
-                                              print("$dropdownValueClass\n" +"$dropdownValueDivision\n"+"$dropdownValueStudent\n"+"$dropdownValue");
-                                            },
+                                            onPressed: addFees,
                                             child: const Text("Save",
                                                 style: TextStyle(
                                                     color: Colors.white)),
@@ -444,6 +521,7 @@ class _getCashState extends State<getCash> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
+                controller: amountc,
                 decoration: const InputDecoration(
                     labelText: "Amount",
                     border: OutlineInputBorder(
@@ -458,7 +536,7 @@ class _getCashState extends State<getCash> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: TextFormField(
-                initialValue: DateTime.now().toString(),
+                controller: datec,
                 decoration: const InputDecoration(
                     labelText: "Date",
                     border: OutlineInputBorder(
@@ -467,35 +545,7 @@ class _getCashState extends State<getCash> {
               ),
             ),
           ),
-          ResponsiveGridCol(
-            xl: 3,
-            lg: 4,
-            xs: 12,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextFormField(
-                  decoration: InputDecoration(
-                      labelText: "Accountant Name",
-                      hintText: DateTime.now().toString(),
-                      border: OutlineInputBorder(
-                          borderRadius:
-                          BorderRadius.all(Radius.circular(15))))),
-            ),
-          ),
-          ResponsiveGridCol(
-            xl: 3,
-            lg: 4,
-            xs: 12,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                    labelText: "Accountant No.",
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)))),
-              ),
-            ),
-          ),
+
         ],
       ),
     );
@@ -521,6 +571,7 @@ class _getChequeState extends State<getCheque> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
+              controller: amountc,
               decoration: const InputDecoration(
                   labelText: "Amount",
                   border: OutlineInputBorder(
@@ -535,7 +586,8 @@ class _getChequeState extends State<getCheque> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
-              initialValue: DateTime.now().toString(),
+              controller: datec,
+
               decoration: const InputDecoration(
                   labelText: "Date",
                   border: OutlineInputBorder(
@@ -551,6 +603,7 @@ class _getChequeState extends State<getCheque> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
+              controller: chequeno,
                 decoration: const InputDecoration(
                     labelText: "Cheque No.",
                     border: OutlineInputBorder(
@@ -564,6 +617,7 @@ class _getChequeState extends State<getCheque> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
+              controller: chequedate,
               decoration: const InputDecoration(
                   labelText: "Cheque Date",
                   border: OutlineInputBorder(
@@ -578,6 +632,7 @@ class _getChequeState extends State<getCheque> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
+              controller: bankname,
               decoration: const InputDecoration(
                   labelText: "Bank Name",
                   border: OutlineInputBorder(
@@ -592,6 +647,7 @@ class _getChequeState extends State<getCheque> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
+              controller: bankaccount,
               decoration: const InputDecoration(
                   labelText: "Bank Account No.",
                   border: OutlineInputBorder(
@@ -625,6 +681,7 @@ class _getOnlineState extends State<getOnline> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
+              controller: amountc,
               decoration: const InputDecoration(
                   labelText: "Amount",
                   border: OutlineInputBorder(
@@ -639,7 +696,8 @@ class _getOnlineState extends State<getOnline> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
-              initialValue: DateTime.now().toString(),
+              controller: datec,
+
               decoration: const InputDecoration(
                   labelText: "Date",
                   border: OutlineInputBorder(
@@ -654,6 +712,7 @@ class _getOnlineState extends State<getOnline> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
+              controller: transaction,
                 decoration: InputDecoration(
                     labelText: "Transaction id",
                     hintText: DateTime.now().toString(),
@@ -676,6 +735,7 @@ class _getOnlineState extends State<getOnline> {
                 setState(() {
                   dropdownValue = newValue!;
                 });
+                patmenttype.text = dropdownValue.toString();
               },
               items: <String>[
                 'Choose Platform',
@@ -719,6 +779,7 @@ class _getDdState extends State<getDd> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
+              controller: amountc,
               decoration: const InputDecoration(
                   labelText: "Amount",
                   border: OutlineInputBorder(
@@ -733,7 +794,8 @@ class _getDdState extends State<getDd> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
-              initialValue: DateTime.now().toString(),
+              controller: datec,
+
               decoration: const InputDecoration(
                   labelText: "Date",
                   border: OutlineInputBorder(
@@ -749,6 +811,7 @@ class _getDdState extends State<getDd> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
+              controller: ddno,
                 decoration: const InputDecoration(
                     labelText: "DD No.",
                     border: OutlineInputBorder(
@@ -762,6 +825,7 @@ class _getDdState extends State<getDd> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
+              controller: ddDate,
               decoration: const InputDecoration(
                   labelText: "DD Date",
                   border: OutlineInputBorder(
@@ -776,6 +840,7 @@ class _getDdState extends State<getDd> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
+              controller: bankname,
               decoration: const InputDecoration(
                   labelText: "Bank Name",
                   border: OutlineInputBorder(
@@ -790,6 +855,7 @@ class _getDdState extends State<getDd> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
+              controller: bankaccount,
               decoration: const InputDecoration(
                   labelText: "Bank Account No.",
                   border: OutlineInputBorder(
