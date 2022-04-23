@@ -245,7 +245,7 @@ class _DashBoardState extends State<DashBoard> {
                               ),
                               ListTile(
                                 onTap: () {
-                                  Navigator.pushNamed(context, feesdetail);
+                                  // Navigator.pushNamed(context, feesdetail);
                                 },
                                 title: Text("Fees Details",
                                     style: TextStyle(fontSize: 14)),

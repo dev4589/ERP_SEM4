@@ -1,12 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:erp_sem4/constants/constants.dart';
 
 import 'package:flutter/material.dart';
 
 class TableRow1 extends StatelessWidget {
-  const TableRow1({Key? key}) : super(key: key);
+  final Map<String, dynamic> map;
+  TableRow1(this.map);
 
   @override
   Widget build(BuildContext context) {
+    // Map<String,dynamic> map=data;
     var size = MediaQuery.of(context).size.width;
     return Table(
         defaultVerticalAlignment: TableCellVerticalAlignment.middle,
@@ -36,676 +39,695 @@ class TableRow1 extends StatelessWidget {
                   ),
                 ]
               ]),
-          TableRow(children: [
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Status",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Student Name",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Address",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Mobile Number",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Email Address",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Date Of Birth",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Birth Place",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Academic Year",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Blood Group",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Gender",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Nationality",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Caste",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Sub Caste",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Non Creamylayer",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Physically Handicapped",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Minority",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Qualifying Exam board",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Qualifying Exam name",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Qualifying Exam Percentage",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Seat Number",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Passing Year",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "State",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "GR Number",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Gap Details",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Degree",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "University",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Branch",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Shift",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Year",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Batch",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Sub Batch",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Father Name",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Father's Mobile no",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Father's Email address",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Father's Office address",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Father's Office Mobile no",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Annual Income",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Mother Name",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Mother's Occupation",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Mother's Education",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Annual Income",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Mother's Mobile no",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Mother's Email id",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Mother's Office Address",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Mohter's Office Mobile no",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Annual Income",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Residential Address",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Permanent Address",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Transport",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-          ]),
-          TableRow(children: [
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "Admitted",
-                    style: TextStyle(color: Colors.green),
-                  )),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("shyam rajeshbhai patel")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                      "468/8 city bunglows, Shyamal cross road,ahmedabad,380001")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("8460785956")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("shyam1234@gmail.com")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("28/05/2000")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("Ahmedabad")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("2021")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("A+")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("Male")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("Indian")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("Hindu")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("Mochi")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("Yes")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("No")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("No")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("Gujarat Board")),
-            ),
-            TableCell(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Qualifying Exam name",
-                  style: TextStyle(color: kPrimaryColor),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("73%")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("G104650")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("2017")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("Gujarat")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("1758")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("No Gap")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("MCA")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("Gujarat Tech. University")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("IT")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("Noon")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("2021")),
-            ),
-            TableCell(
-              child:
-                  Padding(padding: const EdgeInsets.all(8.0), child: Text("A")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("A3")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("Rajesh bhai")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("8460770855")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("rajesh@gmail.com")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("85/2 anand apartments")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("7505633546")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("5000000")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("Mamta ben")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("Teacher")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("B.ed")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("150000")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("1234567890")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("mamta345@gmail.com")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("Anupam school near Ak Society")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("8432459620")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("450000")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("same as above")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text("same as above")),
-            ),
-            TableCell(
-              child: Padding(
-                  padding: const EdgeInsets.all(8.0), child: Text("yes")),
-            ),
-          ]),
+          TableCells(),
+          TableCells2(map),
+          TableCells2(map),
         ]);
+  }
+
+//title of table
+  TableRow TableCells() {
+    return TableRow(children: [
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Status",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Student Name",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Address",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Mobile Number",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Email Address",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Date Of Birth",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      // TableCell(
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: Text(
+      //       "Birth Place",
+      //       style: TextStyle(color: kPrimaryColor),
+      //     ),
+      //   ),
+      // ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Academic Year",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Blood Group",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Gender",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Nationality",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Caste",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      // TableCell(
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: Text(
+      //       "Sub Caste",
+      //       style: TextStyle(color: kPrimaryColor),
+      //     ),
+      //   ),
+      // ),
+      // TableCell(
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: Text(
+      //       "Non Creamylayer",
+      //       style: TextStyle(color: kPrimaryColor),
+      //     ),
+      //   ),
+      // ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Physically Handicapped",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Minority",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      // TableCell(
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: Text(
+      //       "Qualifying Exam board",
+      //       style: TextStyle(color: kPrimaryColor),
+      //     ),
+      //   ),
+      // ),
+      // TableCell(
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: Text(
+      //       "Qualifying Exam name",
+      //       style: TextStyle(color: kPrimaryColor),
+      //     ),
+      //   ),
+      // ),
+      // TableCell(
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: Text(
+      //       "Qualifying Exam Percentage",
+      //       style: TextStyle(color: kPrimaryColor),
+      //     ),
+      //   ),
+      // ),
+      // TableCell(
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: Text(
+      //       "Seat Number",
+      //       style: TextStyle(color: kPrimaryColor),
+      //     ),
+      //   ),
+      // ),
+      // TableCell(
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: Text(
+      //       "Passing Year",
+      //       style: TextStyle(color: kPrimaryColor),
+      //     ),
+      //   ),
+      // ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "State",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "GR Number",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      // TableCell(
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: Text(
+      //       "Gap Details",
+      //       style: TextStyle(color: kPrimaryColor),
+      //     ),
+      //   ),
+      // ),
+      // TableCell(
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: Text(
+      //       "Degree",
+      //       style: TextStyle(color: kPrimaryColor),
+      //     ),
+      //   ),
+      // ),
+      // TableCell(
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: Text(
+      //       "University",
+      //       style: TextStyle(color: kPrimaryColor),
+      //     ),
+      //   ),
+      // ),
+      // TableCell(
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: Text(
+      //       "Branch",
+      //       style: TextStyle(color: kPrimaryColor),
+      //     ),
+      //   ),
+      // ),
+      // TableCell(
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: Text(
+      //       "Shift",
+      //       style: TextStyle(color: kPrimaryColor),
+      //     ),
+      //   ),
+      // ),
+      // TableCell(
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: Text(
+      //       "Year",
+      //       style: TextStyle(color: kPrimaryColor),
+      //     ),
+      //   ),
+      // ),
+      // TableCell(
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: Text(
+      //       "Batch",
+      //       style: TextStyle(color: kPrimaryColor),
+      //     ),
+      //   ),
+      // ),
+      // TableCell(
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: Text(
+      //       "Sub Batch",
+      //       style: TextStyle(color: kPrimaryColor),
+      //     ),
+      //   ),
+      // ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Father Name",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Father Occupation",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Father Education",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Father's Mobile no",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Father's Email address",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Father's Office address",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Father's Office Mobile no",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Annual Income",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Mother Name",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Mother's Occupation",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Mother's Education",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Mother's Mobile no",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Mother's Email id",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Mother's Office Address",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Mohter's Office Mobile no",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Annual Income",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Current Address",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+      TableCell(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "Transport",
+            style: TextStyle(color: kPrimaryColor),
+          ),
+        ),
+      ),
+    ]);
+  }
+
+//real data
+  TableRow TableCells2(Map<String, dynamic> map) {
+    return TableRow(children: [
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              // "Admitted",
+              map['status'],
+              style: TextStyle(color: Colors.green),
+            )),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map['first_name'] +
+                " " +
+                map['middle_name'] +
+                " " +
+                map['last_name'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0), child: Text(map['address'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0), child: Text(map['mobileMo'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0), child: Text(map['email'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map['date_of_birth'])),
+      ),
+      // TableCell(
+      //   child: Padding(
+      //       padding: const EdgeInsets.all(8.0), child: Text("Ahmedabad")),
+      // ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map['academic_year'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map['blood_group'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0), child: Text(map['gender'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map['nationality'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0), child: Text(map['caste'])),
+      ),
+      // TableCell(
+      //   child: Padding(
+      //       padding: const EdgeInsets.all(8.0), child: Text(map['subcaste'])),
+      // ),
+      // TableCell(
+      //   child: Padding(padding: const EdgeInsets.all(8.0), child: Text("Yes")),
+      // ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map['is_handicap'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map["is_minority"])),
+      ),
+      // TableCell(
+      //   child: Padding(
+      //       padding: const EdgeInsets.all(8.0), child: Text("Gujarat Board")),
+      // ),
+      // TableCell(
+      //   child: Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: Text(
+      //       "Qualifying Exam name",
+      //       style: TextStyle(color: kPrimaryColor),
+      //     ),
+      //   ),
+      // ),
+      // TableCell(
+      //   child: Padding(padding: const EdgeInsets.all(8.0), child: Text("73%")),
+      // ),
+      // TableCell(
+      //   child:
+      //   Padding(padding: const EdgeInsets.all(8.0), child: Text("G104650")),
+      // ),
+      // TableCell(
+      //   child: Padding(padding: const EdgeInsets.all(8.0), child: Text("2017")),
+      // ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0), child: Text(map['state'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0), child: Text(map['grNo'])),
+      ),
+      // TableCell(
+      //   child:
+      //   Padding(padding: const EdgeInsets.all(8.0), child: Text("No Gap")),
+      // ),
+      // TableCell(
+      //   child: Padding(padding: const EdgeInsets.all(8.0), child: Text("MCA")),
+      // ),
+      // TableCell(
+      //   child: Padding(
+      //       padding: const EdgeInsets.all(8.0),
+      //       child: Text("Gujarat Tech. University")),
+      // ),
+      // TableCell(
+      //   child: Padding(padding: const EdgeInsets.all(8.0), child: Text("IT")),
+      // ),
+      // TableCell(
+      //   child: Padding(padding: const EdgeInsets.all(8.0), child: Text("Noon")),
+      // ),
+      // TableCell(
+      //   child: Padding(padding: const EdgeInsets.all(8.0), child: Text("2021")),
+      // ),
+      // TableCell(
+      //   child: Padding(padding: const EdgeInsets.all(8.0), child: Text("A")),
+      // ),
+      // TableCell(
+      //   child: Padding(padding: const EdgeInsets.all(8.0), child: Text("A3")),
+      // ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map['father_name'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map['father_occupation'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map['father_education'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map['father_contactNo'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map['father_email'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map['father_office_addr'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map['father_office_contact'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map['father_annual_income'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map['mother_name'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map['mother_occupation'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map['mother_education'])),
+      ),
+
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map['mother_contactNo'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map['mother_email'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map['mother_office_addr'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map['mother_office_contact'])),
+      ),
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map['mother_annual_income'])),
+      ),
+
+      TableCell(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map["current_addr"])),
+      ),
+      TableCell(
+        //transport
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(map['transportation'])),
+      ),
+    ]);
   }
 }
 
@@ -716,11 +738,16 @@ class ShowRegisterDataForm extends StatefulWidget {
 }
 
 class _ShowRegisterDataFormState extends State<ShowRegisterDataForm> {
+  final String documentId = "1UkFdMfIyjrFeXJmsHXh";
+
   TextStyle gridviewtext = new TextStyle(fontSize: 16);
   final TextEditingController search = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    CollectionReference users =
+        FirebaseFirestore.instance.collection('student_registration');
+
     Size size = MediaQuery.of(context).size;
 
     final bool displayMobileLayout = MediaQuery.of(context).size.width < 800;
@@ -793,7 +820,8 @@ class _ShowRegisterDataFormState extends State<ShowRegisterDataForm> {
                                   padding: (displayMobileLayout == true)
                                       ? EdgeInsets.only(
                                           left: 10, right: 10, bottom: 15)
-                                      : (MediaQuery.of(context).size.width < 1024)
+                                      : (MediaQuery.of(context).size.width <
+                                              1024)
                                           ? EdgeInsets.only(
                                               left: 15, right: 25, bottom: 20)
                                           : EdgeInsets.only(
@@ -802,27 +830,31 @@ class _ShowRegisterDataFormState extends State<ShowRegisterDataForm> {
                                   child: Card(
                                     color: Color(0xfff8f9fa),
                                     shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(15)),
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
                                     elevation: 5,
                                     child: Padding(
                                       padding: EdgeInsets.all(20),
                                       child: GridView.count(
-                                        childAspectRatio: MediaQuery.of(context)
-                                                    .size
-                                                    .width >
-                                                1024
-                                            ? (1 / 0.15)
-                                            : MediaQuery.of(context).size.width >
-                                                    640
-                                                ? (1 / 0.08)
-                                                : (1 / 0.15),
-                                        crossAxisCount: (displayMobileLayout ==
-                                                true)
-                                            ? 1
-                                            : (MediaQuery.of(context).size.width <
-                                                    1050)
+                                        childAspectRatio:
+                                            MediaQuery.of(context).size.width >
+                                                    1024
+                                                ? (1 / 0.15)
+                                                : MediaQuery.of(context)
+                                                            .size
+                                                            .width >
+                                                        640
+                                                    ? (1 / 0.08)
+                                                    : (1 / 0.15),
+                                        crossAxisCount:
+                                            (displayMobileLayout == true)
                                                 ? 1
-                                                : 3,
+                                                : (MediaQuery.of(context)
+                                                            .size
+                                                            .width <
+                                                        1050)
+                                                    ? 1
+                                                    : 3,
                                         mainAxisSpacing: 15,
                                         crossAxisSpacing: 18,
                                         shrinkWrap: true,
@@ -835,7 +867,9 @@ class _ShowRegisterDataFormState extends State<ShowRegisterDataForm> {
                                                 hintText:
                                                     "Search by Name,admission no,form id"),
                                           ),
-                                          if (MediaQuery.of(context).size.width >=
+                                          if (MediaQuery.of(context)
+                                                  .size
+                                                  .width >=
                                               1200)
                                             Text(""),
                                           Center(
@@ -868,7 +902,8 @@ class _ShowRegisterDataFormState extends State<ShowRegisterDataForm> {
                                   padding: (displayMobileLayout == true)
                                       ? EdgeInsets.only(
                                           left: 10, right: 10, bottom: 15)
-                                      : (MediaQuery.of(context).size.width < 1024)
+                                      : (MediaQuery.of(context).size.width <
+                                              1024)
                                           ? EdgeInsets.only(
                                               left: 15, right: 25, bottom: 20)
                                           : EdgeInsets.only(
@@ -876,13 +911,42 @@ class _ShowRegisterDataFormState extends State<ShowRegisterDataForm> {
                                   width: MediaQuery.of(context).size.width,
                                   child: Card(
                                     shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10)),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
                                     elevation: 5,
                                     child: Padding(
                                         padding: EdgeInsets.all(20),
                                         child: SingleChildScrollView(
                                           scrollDirection: Axis.horizontal,
-                                          child: TableRow1(),
+                                          child:
+                                              FutureBuilder<DocumentSnapshot>(
+                                            future: users.doc(documentId).get(),
+                                            builder: (BuildContext context,
+                                                AsyncSnapshot<DocumentSnapshot>
+                                                    snapshot) {
+                                              if (snapshot.hasError) {
+                                                return Text(
+                                                    "Something went wrong");
+                                              }
+
+                                              if (snapshot.hasData &&
+                                                  !snapshot.data!.exists) {
+                                                return Text(
+                                                    "Document does not exist");
+                                              }
+
+                                              if (snapshot.connectionState ==
+                                                  ConnectionState.done) {
+                                                Map<String, dynamic> data =
+                                                    snapshot.data!.data()
+                                                        as Map<String, dynamic>;
+                                                print(data);
+                                                return TableRow1(data);
+                                              }
+
+                                              return Text("loading");
+                                            },
+                                          ),
                                         )),
                                   ),
                                 )

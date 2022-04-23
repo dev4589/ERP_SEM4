@@ -1,9 +1,10 @@
 import 'package:erp_sem4/ADMIN/screens/StaffRegistration.dart';
 import 'package:erp_sem4/ADMIN/screens/StudentFees.dart';
-import 'package:erp_sem4/ADMIN/screens/teacherWork.dart';
 import 'package:erp_sem4/ADMIN/screens/teacher_profile.dart';
 import 'package:erp_sem4/TEACHER/screens/dailywork.dart';
 import 'package:erp_sem4/TEACHER/screens/homepage.dart';
+import 'package:erp_sem4/TEACHER/screens/student%20attendence.dart';
+import 'package:erp_sem4/ADMIN/utility/pre_admission_module.dart';
 import 'package:erp_sem4/TEACHER/screens/student%20attendence.dart';
 import 'package:flutter/material.dart';
 import 'ADMIN/screens/dashboard.dart';
@@ -12,6 +13,10 @@ import 'ADMIN/screens/pre_admission.dart';
 import 'ADMIN/screens/show_student_registration.dart';
 import 'ADMIN/screens/student_profile.dart';
 import 'ADMIN/screens/student_registration.dart';
+import 'ADMIN/screens/teacherWork.dart';
+import 'ADMIN/utility/demo.dart';
+import 'ADMIN/utility/show_student_register_module.dart';
+import 'ADMIN/utility/student_form_module.dart';
 import 'constants/constants.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -59,10 +64,10 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.secularOneTextTheme(),
       ),
       debugShowCheckedModeBanner: false,
-      // initialRoute: dashboardR,
+      // initialRoute: studRegR,
       routes: {
-        dashboardR: (context) => const DashBoard(),
-        preAdmR: (context) => PreAdmission(),
+        dashboardR: (context) => DashBoard(),
+        // preAdmR: (context) => PreAdmission(),
         showRegDataR: (context) => ShowRegisterData(),
         studProfR: (context) => StudentProfile(),
         studRegR: (context) => StudentRegistration(),
@@ -72,9 +77,10 @@ class MyApp extends StatelessWidget {
         feesdetail:(context)=>ShowFeesDeatails(),
         dailyWork:(context)=>DailyWork(),
         teacherWork:(context)=>TeacherWork(),
-        staffRegistration:(context)=>StaffRegistration()
+        staffRegistration:(context)=>StaffRegistration(),
+        studentform: (context)=>StudentForm()
       },
-      home: ShowFeesDeatails(),
+      home: StudentRegistration(),
     );
   }
 }

@@ -3,12 +3,8 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:erp_sem4/constants/constants.dart';
 import 'package:erp_sem4/constants/dropdown_values.dart';
-
 import 'package:flutter/material.dart';
-
-import 'package:flutter/services.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:http/http.dart' as http;
+import 'package:image_picker_web/image_picker_web.dart';
 
 class PreAdmissionForm extends StatefulWidget {
   const PreAdmissionForm({Key? key}) : super(key: key);
@@ -48,19 +44,21 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
   String sources = "Select Sources";
   String ayear = "Select Academic Year";
 
-  Future pickimage(ImageSource src) async {
-    try {
-      final image = await ImagePicker().pickImage(source: src);
-      if (image == null) return;
-      final imageTemp = File(image.path);
-      setState(() {
-        this.image = imageTemp;
-      });
-    } on PlatformException catch (e) {
-      print("Failed to pick image : $e");
-    }
-  }
+  // final _pickedImages = <Image>[];
+  // String _imageInfo = '';
 
+  // Future<void> _pickImage() async {
+  //   final fromPicker = await ImagePickerWeb.getImageAsWidget();
+  //   final infos = await ImagePickerWeb.getImageInfo;
+  //   final data = infos?.data;
+  //   if (fromPicker != null) {
+  //     setState(() {
+  //       _pickedImages.add(fromPicker);
+  //       _pickedImages.add(Image.memory(data!, semanticLabel: infos?.fileName));
+  //       _imageInfo = '${infos?.toJson()}';
+  //     });
+  //   }
+  // }
   @override
   Widget build(BuildContext context) {
     CollectionReference preAdmission =
@@ -70,10 +68,6 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
       // Call the user's CollectionReference to add a new user
       return preAdmission
           .add({
-            // 'full_name': fullName, // John Doe
-            // 'company': company, // Stokes and Sons
-            // 'age': age, // 42
-
             'form_no': formno.text,
             'admission_date': admissionDate.text,
             'adyear': adyear.text,
@@ -282,8 +276,9 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                                                               DateTime(1900),
                                                           lastDate:
                                                               DateTime.now());
-                                                      admissionDate.text = date!.day
-                                                          .toString() +
+                                                      admissionDate.text = date!
+                                                              .day
+                                                              .toString() +
                                                           "-" +
                                                           date.month
                                                               .toString() +
@@ -312,7 +307,7 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                                                   ayear = num;
                                                 });
                                               }
-                                              adyear.text=num.toString();
+                                              adyear.text = num.toString();
                                             },
                                           ),
                                           TextFormField(
@@ -433,7 +428,7 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                                                   gender = num;
                                                 });
                                               }
-                                              genderc.text=num.toString();
+                                              genderc.text = num.toString();
                                             },
                                           ),
                                           TextFormField(
@@ -443,37 +438,39 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                                               labelText: "No Of Sibbling",
                                             ),
                                           ),
-                                          TextFormField(
-                                            controller: sphoto,
-                                            decoration: InputDecoration(
-                                                //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                labelText: "Student Photo",
-                                                suffixIcon: Wrap(
-                                                  children: [
-                                                    IconButton(
-                                                      icon: Icon(Icons
-                                                          .add_a_photo_outlined),
-                                                      onPressed: () =>
-                                                          pickimage(ImageSource
-                                                              .camera),
-                                                    ),
-                                                    IconButton(
-                                                        onPressed: () =>
-                                                            pickimage(
-                                                                ImageSource
-                                                                    .gallery),
-                                                        icon: Icon(Icons
-                                                            .add_photo_alternate_outlined))
-                                                  ],
-                                                )),
-                                          ),
-                                          image != null
-                                              ? Image.file(image!,
-                                                  width: 70,
-                                                  height: 70,
-                                                  fit: BoxFit.fill)
-                                              : Text(
-                                                  "Your captured image will appear here..."),
+                                          // TextFormField(
+                                          //   controller: sphoto,
+                                          //   decoration: InputDecoration(
+                                          //       //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                          //       labelText: "Student Photo",
+                                          //       suffixIcon: Wrap(
+                                          //         children: [
+                                          //           IconButton(
+                                          //               icon: Icon(Icons
+                                          //                   .add_a_photo_outlined),
+                                          //               onPressed: _pickImage
+                                          //           ),
+                                          //           // IconButton(
+                                          //           //     onPressed: () {
+                                          //           //       pickImage().then((value) {
+                                          //           //         setState(() {
+                                          //           //           mediaInfo = value!;
+                                          //           //         });
+                                          //           //       });
+                                          //           //     },
+                                          //           //     icon: Icon(Icons
+                                          //           //         .add_photo_alternate_outlined))
+                                          //         ],
+                                          //       )),
+                                          // ),
+                                          // _pickedImages.length>0
+                                          //     // ? Image.file(image!,
+                                          //     //     width: 70,
+                                          //     //     height: 70,
+                                          //     //     fit: BoxFit.fill)
+                                          // ?_pickedImages.first
+                                          //     : Text(
+                                          //         "Your captured image will appear here..."),
                                           TextFormField(
                                             controller: address,
                                             maxLines: 3,
@@ -529,7 +526,7 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                                                   sources = num;
                                                 });
                                               }
-                                              source.text=num.toString();
+                                              source.text = num.toString();
                                             },
                                           ),
                                           TextFormField(
@@ -580,32 +577,6 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                                                           18.0)),
                                               color: kPrimaryColor,
                                               onPressed: addPreAdmission,
-                                              // {
-                                              //   print(formno.text +
-                                              //       admissiondate.text +
-                                              //       adyear.text +
-                                              //       name.text +
-                                              //       fname.text +
-                                              //       sname.text +
-                                              //       mname.text +
-                                              //       cno1.text +
-                                              //       cno2.text +
-                                              //       email.text +
-                                              //       dob.text +
-                                              //       attentedclass.text +
-                                              //       gender +
-                                              //       nosibbling.text +
-                                              //       sphoto.text +
-                                              //       address.text +
-                                              //       pcode.text +
-                                              //       foccupation.text +
-                                              //       moccupation.text +
-                                              //       reference.text +
-                                              //       sources +
-                                              //       previosschooldet.text +
-                                              //       desc.text +
-                                              //       childname.text);
-                                              // },
                                               child: Text(
                                                 "Save Student",
                                                 style: TextStyle(
@@ -635,3 +606,30 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
     );
   }
 }
+
+// {
+//   print(formno.text +
+//       admissiondate.text +
+//       adyear.text +
+//       name.text +
+//       fname.text +
+//       sname.text +
+//       mname.text +
+//       cno1.text +
+//       cno2.text +
+//       email.text +
+//       dob.text +
+//       attentedclass.text +
+//       gender +
+//       nosibbling.text +
+//       sphoto.text +
+//       address.text +
+//       pcode.text +
+//       foccupation.text +
+//       moccupation.text +
+//       reference.text +
+//       sources +
+//       previosschooldet.text +
+//       desc.text +
+//       childname.text);
+// },

@@ -142,8 +142,10 @@ class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
                                           hoverColor: Colors.cyan[50],
                                           splashColor: Colors.cyan[100],
                                           onTap: () {
-                                            Navigator.pushNamed(
-                                                context, dailyWork);
+                                            // Navigator.pushNamed(
+                                            //     context, dailyWork);
+
+
                                             // Navigator.push(
                                             //     context,
                                             //     MaterialPageRoute(

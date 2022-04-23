@@ -3,12 +3,7 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:erp_sem4/constants/constants.dart';
 import 'package:erp_sem4/constants/dropdown_values.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:flutter/material.dart';
-
-import 'package:flutter/services.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:http/http.dart' as http;
 
 class StaffRegistrationForm extends StatefulWidget {
   const StaffRegistrationForm({Key? key}) : super(key: key);
@@ -56,18 +51,18 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
   String sources = "Select Designation";
   String ayear = "Select Joining Year";
 
-  Future pickimage(ImageSource src) async {
-    try {
-      final image = await ImagePicker().pickImage(source: src);
-      if (image == null) return;
-      final imageTemp = File(image.path);
-      setState(() {
-        this.image = imageTemp;
-      });
-    } on PlatformException catch (e) {
-      print("Failed to pick image : $e");
-    }
-  }
+  // Future pickimage(ImageSource src) async {
+  //   try {
+  //     final image = await ImagePicker().pickImage(source: src);
+  //     if (image == null) return;
+  //     final imageTemp = File(image.path);
+  //     setState(() {
+  //       this.image = imageTemp;
+  //     });
+  //   } on PlatformException catch (e) {
+  //     print("Failed to pick image : $e");
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -441,37 +436,37 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
                                               genderc.text = num.toString();
                                             },
                                           ),
-                                          TextFormField(
-                                            controller: sphoto,
-                                            decoration: InputDecoration(
-                                                //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                labelText: "Upload Photo",
-                                                suffixIcon: Wrap(
-                                                  children: [
-                                                    IconButton(
-                                                      icon: Icon(Icons
-                                                          .add_a_photo_outlined),
-                                                      onPressed: () =>
-                                                          pickimage(ImageSource
-                                                              .camera),
-                                                    ),
-                                                    IconButton(
-                                                        onPressed: () =>
-                                                            pickimage(
-                                                                ImageSource
-                                                                    .gallery),
-                                                        icon: Icon(Icons
-                                                            .add_photo_alternate_outlined))
-                                                  ],
-                                                )),
-                                          ),
-                                          image != null
-                                              ? Image.file(image!,
-                                                  width: 70,
-                                                  height: 70,
-                                                  fit: BoxFit.fill)
-                                              : Text(
-                                                  "Your captured image will appear here..."),
+                                          // TextFormField(
+                                          //   controller: sphoto,
+                                          //   decoration: InputDecoration(
+                                          //       //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                                          //       labelText: "Upload Photo",
+                                          //       suffixIcon: Wrap(
+                                          //         children: [
+                                          //           IconButton(
+                                          //             icon: Icon(Icons
+                                          //                 .add_a_photo_outlined),
+                                          //             onPressed: () =>
+                                          //                 pickimage(ImageSource
+                                          //                     .camera),
+                                          //           ),
+                                          //           IconButton(
+                                          //               onPressed: () =>
+                                          //                   pickimage(
+                                          //                       ImageSource
+                                          //                           .gallery),
+                                          //               icon: Icon(Icons
+                                          //                   .add_photo_alternate_outlined))
+                                          //         ],
+                                          //       )),
+                                          // ),
+                                          // image != null
+                                          //     ? Image.file(image!,
+                                          //         width: 70,
+                                          //         height: 70,
+                                          //         fit: BoxFit.fill)
+                                          //     : Text(
+                                          //         "Your captured image will appear here..."),
                                           TextFormField(
                                             controller: address,
                                             maxLines: 3,
