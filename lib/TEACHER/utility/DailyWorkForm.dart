@@ -2,6 +2,9 @@ import 'dart:developer';
 import 'package:erp_sem4/constants/constants.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+
 
 
 class DailyWorkForm extends StatefulWidget {
@@ -14,13 +17,38 @@ class DailyWorkForm extends StatefulWidget {
 }
 
 class _DailyWorkFormState extends State<DailyWorkForm> {
+  Widget fadeAlertAnimation(
+      BuildContext context,
+      Animation<double> animation,
+      Animation<double> secondaryAnimation,
+      Widget child,
+      ) {
+    return Align(
+      child: FadeTransition(
+        opacity: animation,
+        child: child,
+      ),
+    );
+  }
+
   String dropdownValueClass = 'Choose Class';
   String dropdownValueSubject = 'Choose Subject';
   String dropdownValueType = 'Choose Type';
   String dropdownValueUnit = "Choose Unit";
   String dropdownValueChapter = "Choose Chapter";
   String dropdownValueTopic = "Choose Topic";
+
   TextEditingController _subtopic = TextEditingController();
+  TextEditingController classname=TextEditingController();
+  TextEditingController subject=TextEditingController();
+  TextEditingController type= TextEditingController();
+  TextEditingController unit=TextEditingController();
+  TextEditingController chapter=TextEditingController();
+  TextEditingController topic=TextEditingController();
+
+
+
+
 
   List<String> _classList = [
     'Choose Class',
@@ -79,6 +107,27 @@ class _DailyWorkFormState extends State<DailyWorkForm> {
   late int index = 0;
   @override
   Widget build(BuildContext context) {
+    CollectionReference dailyWork=FirebaseFirestore.instance.collection('daily_work');
+    Future<void> addwork(){
+      return dailyWork.add({
+        'Class_name':classname.text,
+        'Subject':subject.text,
+        'Type':type.text,
+        'Unit':unit.text,
+        'Chapter':chapter.text,
+        'Topic':topic.text,
+        'Sub-topic':_subtopic.text
+      }).then((value) => Alert(
+        context: context,
+        type: AlertType.info,
+        title: 'Added Successfully',).show().catchError((error)=>Alert(
+        context: context,
+        type: AlertType.info,
+        title: "Failed To Add",
+        alertAnimation: fadeAlertAnimation
+      )));
+    }
+
     Size size = MediaQuery.of(context).size;
     final bool displayMobileLayout = MediaQuery.of(context).size.width < 800;
     return Padding(
@@ -183,6 +232,7 @@ class _DailyWorkFormState extends State<DailyWorkForm> {
                                                     dropdownValueClass =
                                                     newValue!;
                                                   });
+                                                  classname.text=dropdownValueClass.toString();
                                                 }),
                                           ),
                                         ),
@@ -214,6 +264,7 @@ class _DailyWorkFormState extends State<DailyWorkForm> {
                                                     dropdownValueSubject =
                                                     newValue!;
                                                   });
+                                                  subject.text=dropdownValueSubject.toString();
                                                 }),
                                           ),
                                         ),
@@ -241,6 +292,7 @@ class _DailyWorkFormState extends State<DailyWorkForm> {
                                                 setState(() {
                                                   dropdownValueType = newValue!;
                                                 });
+                                                type.text=dropdownValueType.toString();
                                               }),
                                         ),
                                       ),
@@ -271,6 +323,7 @@ class _DailyWorkFormState extends State<DailyWorkForm> {
                                                     dropdownValueUnit =
                                                     newValue!;
                                                   });
+                                                  unit.text=dropdownValueUnit.toString();
                                                 }),
                                           ),
                                         ),
@@ -302,6 +355,7 @@ class _DailyWorkFormState extends State<DailyWorkForm> {
                                                     dropdownValueChapter =
                                                     newValue!;
                                                   });
+                                                  chapter.text=dropdownValueChapter.toString();
                                                 }),
                                           ),
                                         ),
@@ -333,6 +387,7 @@ class _DailyWorkFormState extends State<DailyWorkForm> {
                                                     dropdownValueTopic =
                                                     newValue!;
                                                   });
+                                                  topic.text=dropdownValueTopic.toString();
                                                 }),
                                           ),
                                         ),
@@ -370,10 +425,7 @@ class _DailyWorkFormState extends State<DailyWorkForm> {
                                               borderRadius:
                                               BorderRadius.circular(18.0)),
                                           color: kPrimaryColor,
-                                          onPressed: () {
-                                            print(
-                                                '${"Class: " + dropdownValueClass + " Subject: " + dropdownValueSubject + " Type: " + dropdownValueType + " Unit: " + dropdownValueUnit + " Chapter: " + dropdownValueChapter + "  Topic: " + dropdownValueTopic + " Sub-Topic: " + _subtopic.text}');
-                                          },
+                                          onPressed: addwork,
                                           child: Text(
                                             "Submit & Save",
                                             style: TextStyle(
