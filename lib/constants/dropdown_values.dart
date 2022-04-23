@@ -13,13 +13,22 @@ class Dropdown {
     'Half-Yearly',
     
   ];
+
+  static List<String> selectyear=[
+    "Select Academic Year",
+    '2022','2021','2020','2019'
+  ];
   static List<String> academicyear = [
-    "Select Joining Year",
-    '2022',
-    '2021',
-    '2020',
-    '2019',
-    '2018',
+    "Select Academic Year",
+    '2022-2021',
+    '2021-2020',
+    '2020-2019',
+    '2019-2018',
+    '2018-2017',
+  ];
+
+  static List<String> dropdownrefSource =[
+    "Select Sources",'Social Media','Student','News-paper','Pamphlet'
   ];
   static List<String> sources = [
     "Select Designation",

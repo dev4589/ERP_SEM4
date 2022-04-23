@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:erp_sem4/constants/constants.dart';
 import 'package:erp_sem4/constants/dropdown_values.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker_web/image_picker_web.dart';
+// import 'package:image_picker_web/image_picker_web.dart';
 
 class PreAdmissionForm extends StatefulWidget {
   const PreAdmissionForm({Key? key}) : super(key: key);
@@ -34,15 +34,16 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
   TextEditingController foccupation = TextEditingController();
   TextEditingController moccupation = TextEditingController();
   TextEditingController reference = TextEditingController();
-  TextEditingController source = TextEditingController();
+  TextEditingController refsource = TextEditingController();
   TextEditingController previosschooldet = TextEditingController();
   TextEditingController desc = TextEditingController();
   TextEditingController childname = TextEditingController();
 
   File? image;
   String gender = "Select Gender";
-  String sources = "Select Sources";
+  String refsources = "Select Sources";
   String ayear = "Select Academic Year";
+
 
   // final _pickedImages = <Image>[];
   // String _imageInfo = '';
@@ -88,7 +89,7 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
             'foccupation': foccupation.text,
             'moccupation': moccupation.text,
             'reference': reference.text,
-            'source': source.text,
+            'source': refsource.text,
             'previosschooldet': previosschooldet.text,
             'desc': desc.text,
             'childname': childname.text
@@ -294,6 +295,7 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                                             hint: Text("Select Academic Year"),
                                             value: ayear,
                                             isExpanded: true,
+
                                             items: Dropdown.academicyear
                                                 .map((String val) {
                                               return DropdownMenuItem<String>(
@@ -511,9 +513,9 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                                             borderRadius:
                                                 BorderRadius.circular(5),
                                             hint: Text("Select Sources"),
-                                            value: sources,
+                                            value: refsources,
                                             isExpanded: true,
-                                            items: Dropdown.sources
+                                            items: Dropdown.dropdownrefSource
                                                 .map((String val) {
                                               return DropdownMenuItem<String>(
                                                 value: val,
@@ -523,10 +525,10 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
                                             onChanged: (String? num) async {
                                               if (num != null) {
                                                 setState(() {
-                                                  sources = num;
+                                                  refsources = num;
                                                 });
                                               }
-                                              source.text = num.toString();
+                                              refsource.text = refsources.toString();
                                             },
                                           ),
                                           TextFormField(
