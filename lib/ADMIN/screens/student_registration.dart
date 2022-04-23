@@ -1,7 +1,7 @@
 import 'package:erp_sem4/constants/constants.dart';
 
 
-import '../utility/student_form_module.dart';
+import '../utility/student_registration_form_module.dart';
 import 'package:flutter/material.dart';
 
 class StudentRegistration extends StatefulWidget {
@@ -34,7 +34,7 @@ class _StudentRegistrationState extends State<StudentRegistration> {
                     color: Colors.white),
               ],
             ),
-            StudentForm(),
+            StudentRegistrationForm(),
           ],
         ),
       ),

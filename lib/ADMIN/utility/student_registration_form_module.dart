@@ -4,16 +4,25 @@ import 'package:erp_sem4/constants/dropdown_values.dart';
 import 'package:flutter/material.dart';
 
 
-class StudentForm extends StatefulWidget {
+class StudentRegistrationForm extends StatefulWidget {
   @override
-  _StudentFormState createState() => _StudentFormState();
+  _StudentRegistrationFormState createState() => _StudentRegistrationFormState();
 }
 
-class _StudentFormState extends State<StudentForm> {
+class _StudentRegistrationFormState extends State<StudentRegistrationForm> {
   // File? image;
   String religion = "Select Religion";
   bool isLoading = false;
-
+  String  father_occu="Father's Occupation";
+  String father_edu="Father's Education";
+  String  mother_occu="Mother's Occupation";
+  String mother_edu="Mother's Education";
+  String academic="Select Joining Year";
+  String blood="Select Blood Group";
+  String genderS="Select Gender";
+  String relig=    "Select Religion";
+  String minori=    "Is Minority";
+  String handiS=    "Is Physically Handicapped";
   TextEditingController fname = TextEditingController();
   TextEditingController mname = TextEditingController();
   TextEditingController lname = TextEditingController();
@@ -91,7 +100,7 @@ class _StudentFormState extends State<StudentForm> {
             'gender': gender.text,
             'nationality': nation.text,
             'caste': caste.text,
-            'subcaste': subCaste.text,
+            // 'subcaste': subCaste.text,
             //:quaEx.text,
             //:quaExN.text,
             //:seatNo.text,
@@ -125,7 +134,7 @@ class _StudentFormState extends State<StudentForm> {
             'mother_office_contact': mOffCo.text,
             'current_addr': currentAddr.text,
             'religion': religionC.text,
-            'transportation': transp.text,
+            // 'transportation': transp.text,
           })
           .then((value) => print("User Added"))
           .catchError((error) => print("Failed to add user: $error"));
@@ -387,8 +396,7 @@ class _StudentFormState extends State<StudentForm> {
                                                     BorderRadius.circular(5),
                                                 hint: Text(
                                                     "Select Academic Year"),
-                                                value: Dropdown.academicyear
-                                                    .elementAt(0),
+                                                value: academic,
                                                 isExpanded: true,
                                                 items: Dropdown.academicyear
                                                     .map((String val) {
@@ -399,6 +407,9 @@ class _StudentFormState extends State<StudentForm> {
                                                   );
                                                 }).toList(),
                                                 onChanged: (String? num) {
+                                                  setState(() {
+                                                    academic=num!;
+                                                  });
                                                   acYear.text = num.toString();
                                                 },
                                               ),
@@ -407,8 +418,7 @@ class _StudentFormState extends State<StudentForm> {
                                                     BorderRadius.circular(5),
                                                 hint:
                                                     Text("Select Blood Group"),
-                                                value: Dropdown.bloodgrp
-                                                    .elementAt(0),
+                                                value: blood,
                                                 isExpanded: true,
                                                 items: Dropdown.bloodgrp
                                                     .map((String val) {
@@ -419,6 +429,9 @@ class _StudentFormState extends State<StudentForm> {
                                                   );
                                                 }).toList(),
                                                 onChanged: (String? num) {
+                                                  setState(() {
+                                                    blood=num!;
+                                                  });
                                                   bloodG.text = num.toString();
                                                 },
                                               ),
@@ -426,8 +439,7 @@ class _StudentFormState extends State<StudentForm> {
                                                 borderRadius:
                                                     BorderRadius.circular(5),
                                                 hint: Text("Select Gender"),
-                                                value: Dropdown.gender
-                                                    .elementAt(0),
+                                                value: genderS,
                                                 isExpanded: true,
                                                 items: Dropdown.gender
                                                     .map((String val) {
@@ -438,6 +450,9 @@ class _StudentFormState extends State<StudentForm> {
                                                   );
                                                 }).toList(),
                                                 onChanged: (String? num) {
+                                                  setState(() {
+                                                    genderS=num!;
+                                                  });
                                                   gender.text = num.toString();
                                                 },
                                               ),
@@ -448,14 +463,33 @@ class _StudentFormState extends State<StudentForm> {
                                                   labelText: "Nationality",
                                                 ),
                                               ),
+                                              // DropdownButton<String>(
+                                              //   borderRadius:
+                                              //       BorderRadius.circular(5),
+                                              //   value: Dropdown.religion
+                                              //       .elementAt(0),
+                                              //   hint: Text(
+                                              //     religion,
+                                              //   ),
+                                              //   isExpanded: true,
+                                              //   items: Dropdown.religion
+                                              //       .map((String val) {
+                                              //     return DropdownMenuItem<
+                                              //         String>(
+                                              //       value: val,
+                                              //       child: Text(val),
+                                              //     );
+                                              //   }).toList(),
+                                              //   onChanged: (String? num) {
+                                              //     religionC.text =
+                                              //         num.toString();
+                                              //   },
+                                              // ),
                                               DropdownButton<String>(
                                                 borderRadius:
-                                                    BorderRadius.circular(5),
-                                                value: Dropdown.religion
-                                                    .elementAt(0),
-                                                hint: Text(
-                                                  religion,
-                                                ),
+                                                BorderRadius.circular(5),
+                                                hint: Text("Select Religion"),
+                                                value: relig,
                                                 isExpanded: true,
                                                 items: Dropdown.religion
                                                     .map((String val) {
@@ -466,8 +500,10 @@ class _StudentFormState extends State<StudentForm> {
                                                   );
                                                 }).toList(),
                                                 onChanged: (String? num) {
-                                                  religionC.text =
-                                                      num.toString();
+                                                  setState(() {
+                                                    relig=num!;
+                                                  });
+                                                  religionC.text = num.toString();
                                                 },
                                               ),
                                               TextFormField(
@@ -560,8 +596,7 @@ class _StudentFormState extends State<StudentForm> {
                                                     BorderRadius.circular(5),
                                                 hint: Text(
                                                     "Is physically handicapped "),
-                                                value: Dropdown.physically
-                                                    .elementAt(0),
+                                                value: handiS,
                                                 isExpanded: true,
                                                 items: Dropdown.physically
                                                     .map((String val) {
@@ -572,6 +607,9 @@ class _StudentFormState extends State<StudentForm> {
                                                   );
                                                 }).toList(),
                                                 onChanged: (String? num) {
+                                                  setState(() {
+                                                    handiS=num!;
+                                                  });
                                                   handi.text = num.toString();
                                                 },
                                               ),
@@ -579,8 +617,7 @@ class _StudentFormState extends State<StudentForm> {
                                                 borderRadius:
                                                     BorderRadius.circular(5),
                                                 hint: Text("Is Minority "),
-                                                value: Dropdown.minority
-                                                    .elementAt(0),
+                                                value: minori,
                                                 isExpanded: true,
                                                 items: Dropdown.minority
                                                     .map((String val) {
@@ -591,6 +628,9 @@ class _StudentFormState extends State<StudentForm> {
                                                   );
                                                 }).toList(),
                                                 onChanged: (String? num) {
+                                                  setState(() {
+                                                    minori=num!;
+                                                  });
                                                   minority.text =
                                                       num.toString();
                                                 },
@@ -810,11 +850,11 @@ class _StudentFormState extends State<StudentForm> {
                                               //     }
                                               //   },
                                               // ),
-                                              // if (MediaQuery.of(context)
-                                              //         .size
-                                              //         .width >=
-                                              //     1200)
-                                              //   Text(""),
+                                              if (MediaQuery.of(context)
+                                                      .size
+                                                      .width >=
+                                                  1200)
+                                                Text(""),
                                               // if (MediaQuery.of(context)
                                               //         .size
                                               //         .width >=
@@ -862,8 +902,7 @@ class _StudentFormState extends State<StudentForm> {
                                                     BorderRadius.circular(5),
                                                 hint: Text(
                                                     "Father's Occupation "),
-                                                value: Dropdown.foccupation
-                                                    .elementAt(0),
+                                                value: father_occu,
                                                 isExpanded: true,
                                                 items: Dropdown.foccupation
                                                     .map((String val) {
@@ -874,6 +913,9 @@ class _StudentFormState extends State<StudentForm> {
                                                   );
                                                 }).toList(),
                                                 onChanged: (String? num) {
+                                                  setState(() {
+                                                    father_occu=num!;
+                                                  });
                                                   fOccu.text = num.toString();
                                                 },
                                               ),
@@ -882,8 +924,7 @@ class _StudentFormState extends State<StudentForm> {
                                                     BorderRadius.circular(5),
                                                 hint:
                                                     Text("Father's Education "),
-                                                value: Dropdown.feducation
-                                                    .elementAt(0),
+                                                value: father_edu,
                                                 isExpanded: true,
                                                 items: Dropdown.feducation
                                                     .map((String val) {
@@ -894,6 +935,9 @@ class _StudentFormState extends State<StudentForm> {
                                                   );
                                                 }).toList(),
                                                 onChanged: (String? num) {
+                                                  setState(() {
+                                                    father_edu=num!;
+                                                  });
                                                   fEdu.text = num.toString();
                                                 },
                                               ),
@@ -952,8 +996,7 @@ class _StudentFormState extends State<StudentForm> {
                                                     BorderRadius.circular(5),
                                                 hint: Text(
                                                     "Mother's Occupation "),
-                                                value: Dropdown.moccupation
-                                                    .elementAt(0),
+                                                value: mother_occu,
                                                 isExpanded: true,
                                                 items: Dropdown.moccupation
                                                     .map((String val) {
@@ -964,6 +1007,9 @@ class _StudentFormState extends State<StudentForm> {
                                                   );
                                                 }).toList(),
                                                 onChanged: (String? num) {
+                                                  setState(() {
+                                                    mother_occu=num!;
+                                                  });
                                                   mOccu.text = num.toString();
                                                 },
                                               ),
@@ -972,8 +1018,7 @@ class _StudentFormState extends State<StudentForm> {
                                                     BorderRadius.circular(5),
                                                 hint:
                                                     Text("Mother's Education "),
-                                                value: Dropdown.meducation
-                                                    .elementAt(0),
+                                                value: mother_edu,
                                                 isExpanded: true,
                                                 items: Dropdown.meducation
                                                     .map((String val) {
@@ -984,6 +1029,9 @@ class _StudentFormState extends State<StudentForm> {
                                                   );
                                                 }).toList(),
                                                 onChanged: (String? num) async {
+                                                  setState(() {
+                                                    mother_edu=num!;
+                                                  });
                                                   mEdu.text = num.toString();
                                                 },
                                               ),
@@ -1048,25 +1096,25 @@ class _StudentFormState extends State<StudentForm> {
                                               //         "Permanent Address",
                                               //   ),
                                               // ),
-                                              DropdownButton<String>(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                hint: Text("Transport "),
-                                                value: Dropdown.transport
-                                                    .elementAt(0),
-                                                isExpanded: true,
-                                                items: Dropdown.transport
-                                                    .map((String val) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: val,
-                                                    child: Text(val),
-                                                  );
-                                                }).toList(),
-                                                onChanged: (String? num) {
-                                                  transp.text = num.toString();
-                                                },
-                                              ),
+                                              // DropdownButton<String>(
+                                              //   borderRadius:
+                                              //       BorderRadius.circular(5),
+                                              //   hint: Text("Transport "),
+                                              //   value: Dropdown.transport
+                                              //       .elementAt(0),
+                                              //   isExpanded: true,
+                                              //   items: Dropdown.transport
+                                              //       .map((String val) {
+                                              //     return DropdownMenuItem<
+                                              //         String>(
+                                              //       value: val,
+                                              //       child: Text(val),
+                                              //     );
+                                              //   }).toList(),
+                                              //   onChanged: (String? num) {
+                                              //     transp.text = num.toString();
+                                              //   },
+                                              // ),
                                               if (MediaQuery.of(context)
                                                       .size
                                                       .width >=
@@ -1121,7 +1169,7 @@ class _StudentFormState extends State<StudentForm> {
                                                       .width >=
                                                   1200)
                                                 Text(""),
-
+                                              Text(""),
                                               Center(
                                                 child: FlatButton(
                                                   height: 45,
