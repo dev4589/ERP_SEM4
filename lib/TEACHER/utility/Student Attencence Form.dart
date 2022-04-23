@@ -2,23 +2,82 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:erp_sem4/constants/constants.dart';
 import 'package:erp_sem4/constants/dropdown_values.dart';
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class StudentAttendanceForm extends StatefulWidget {
   @override
   _StudentAttendanceFormState createState() => _StudentAttendanceFormState();
 }
 
-enum Attendence { present, absent }
+
 
 class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
+  String? selectedvalue="choose";
+  Widget fadeAlertAnimation(
+      BuildContext context,
+      Animation<double> animation,
+      Animation<double> secondaryAnimation,
+      Widget child,
+      ) {
+    return Align(
+      child: FadeTransition(
+        opacity: animation,
+        child: child,
+      ),
+    );
+  }
   TextStyle gridviewtext = new TextStyle(fontSize: 16);
   String class2 = "";
   String section = "";
-  Attendence? _val = Attendence.present;
+  String _adminssionno='1';
+  String _rollno='1';
+  String _name='Jay Savaliya';
+
   TextEditingController academicdate = TextEditingController();
+  TextEditingController classname=TextEditingController();
+  TextEditingController sectionc=TextEditingController();
+  TextEditingController admisssionno=TextEditingController();
+  TextEditingController rollno=TextEditingController();
+  TextEditingController stu_name=TextEditingController();
+  TextEditingController attendence=TextEditingController();
+  TextEditingController note=TextEditingController();
+
+
+
 
   @override
   Widget build(BuildContext context) {
+    CollectionReference attendance = FirebaseFirestore.instance.collection('Attendance');
+    Future<void> addattendance() {
+      // Call the user's CollectionReference to add a new user
+      return attendance.add({
+        'Class': classname.text,
+        'Section': section,
+        'Date': academicdate.text,
+        'Admission_no': _adminssionno,
+        'Roll_no': _rollno,
+        'Student_name': _name,
+        'Attendance': attendence.text,
+        'Note': note.text,
+
+      }).then((value) =>
+          Alert(context: context, type: AlertType.info, title: "Attendence Added")
+              .show()
+              .catchError((error) => Alert(
+              context: context,
+              type: AlertType.info,
+              title: "Failed To Add Attendence",
+              alertAnimation: fadeAlertAnimation)));
+//     Alert(
+      //   context: context,
+      //   type: AlertType.info,
+      //   title: "Email can't be empty",
+      //   desc: "please enter Email",
+      //   alertAnimation: fadeAlertAnimation,
+      // ).show()
+// print("Staff Added"))
+    }
     Size size = MediaQuery.of(context).size;
 
     final bool displayMobileLayout = MediaQuery.of(context).size.width < 800;
@@ -141,6 +200,7 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                             setState(() {
                                               class2 = val!;
                                             });
+                                            classname.text=class2.toString();
                                           },
                                         ),
                                         DropdownSearch<String>(
@@ -153,6 +213,7 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                             setState(() {
                                               section = val!;
                                             });
+                                            sectionc.text=section.toString();
                                           },
                                           dropdownSearchDecoration:
                                               InputDecoration(
@@ -191,6 +252,8 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                                         "/" +
                                                         date.year.toString();
                                                   },
+
+
                                                   icon: Icon(Icons
                                                       .calendar_today_outlined))),
                                         ),
@@ -200,27 +263,7 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                         if (MediaQuery.of(context).size.width >=
                                             1024)
                                           Text(""),
-                                        Center(
-                                            child: FlatButton(
-                                                height: 45,
-                                                minWidth: 150,
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            18.0)),
-                                                color: kPrimaryColor,
-                                                onPressed: () {
-                                                  print(academicdate.text +
-                                                      class2 +
-                                                      section);
-                                                  // print(formno.text+admissiondate.text+adyear.text+name.text+fname.text+sname.text+mname.text+cno1.text+cno2.text+email.text+dob.text+attentedclass.text+gender+nosibbling.text+sphoto.text+address.text+pcode.text+foccupation.text+moccupation.text+reference.text+sources+previosschooldet.text+desc.text+childname.text);
-                                                },
-                                                child: Text(
-                                                  "Search",
-                                                  style: TextStyle(
-                                                      fontSize: 17,
-                                                      color: Colors.white),
-                                                )))
+
                                       ],
                                     ),
                                   ),
@@ -267,9 +310,7 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                                         BorderRadius.circular(
                                                             10.0)),
                                                 color: kPrimaryColor,
-                                                onPressed: () {
-                                                  print("$class2\n" +"$section\n"+"$academicdate\n"+"$_val");
-                                                },
+                                                onPressed: addattendance,
                                                 child: Text(
                                                   "Save Attendance",
                                                   style: TextStyle(
@@ -362,14 +403,15 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                                 child: Padding(
                                                   padding:
                                                       const EdgeInsets.all(8.0),
-                                                  child: Text("1"),
+                                                  child: Text(_adminssionno),
+
                                                 ),
                                               ),
                                               TableCell(
                                                 child: Padding(
                                                   padding:
                                                       const EdgeInsets.all(8.0),
-                                                  child: Text("1"),
+                                                  child: Text(_rollno),
                                                 ),
                                               ),
                                               TableCell(
@@ -377,7 +419,7 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                                   padding:
                                                       const EdgeInsets.all(8.0),
                                                   child: Text(
-                                                      "chinna swami muttu swami venn gopal iyer"),
+                                                      _name),
                                                 ),
                                               ),
                                               TableCell(
@@ -387,32 +429,30 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                                             8.0),
                                                     child: Row(
                                                       children: [
-                                                        Radio(
+                                                        Radio<String>(
                                                             activeColor:
                                                                 Colors.blue,
-                                                            value: Attendence
-                                                                .present,
-                                                            groupValue: _val,
+                                                            value: "Present",
+                                                            groupValue:selectedvalue,
                                                             onChanged:
-                                                                (Attendence?
-                                                                    value) {
-                                                              setState(() {
-                                                                _val = value;
+                                                                (value) {
+                                                              setState(() { 
+                                                                selectedvalue = value;
                                                               });
+                                                              attendence.text=selectedvalue.toString();
                                                             }),
                                                         Text("Present"),
-                                                        Radio(
+                                                        Radio<String>(
                                                             activeColor:
                                                                 Colors.blue,
-                                                            value: Attendence
-                                                                .absent,
-                                                            groupValue: _val,
+                                                            value: "Absent",
+                                                            groupValue: selectedvalue,
                                                             onChanged:
-                                                                (Attendence?
-                                                                    value) {
+                                                                (value) {
                                                               setState(() {
-                                                                _val = value;
+                                                                selectedvalue = value;
                                                               });
+                                                              attendence.text=selectedvalue.toString();
                                                             }),
                                                         Text("Absent"),
                                                         // Radio(
@@ -441,6 +481,7 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                                   padding:
                                                       const EdgeInsets.all(8.0),
                                                   child: TextField(
+                                                    controller: note,
                                                     decoration: InputDecoration(
                                                         hintText:
                                                             "Enter note here"),
