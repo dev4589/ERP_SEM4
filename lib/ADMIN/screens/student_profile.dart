@@ -5,7 +5,6 @@ import '../utility/student_profile_module.dart';
 import 'package:flutter/material.dart';
 
 class StudentProfile extends StatefulWidget {
-
   @override
   _StudentProfileState createState() => _StudentProfileState();
 }
@@ -13,6 +12,8 @@ class StudentProfile extends StatefulWidget {
 class _StudentProfileState extends State<StudentProfile> {
   @override
   Widget build(BuildContext context) {
+    final arguments = (ModalRoute.of(context)?.settings.arguments ?? <String, dynamic>{}) as Map;
+    print(arguments['data']);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
@@ -33,7 +34,7 @@ class _StudentProfileState extends State<StudentProfile> {
                     color: Colors.white),
               ],
             ),
-            StudentProfileForm(),
+            StudentProfileForm(arguments['data']),
           ],
         ),
       ),

@@ -218,13 +218,13 @@ class _DashBoardState extends State<DashBoard> {
                                 title: Text("Show Student Register Data",
                                     style: TextStyle(fontSize: 14)),
                               ),
-                              ListTile(
-                                onTap: () {
-                                  Navigator.pushNamed(context, studProfR);
-                                },
-                                title: Text("Student Profile",
-                                    style: TextStyle(fontSize: 14)),
-                              ),
+                              // ListTile(
+                              //   onTap: () {
+                              //     Navigator.pushNamed(context, studProfR);
+                              //   },
+                              //   title: Text("Student Profile",
+                              //       style: TextStyle(fontSize: 14)),
+                              // ),
                               ListTile(
                                 onTap: () {
                                   Navigator.pushNamed(context, studRegR);
