@@ -68,7 +68,7 @@ class MyApp extends StatelessWidget {
       // initialRoute: studRegR,
       routes: {
         dashboardR: (context) => DashBoard(),
-        // preAdmR: (context) => PreAdmission(),
+        preAdmR: (context) => PreAdmission(),
         showRegDataR: (context) => ShowRegisterData(),
         studProfR: (context) => StudentProfile(),
         studRegR: (context) => StudentRegistration(),
@@ -81,7 +81,7 @@ class MyApp extends StatelessWidget {
         staffRegistration:(context)=>StaffRegistration(),
 
       },
-      home: DashBoard(),
+      home: StudentRegistration (),
     );
   }
 }

@@ -26,7 +26,7 @@ class _StaffRegistrationState extends State<StaffRegistration> {
                 Container(
                   height: double.infinity,
                   width: size.width / 2,
-                  color: kPrimaryColor,
+                  color: bColor,
                 ),
                 Container(
                     height: double.infinity,

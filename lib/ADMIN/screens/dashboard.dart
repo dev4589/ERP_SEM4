@@ -180,7 +180,7 @@ class _DashBoardState extends State<DashBoard> {
     return Scaffold(
       // Colors.blue.shade50,
 
-      backgroundColor:Colors.yellowAccent.shade100,
+      backgroundColor: Colors.yellowAccent.shade100,
       body: SingleChildScrollView(
         child: Padding(
             padding: const EdgeInsets.only(right: 30.0, bottom: 10),
@@ -199,11 +199,9 @@ class _DashBoardState extends State<DashBoard> {
                             title: Padding(
                               padding: const EdgeInsets.only(
                                   top: 20.0, left: 10, right: 10, bottom: 20),
-                              child: Text("DASHBOARD",
-                                  style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold),
-                                  textAlign: TextAlign.center),
+                              child: Image.asset(
+                                "assets/images/erp2logo.png",
+                              ),
                             ),
                           ),
                         ),
@@ -212,15 +210,7 @@ class _DashBoardState extends State<DashBoard> {
                           title: "Student",
                           contentChild: Column(
                             children: [
-                              ListTile(
-                                onTap: () {
-                                  Navigator.pushNamed(context, preAdmR);
-                                },
-                                leading: Text(
-                                  "Student PreRegistration",
-                                  style: TextStyle(fontSize: 14),
-                                ),
-                              ),
+
                               ListTile(
                                 onTap: () {
                                   Navigator.pushNamed(context, showRegDataR);
@@ -235,7 +225,6 @@ class _DashBoardState extends State<DashBoard> {
                                 title: Text("Student Profile",
                                     style: TextStyle(fontSize: 14)),
                               ),
-
                               ListTile(
                                 onTap: () {
                                   Navigator.pushNamed(context, studRegR);
@@ -245,12 +234,11 @@ class _DashBoardState extends State<DashBoard> {
                               ),
                               ListTile(
                                 onTap: () {
-                                  // Navigator.pushNamed(context, feesdetail);
+                                  Navigator.pushNamed(context, feesdetail);
                                 },
                                 title: Text("Fees Details",
                                     style: TextStyle(fontSize: 14)),
                               ),
-
                             ],
                           ),
                           expandedIcon: Icon(Icons.arrow_drop_down),
@@ -280,7 +268,8 @@ class _DashBoardState extends State<DashBoard> {
                               ),
                               ListTile(
                                 onTap: () {
-                                  Navigator.pushNamed(context,staffRegistration);
+                                  Navigator.pushNamed(
+                                      context, staffRegistration);
                                 },
                                 leading: Text(
                                   "Staff Registration",
@@ -296,10 +285,6 @@ class _DashBoardState extends State<DashBoard> {
                               ),
                             ],
                           ),
-                        ),
-                        GFAccordion(
-                          title: "Report",
-                          expandedIcon: Icon(Icons.arrow_drop_down),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(10.0),
@@ -325,7 +310,6 @@ class _DashBoardState extends State<DashBoard> {
                     ),
                     child: Column(
                       children: [
-
                         Padding(
                           padding: EdgeInsets.only(
                               top: 30.0, bottom: 20.0, left: 10.0, right: 10.0),
@@ -334,7 +318,7 @@ class _DashBoardState extends State<DashBoard> {
                               ResponsiveGridCol(
                                 xs: 12,
                                 child: Text(
-                                    "Welcome- INTERNATIONAL SCHOOL|Super admin",
+                                    "Welcome- SMART SCHOOL|Super admin",
                                     style: TextStyle(
                                         fontSize: 20.0,
                                         color: Colors.indigo.shade800)),
@@ -433,7 +417,7 @@ class _DashBoardState extends State<DashBoard> {
                                       style:
                                           TextStyle(color: subtitleColor[1])),
                                   trailing: Text(
-                                    '205',
+                                    '35',
                                     style: TextStyle(
                                       color: trailColor[1],
                                       fontSize: 20,
@@ -443,52 +427,7 @@ class _DashBoardState extends State<DashBoard> {
                               ),
                             ),
                           ),
-                          ResponsiveGridCol(
-                            xs: 6,
-                            md: 3,
-                            child: MouseRegion(
-                              onHover: (event) {
-                                setState(() {
-                                  x = event.position.dx;
-                                  y = event.position.dy;
-                                  tColor[2] = Colors.deepPurple.shade900;
-                                  titleColor[2] = Colors.white;
-                                  subtitleColor[2] = Colors.white;
-                                  trailColor[2] = Colors.white;
-                                });
-                              },
-                              onExit: (event) {
-                                setState(() {
-                                  tColor[2] = Colors.white;
-                                  titleColor[2] = Colors.black;
-                                  subtitleColor[2] = Colors.grey;
-                                  trailColor[2] = Colors.purple;
-                                });
-                              },
-                              child: Card(
-                                color: tColor[2],
-                                shadowColor: Colors.blueAccent.shade100,
-                                elevation: 20,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: ListTile(
-                                  contentPadding: EdgeInsets.all(8),
-                                  title: Text('Parents',
-                                      style: TextStyle(color: titleColor[2])),
-                                  subtitle: Text('Total Parents',
-                                      style:
-                                          TextStyle(color: subtitleColor[2])),
-                                  trailing: Text(
-                                    '205',
-                                    style: TextStyle(
-                                      color: trailColor[2],
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
+
                           ResponsiveGridCol(
                             xs: 6,
                             md: 3,
@@ -525,7 +464,7 @@ class _DashBoardState extends State<DashBoard> {
                                       style:
                                           TextStyle(color: subtitleColor[3])),
                                   trailing: Text(
-                                    '205',
+                                    '60',
                                     style: TextStyle(
                                       color: trailColor[3],
                                       fontSize: 20,
@@ -544,7 +483,7 @@ class _DashBoardState extends State<DashBoard> {
                               ResponsiveGridCol(
                                 xl: 10,
                                 child: Text(
-                                  "Income and Expences for Feb 2022 ",
+                                  "Fees Data ",
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                       fontSize: 20.0,
@@ -612,20 +551,8 @@ class _DashBoardState extends State<DashBoard> {
                                         exp['pendingFees'],
                                     // markerSettings: const MarkerSettings(isVisible: true),
                                     name: 'Pending Fees'),
-                                SplineSeries<Map, String>(
-                                    dataSource: feesData,
-                                    xValueMapper: (Map exp, _) => exp['month'],
-                                    yValueMapper: (Map exp, _) =>
-                                        exp['totalFees'],
-                                    // markerSettings: const MarkerSettings(isVisible: true),
-                                    name: 'Total Fees'),
-                                SplineSeries<Map, String>(
-                                    dataSource: feesData,
-                                    xValueMapper: (Map exp, _) => exp['month'],
-                                    yValueMapper: (Map exp, _) =>
-                                        exp['expenses'],
-                                    // markerSettings: const MarkerSettings(isVisible: true),
-                                    name: 'Total Expenses')
+
+
                               ],
                               primaryXAxis: CategoryAxis(),
                             ),
@@ -729,83 +656,8 @@ class _DashBoardState extends State<DashBoard> {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                              top: 30.0, bottom: 20.0, left: 10.0),
-                          child: Row(
-                            children: [
-                              Text(
-                                "Notice Board",
-                                style: TextStyle(
-                                    fontSize: 20.0,
-                                    color: Colors.indigo.shade800),
-                                textAlign: TextAlign.left,
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 8.0),
-                          child: Card(
-                            shadowColor: Colors.blueAccent.shade100,
-                            elevation: 20,
-                            child: SfDataGrid(
-                              source: employeeDataSource,
-                              columnWidthMode: ColumnWidthMode.fill,
-                              columns: <GridColumn>[
-                                GridColumn(
-                                    columnName: 'id',
-                                    label: Container(
-                                        padding: EdgeInsets.all(16.0),
-                                        alignment: Alignment.center,
-                                        child: Text(
-                                          'ID',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                        ))),
-                                GridColumn(
-                                    columnName: 'name',
-                                    label: Container(
-                                        padding: EdgeInsets.all(8.0),
-                                        alignment: Alignment.center,
-                                        child: Text('Name',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold)))),
-                                GridColumn(
-                                    columnName: 'designation',
-                                    label: Container(
-                                        padding: EdgeInsets.all(8.0),
-                                        alignment: Alignment.center,
-                                        child: Text(
-                                          'Designation',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                          overflow: TextOverflow.ellipsis,
-                                        ))),
-                                GridColumn(
-                                    columnName: 'salary',
-                                    label: Container(
-                                        transformAlignment:
-                                            Alignment.centerRight,
-                                        padding: EdgeInsets.all(8.0),
-                                        alignment: Alignment.center,
-                                        child: Text('Salary',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold)))),
-                                GridColumn(
-                                    columnName: 'amount',
-                                    label: Container(
-                                        transformAlignment:
-                                            Alignment.centerRight,
-                                        padding: EdgeInsets.all(8.0),
-                                        alignment: Alignment.center,
-                                        child: Text('Amount',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold)))),
-                              ],
-                            ),
-                          ),
-                        ),
+
+
                       ],
                     ),
                   ),

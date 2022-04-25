@@ -142,8 +142,8 @@ class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
                                           hoverColor: Colors.cyan[50],
                                           splashColor: Colors.cyan[100],
                                           onTap: () {
-                                            // Navigator.pushNamed(
-                                            //     context, dailyWork);
+                                            Navigator.pushNamed(
+                                                context, dailyWork);
 
 
                                             // Navigator.push(
@@ -247,7 +247,7 @@ class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
                                               SizedBox(
                                                 height: 10,
                                               ),
-                                              Text("Manage Profile",
+                                              Text("Show Profile",
                                                   style: gridviewtext)
                                             ],
                                           ),
