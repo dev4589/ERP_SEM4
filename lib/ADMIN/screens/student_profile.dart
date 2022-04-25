@@ -13,7 +13,7 @@ class _StudentProfileState extends State<StudentProfile> {
   @override
   Widget build(BuildContext context) {
     final arguments = (ModalRoute.of(context)?.settings.arguments ?? <String, dynamic>{}) as Map;
-    print(arguments['data']);
+
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
