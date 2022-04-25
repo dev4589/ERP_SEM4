@@ -17,7 +17,7 @@ class _StudentRegistrationFormState extends State<StudentRegistrationForm> {
   String father_edu="Father's Education";
   String  mother_occu="Mother's Occupation";
   String mother_edu="Mother's Education";
-  String academic="Select Joining Year";
+  String academic="Select Academic Year";
   String blood="Select Blood Group";
   String genderS="Select Gender";
   String relig=    "Select Religion";

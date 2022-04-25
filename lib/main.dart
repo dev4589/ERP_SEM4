@@ -1,5 +1,6 @@
 import 'package:erp_sem4/ADMIN/screens/StaffRegistration.dart';
 import 'package:erp_sem4/ADMIN/screens/StudentFees.dart';
+import 'package:erp_sem4/ADMIN/screens/slash_screen.dart';
 import 'package:erp_sem4/ADMIN/screens/teacher_profile.dart';
 import 'package:erp_sem4/TEACHER/screens/dailywork.dart';
 import 'package:erp_sem4/TEACHER/screens/homepage.dart';
@@ -16,7 +17,7 @@ import 'ADMIN/screens/student_registration.dart';
 import 'ADMIN/screens/teacherWork.dart';
 import 'ADMIN/utility/demo.dart';
 import 'ADMIN/utility/show_student_register_module.dart';
-import 'ADMIN/utility/student_form_module.dart';
+
 import 'constants/constants.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -78,9 +79,9 @@ class MyApp extends StatelessWidget {
         dailyWork:(context)=>DailyWork(),
         teacherWork:(context)=>TeacherWork(),
         staffRegistration:(context)=>StaffRegistration(),
-        studentform: (context)=>StudentForm()
+
       },
-      home: StudentRegistration(),
+      home: DashBoard(),
     );
   }
 }

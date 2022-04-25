@@ -49,7 +49,8 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
   File? image;
   String gender = "Select Gender";
   String sources = "Select Designation";
-  String ayear = "Select Joining Year";
+  String ayear = "Select Academic Year";
+
 
   // Future pickimage(ImageSource src) async {
   //   try {
@@ -299,7 +300,7 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
                                                 Text("Select Year of Joining"),
                                             value: ayear,
                                             isExpanded: true,
-                                            items: Dropdown.academicyear
+                                            items: Dropdown.selectyear
                                                 .map((String val) {
                                               return DropdownMenuItem<String>(
                                                 value: val,

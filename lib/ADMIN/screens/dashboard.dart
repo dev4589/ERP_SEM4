@@ -271,6 +271,15 @@ class _DashBoardState extends State<DashBoard> {
                               ),
                               ListTile(
                                 onTap: () {
+                                  Navigator.pushNamed(context, teachProfR);
+                                },
+                                leading: Text(
+                                  "Show Faculty",
+                                  style: TextStyle(fontSize: 14),
+                                ),
+                              ),
+                              ListTile(
+                                onTap: () {
                                   Navigator.pushNamed(context,staffRegistration);
                                 },
                                 leading: Text(
@@ -316,146 +325,7 @@ class _DashBoardState extends State<DashBoard> {
                     ),
                     child: Column(
                       children: [
-                        ResponsiveGridRow(
-                          children: [
-                            ResponsiveGridCol(
-                                xs: 12,
-                                xl: 5,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      right: 8.0, left: 8),
-                                  child: TextFormField(
-                                    decoration: InputDecoration(
-                                        hintText: 'SEARCH',
-                                        hintStyle: TextStyle(
-                                            color: Colors.indigo.shade800),
-                                        icon: Icon(
-                                          Icons.search,
-                                          color: Colors.indigo.shade800,
-                                        )),
-                                  ),
-                                )),
-                            ResponsiveGridCol(
-                              xl: 1,
-                              xs: 4,
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.only(right: 8.0, top: 8.0),
-                                child: TextButton(
-                                  child: Text('WEBSITE'),
-                                  style: TextButton.styleFrom(
-                                    primary: Colors.indigo.shade800,
-                                    backgroundColor: Colors.white,
-                                    onSurface: Colors.grey,
-                                  ),
-                                  onPressed: () {
-                                    print('Pressed');
-                                  },
-                                ),
-                              ),
-                            ),
-                            ResponsiveGridCol(
-                              xl: 2,
-                              xs: 4,
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.only(right: 8.0, top: 8.0),
-                                child: TextButton(
-                                  child: Text('DASHBOARD'),
-                                  style: TextButton.styleFrom(
-                                    primary: Colors.indigo.shade800,
-                                    backgroundColor: Colors.white,
-                                    onSurface: Colors.grey,
-                                  ),
-                                  onPressed: () {
-                                    print('Pressed');
-                                  },
-                                ),
-                              ),
-                            ),
-                            ResponsiveGridCol(
-                              xs: 4,
-                              xl: 1,
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.only(right: 8.0, top: 8.0),
-                                child: TextButton(
-                                  child: Text('REPORTS'),
-                                  style: TextButton.styleFrom(
-                                    primary: Colors.indigo.shade800,
-                                    backgroundColor: Colors.white,
-                                    onSurface: Colors.grey,
-                                  ),
-                                  onPressed: () {
-                                    print('Pressed');
-                                  },
-                                ),
-                              ),
-                            ),
-                            ResponsiveGridCol(
-                              xs: 4,
-                              xl: 1,
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.only(right: 8.0, top: 8.0),
-                                child: TextButton(
-                                    style: ButtonStyle(
-                                        foregroundColor:
-                                            MaterialStateProperty.all<Color>(
-                                                Colors.indigo.shade800)),
-                                    onPressed: () async {
-                                      DateTime? date = DateTime(1900);
-                                      FocusScope.of(context)
-                                          .requestFocus(new FocusNode());
-                                      date = await showDatePicker(
-                                          helpText: "Select Date Of Birth",
-                                          context: context,
-                                          initialDate: DateTime.now(),
-                                          firstDate: DateTime(1900),
-                                          lastDate: DateTime.now());
-                                    },
-                                    child: const Icon(
-                                        Icons.calendar_today_outlined)),
-                              ),
-                            ),
-                            ResponsiveGridCol(
-                              xs: 4,
-                              xl: 1,
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.only(right: 8.0, top: 8.0),
-                                child: TextButton(
-                                  child: Icon(CupertinoIcons.bell),
-                                  style: TextButton.styleFrom(
-                                    primary: Colors.indigo.shade800,
-                                    onSurface: Colors.grey,
-                                  ),
-                                  onPressed: () {
-                                    print('Pressed');
-                                  },
-                                ),
-                              ),
-                            ),
-                            ResponsiveGridCol(
-                              xs: 4,
-                              xl: 1,
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.only(right: 8.0, top: 8.0),
-                                child: TextButton(
-                                  child: Icon(Icons.person_rounded),
-                                  style: TextButton.styleFrom(
-                                    primary: Colors.indigo.shade800,
-                                    onSurface: Colors.grey,
-                                  ),
-                                  onPressed: () {
-                                    print('Pressed');
-                                  },
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+
                         Padding(
                           padding: EdgeInsets.only(
                               top: 30.0, bottom: 20.0, left: 10.0, right: 10.0),
