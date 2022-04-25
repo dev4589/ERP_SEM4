@@ -86,7 +86,7 @@ class _SplashScreenState extends State<SplashScreen>
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                   image: ExactAssetImage(
-                                      'assets/images/IBMlogo.png'),
+                                      'assets/images/erp2logo.png'),
                                 ),
                               ),
                             );

@@ -69,7 +69,7 @@ Future<UserCredential>  fireauth(){
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset("assets/images/IBMlogo.png",
+                          Image.asset("assets/images/erp2logo.png",
                               height: 100, width: 250),
                           const SizedBox(
                             height: 15,

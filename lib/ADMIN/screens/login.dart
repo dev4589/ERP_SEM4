@@ -1,3 +1,5 @@
+import 'package:erp_sem4/constants/constants.dart';
+
 import '../utility/login_module.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
                 Container(
                   height: double.infinity,
                   width: size.width / 2,
-                  color: Colors.blue,
+                  color:kPrimaryColor
                 ),
                 Container(
                     height: double.infinity,
@@ -39,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Text(
                   "Welcome",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),

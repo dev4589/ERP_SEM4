@@ -1,3 +1,6 @@
+
+import 'package:erp_sem4/constants/constants.dart';
+
 import '../utility/show_student_register_module.dart';
 // import '../utility/student_attendace_module.dart';
 
@@ -23,7 +26,7 @@ class _ShowRegisterDataState extends State<ShowRegisterData> {
                 Container(
                   height: double.infinity,
                   width: size.width / 2,
-                  color: Colors.amberAccent,
+                  color: bColor,
                 ),
                 Container(
                     height: double.infinity,

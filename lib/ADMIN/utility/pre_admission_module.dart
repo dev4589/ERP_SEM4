@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:erp_sem4/constants/constants.dart';
 import 'package:erp_sem4/constants/dropdown_values.dart';
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 // import 'package:image_picker_web/image_picker_web.dart';
 
 class PreAdmissionForm extends StatefulWidget {
@@ -14,6 +15,19 @@ class PreAdmissionForm extends StatefulWidget {
 }
 
 class _PreAdmissionFormState extends State<PreAdmissionForm> {
+  Widget fadeAlertAnimation(
+      BuildContext context,
+      Animation<double> animation,
+      Animation<double> secondaryAnimation,
+      Widget child,
+      ) {
+    return Align(
+      child: FadeTransition(
+        opacity: animation,
+        child: child,
+      ),
+    );
+  }
   TextEditingController formno = TextEditingController();
   TextEditingController admissionDate = TextEditingController();
   TextEditingController adyear = TextEditingController();
@@ -94,8 +108,13 @@ class _PreAdmissionFormState extends State<PreAdmissionForm> {
             'desc': desc.text,
             'childname': childname.text
           })
-          .then((value) => print("User Added"))
-          .catchError((error) => print("Failed to add user: $error"));
+          .then((value) => Alert(context: context, type: AlertType.info, title: "Staff Added")
+          .show()
+          .catchError((error) => Alert(
+          context: context,
+          type: AlertType.info,
+          title: "Failed To Add Staff",
+          alertAnimation: fadeAlertAnimation)));
     }
 
     Size size = MediaQuery.of(context).size;

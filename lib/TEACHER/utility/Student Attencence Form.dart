@@ -436,7 +436,7 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                                             groupValue:selectedvalue,
                                                             onChanged:
                                                                 (value) {
-                                                              setState(() { 
+                                                              setState(() {
                                                                 selectedvalue = value;
                                                               });
                                                               attendence.text=selectedvalue.toString();

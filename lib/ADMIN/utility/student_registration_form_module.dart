@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:erp_sem4/constants/constants.dart';
 import 'package:erp_sem4/constants/dropdown_values.dart';
 import 'package:flutter/material.dart';
-
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class StudentRegistrationForm extends StatefulWidget {
   @override
@@ -10,6 +10,19 @@ class StudentRegistrationForm extends StatefulWidget {
 }
 
 class _StudentRegistrationFormState extends State<StudentRegistrationForm> {
+  Widget fadeAlertAnimation(
+      BuildContext context,
+      Animation<double> animation,
+      Animation<double> secondaryAnimation,
+      Widget child,
+      ) {
+    return Align(
+      child: FadeTransition(
+        opacity: animation,
+        child: child,
+      ),
+    );
+  }
   // File? image;
   String religion = "Select Religion";
   bool isLoading = false;
@@ -17,7 +30,7 @@ class _StudentRegistrationFormState extends State<StudentRegistrationForm> {
   String father_edu="Father's Education";
   String  mother_occu="Mother's Occupation";
   String mother_edu="Mother's Education";
-  String academic="Select Joining Year";
+  String academic="Select Academic Year";
   String blood="Select Blood Group";
   String genderS="Select Gender";
   String relig=    "Select Religion";
@@ -136,8 +149,13 @@ class _StudentRegistrationFormState extends State<StudentRegistrationForm> {
             'religion': religionC.text,
             // 'transportation': transp.text,
           })
-          .then((value) => print("User Added"))
-          .catchError((error) => print("Failed to add user: $error"));
+          .then((value) =>  Alert(context: context, type: AlertType.info, title: "Student Added")
+          .show()
+          .catchError((error) => Alert(
+          context: context,
+          type: AlertType.info,
+          title: "Failed To Add Student",
+          alertAnimation: fadeAlertAnimation)));
     }
 
     Size size = MediaQuery.of(context).size;
@@ -1077,16 +1095,8 @@ class _StudentRegistrationFormState extends State<StudentRegistrationForm> {
                                                       .size
                                                       .width >=
                                                   1200)
-                                                Text(""),
-                                              TextFormField(
-                                                controller: currentAddr,
-                                                maxLines: 3,
-                                                decoration: InputDecoration(
-                                                  //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-                                                  labelText:
-                                                      "Residential Address",
-                                                ),
-                                              ),
+
+
                                               // TextFormField(
                                               //  controller: permAdd,
                                               //   maxLines: 3,
@@ -1149,27 +1159,7 @@ class _StudentRegistrationFormState extends State<StudentRegistrationForm> {
                                               //     ],
                                               //   ),
                                               // ),
-                                              if (MediaQuery.of(context)
-                                                      .size
-                                                      .width >=
-                                                  1200)
-                                                Text(""),
-                                              if (MediaQuery.of(context)
-                                                      .size
-                                                      .width >
-                                                  1050)
-                                                Text(""),
-                                              if (MediaQuery.of(context)
-                                                      .size
-                                                      .width >=
-                                                  1024)
-                                                Text(""),
-                                              if (MediaQuery.of(context)
-                                                      .size
-                                                      .width >=
-                                                  1200)
-                                                Text(""),
-                                              Text(""),
+                                              
                                               Center(
                                                 child: FlatButton(
                                                   height: 45,
