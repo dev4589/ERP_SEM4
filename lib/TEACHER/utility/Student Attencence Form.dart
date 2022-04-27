@@ -10,16 +10,14 @@ class StudentAttendanceForm extends StatefulWidget {
   _StudentAttendanceFormState createState() => _StudentAttendanceFormState();
 }
 
-
-
 class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
-  String? selectedvalue="choose";
+  String? selectedvalue = "choose";
   Widget fadeAlertAnimation(
-      BuildContext context,
-      Animation<double> animation,
-      Animation<double> secondaryAnimation,
-      Widget child,
-      ) {
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child,
+  ) {
     return Align(
       child: FadeTransition(
         opacity: animation,
@@ -27,60 +25,73 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
       ),
     );
   }
+
   TextStyle gridviewtext = new TextStyle(fontSize: 16);
   String class2 = "";
   String section = "";
-  String _adminssionno='1';
-  String _rollno='1';
-  String _name='Jay Savaliya';
+  String _adminssionno = '1';
+  String _rollno = '1';
+  String _name = 'Jay Savaliya';
 
   TextEditingController academicdate = TextEditingController();
-  TextEditingController classname=TextEditingController();
-  TextEditingController sectionc=TextEditingController();
-  TextEditingController admisssionno=TextEditingController();
-  TextEditingController rollno=TextEditingController();
-  TextEditingController stu_name=TextEditingController();
-  TextEditingController attendence=TextEditingController();
-  TextEditingController note=TextEditingController();
+  TextEditingController classname = TextEditingController();
+  TextEditingController sectionc = TextEditingController();
+  TextEditingController admisssionno = TextEditingController();
+  TextEditingController rollno = TextEditingController();
+  TextEditingController stu_name = TextEditingController();
+  TextEditingController attendence = TextEditingController();
+  TextEditingController note = TextEditingController();
 
+  String grNo = '';
 
+  List<Map<String, dynamic>> mapList = [];
 
+  fireauth() async {
+    final querySnapshot =
+        await FirebaseFirestore.instance.collection('classRecords').get();
+    for (var doc in querySnapshot.docs) {
+      mapList.add(doc.data());
+
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fireauth();
+  }
 
   @override
   Widget build(BuildContext context) {
-    CollectionReference attendance = FirebaseFirestore.instance.collection('Attendance');
+    CollectionReference attendance =
+        FirebaseFirestore.instance.collection('Attendance');
+
     Future<void> addattendance() {
       // Call the user's CollectionReference to add a new user
       return attendance.add({
+        'grNo': grNo,
         'Class': classname.text,
         'Section': section,
         'Date': academicdate.text,
         'Admission_no': _adminssionno,
-        'Roll_no': _rollno,
+        // 'Roll_no': _rollno,
         'Student_name': _name,
         'Attendance': attendence.text,
         'Note': note.text,
-
-      }).then((value) =>
-          Alert(context: context, type: AlertType.info, title: "Attendence Added")
-              .show()
-              .catchError((error) => Alert(
+      }).then((value) => Alert(
+              context: context, type: AlertType.info, title: "Attendence Added")
+          .show()
+          .catchError((error) => Alert(
               context: context,
               type: AlertType.info,
               title: "Failed To Add Attendence",
               alertAnimation: fadeAlertAnimation)));
-//     Alert(
-      //   context: context,
-      //   type: AlertType.info,
-      //   title: "Email can't be empty",
-      //   desc: "please enter Email",
-      //   alertAnimation: fadeAlertAnimation,
-      // ).show()
-// print("Staff Added"))
     }
-    Size size = MediaQuery.of(context).size;
 
+    Size size = MediaQuery.of(context).size;
     final bool displayMobileLayout = MediaQuery.of(context).size.width < 800;
+
     return Padding(
       padding: EdgeInsets.all(16),
       child: Center(
@@ -189,6 +200,7 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                           mode: Mode.MENU,
                                           //showSelectedItem: true,
                                           items: Dropdown.class2,
+                                          selectedItem: Dropdown.class2[0],
                                           label: "Select Class",
                                           dropdownSearchDecoration:
                                               InputDecoration(
@@ -200,20 +212,21 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                             setState(() {
                                               class2 = val!;
                                             });
-                                            classname.text=class2.toString();
+                                            classname.text = class2.toString();
                                           },
                                         ),
                                         DropdownSearch<String>(
                                           mode: Mode.MENU,
                                           //showSelectedItem: true,
                                           items: Dropdown.section,
+                                          selectedItem: Dropdown.section[0],
                                           label: "Select Section",
                                           showSearchBox: true,
                                           onChanged: (val) {
                                             setState(() {
                                               section = val!;
                                             });
-                                            sectionc.text=section.toString();
+                                            sectionc.text = section.toString();
                                           },
                                           dropdownSearchDecoration:
                                               InputDecoration(
@@ -225,6 +238,7 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                           decoration: InputDecoration(
                                               //border:OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
                                               labelText: "Date",
+
                                               hintText:
                                                   "Date Format must be DD-MM-YYYY",
                                               suffixIcon: IconButton(
@@ -235,8 +249,7 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                                         .requestFocus(
                                                             new FocusNode());
                                                     date = await showDatePicker(
-                                                        helpText:
-                                                            "Select Date Of Admission",
+                                                        helpText: "Select Date",
                                                         context: context,
                                                         initialDate:
                                                             DateTime.now(),
@@ -252,8 +265,6 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                                         "/" +
                                                         date.year.toString();
                                                   },
-
-
                                                   icon: Icon(Icons
                                                       .calendar_today_outlined))),
                                         ),
@@ -263,7 +274,6 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                         if (MediaQuery.of(context).size.width >=
                                             1024)
                                           Text(""),
-
                                       ],
                                     ),
                                   ),
@@ -332,164 +342,169 @@ class _StudentAttendanceFormState extends State<StudentAttendanceForm> {
                                     padding: EdgeInsets.all(20),
                                     child: SingleChildScrollView(
                                         scrollDirection: Axis.horizontal,
-                                        child: Table(
-                                          columnWidths: {
-                                            0: FixedColumnWidth(120.0),
-                                            1: FixedColumnWidth(120.0),
-                                            2: FixedColumnWidth(120.0),
-                                            // 4: FixedColumnWidth(.),
-                                          },
-                                          defaultVerticalAlignment:
-                                              TableCellVerticalAlignment.middle,
-                                          defaultColumnWidth:
-                                              FixedColumnWidth(550.0),
-                                          border: TableBorder(
-                                              horizontalInside: BorderSide(
-                                                  width: 1,
-                                                  color: Colors.black12,
-                                                  style: BorderStyle.solid)),
-                                          children: [
-                                            TableRow(
-                                                decoration: BoxDecoration(
-                                                  color: kPrimaryColor
-                                                      .withOpacity(0.2),
-                                                ),
-                                                children: [
-                                                  TableCell(
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child:
-                                                          Text("Admission No"),
-                                                    ),
-                                                  ),
-                                                  TableCell(
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child: Text("Roll No"),
-                                                    ),
-                                                  ),
-                                                  TableCell(
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child:
-                                                          Text("Student Name"),
-                                                    ),
-                                                  ),
-                                                  TableCell(
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child: Text("Attendance"),
-                                                    ),
-                                                  ),
-                                                  TableCell(
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child: Text("Note Name"),
-                                                    ),
-                                                  ),
-                                                ]),
-                                            TableRow(children: [
-                                              TableCell(
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Text(_adminssionno),
-
-                                                ),
-                                              ),
-                                              TableCell(
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Text(_rollno),
-                                                ),
-                                              ),
-                                              TableCell(
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Text(
-                                                      _name),
-                                                ),
-                                              ),
-                                              TableCell(
-                                                child: Padding(
+                                        child: SizedBox(
+                                          width: size.width * 0.7,
+                                          height: size.height * 0.35,
+                                          child: ListView(
+                                            children: [
+                                              Row(children: [
+                                                Expanded(
+                                                  flex: 1,
+                                                  child: Padding(
                                                     padding:
                                                         const EdgeInsets.all(
                                                             8.0),
-                                                    child: Row(
-                                                      children: [
-                                                        Radio<String>(
-                                                            activeColor:
-                                                                Colors.blue,
-                                                            value: "Present",
-                                                            groupValue:selectedvalue,
-                                                            onChanged:
-                                                                (value) {
-                                                              setState(() {
-                                                                selectedvalue = value;
-                                                              });
-                                                              attendence.text=selectedvalue.toString();
-                                                            }),
-                                                        Text("Present"),
-                                                        Radio<String>(
-                                                            activeColor:
-                                                                Colors.blue,
-                                                            value: "Absent",
-                                                            groupValue: selectedvalue,
-                                                            onChanged:
-                                                                (value) {
-                                                              setState(() {
-                                                                selectedvalue = value;
-                                                              });
-                                                              attendence.text=selectedvalue.toString();
-                                                            }),
-                                                        Text("Absent"),
-                                                        // Radio(
-                                                        //     activeColor:
-                                                        //     Colors.blue,
-                                                        //     value: 3,
-                                                        //     groupValue: _val,
-                                                        //   onChanged: (int? value){
-                                                        //     _val= value!;
-                                                        //   }),
-                                                        // Text("Absent"),
-                                                        // Radio(
-                                                        //     activeColor:
-                                                        //     Colors.blue,
-                                                        //     value: 4,
-                                                        //     groupValue: _val,
-                                                        //     onChanged: (int? value){
-                                                        //       _val= value!;
-                                                        //     }),
-                                                        // Text("Half Day"),
-                                                      ],
-                                                    )),
-                                              ),
-                                              TableCell(
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: TextField(
-                                                    controller: note,
-                                                    decoration: InputDecoration(
-                                                        hintText:
-                                                            "Enter note here"),
+                                                    child: Text("Admission No"),
                                                   ),
                                                 ),
+                                                Expanded(
+                                                  flex: 1,
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Text("Roll No"),
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  flex: 2,
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Text("Student Name"),
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  flex: 3,
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Text("Attendance"),
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  flex: 3,
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Text("Note Name"),
+                                                  ),
+                                                ),
+                                              ]),
+                                              SizedBox(
+                                                width: size.width * 0.69,
+                                                height: size.height * 0.34,
+                                                child: ListView(children: [
+                                                  for (int i = 0;
+                                                      i <
+                                                          mapList[0]['students'].length;
+                                                      i++)
+
+                                                    Row(children: [
+                                                      Expanded(
+                                                        flex: 1,
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(8.0),
+                                                          child: Text(
+                                                              _adminssionno),
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        flex: 1,
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(8.0),
+                                                          child: Text(mapList[0]['students'][i]['grNo']),
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        flex: 2,
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(8.0),
+                                                          child: Text(mapList[0]['students'][i]['name']),
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        flex: 3,
+                                                        child: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(8.0),
+                                                            child: Row(
+                                                              children: [
+                                                                Radio<String>(
+                                                                    activeColor:
+                                                                        Colors
+                                                                            .blue,
+                                                                    value:
+                                                                        "Present",
+                                                                    groupValue:
+                                                                        selectedvalue,
+                                                                    onChanged:
+                                                                        (value) {
+                                                                      setState(
+                                                                          () {
+                                                                        selectedvalue =
+                                                                            value;
+                                                                      });
+                                                                      attendence
+                                                                              .text =
+                                                                          selectedvalue
+                                                                              .toString();
+                                                                    }),
+                                                                Text("Present"),
+                                                                Radio<String>(
+                                                                    activeColor:
+                                                                        Colors
+                                                                            .blue,
+                                                                    value:
+                                                                        "Absent",
+                                                                    groupValue:
+                                                                        selectedvalue,
+                                                                    onChanged:
+                                                                        (value) {
+                                                                      setState(
+                                                                          () {
+                                                                        selectedvalue =
+                                                                            value;
+                                                                      });
+                                                                      attendence
+                                                                              .text =
+                                                                          selectedvalue
+                                                                              .toString();
+                                                                    }),
+                                                                Text("Absent"),
+                                                              ],
+                                                            )),
+                                                      ),
+                                                      Expanded(
+                                                        flex: 3,
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(8.0),
+                                                          child: TextField(
+                                                            controller: note,
+                                                            decoration:
+                                                                InputDecoration(
+                                                                    hintText:
+                                                                        "Enter note here"),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ]),
+                                                ]),
                                               ),
-                                            ]),
-                                          ],
+                                            ],
+                                          ),
                                         ))),
                               )
                             ],

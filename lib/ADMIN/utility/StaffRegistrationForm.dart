@@ -48,7 +48,7 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
 
   File? image;
   String gender = "Select Gender";
-  String sources = "Select Designation";
+  String sourceS = "Select Designation";
   String ayear = "Select Academic Year";
 
 
@@ -494,7 +494,7 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
                                             borderRadius:
                                                 BorderRadius.circular(5),
                                             hint: Text("Select Designation"),
-                                            value: sources,
+                                            value: sourceS,
                                             isExpanded: true,
                                             items: Dropdown.sources
                                                 .map((String val) {
@@ -506,7 +506,7 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
                                             onChanged: (String? num) async {
                                               if (num != null) {
                                                 setState(() {
-                                                  sources = num;
+                                                  sourceS = num;
                                                 });
                                               }
                                               source.text = num.toString();

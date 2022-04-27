@@ -1,10 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 
+import '../../TEACHER/screens/homepage.dart';
+import '../../constants/constants.dart';
 import '../screens/dashboard.dart';
 import 'action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:erp_sem4/constants/dropdown_values.dart';
 
 //  White login form
 
@@ -17,6 +21,8 @@ class LogIn extends StatefulWidget {
 
 bool obscureText = true;
 bool loading = false;
+String desi = 'no';
+String emp_no = '0';
 
 class _LogInState extends State<LogIn> {
   Widget fadeAlertAnimation(
@@ -35,14 +41,36 @@ class _LogInState extends State<LogIn> {
 
   late String email;
   late String password;
-Future<UserCredential>  fireauth(){
-  var fire = FirebaseAuth.instance
-      .signInWithEmailAndPassword(email: email, password: password);
-  return fire;
-}
+//  fireauth() async {
+//   // var fire = FirebaseAuth.instance
+//   //     .signInWithEmailAndPassword(email: email, password: password);
+//    final querySnapshot = await FirebaseFirestore.instance
+//        .collection('users')
+//        .limit(10)
+//        .where('username',isEqualTo: email)
+//    .where('pass',isEqualTo: password)
+//        .get();
+//
+//    for (var doc in querySnapshot.docs) {
+//      // Getting data directly
+//     // desi = doc.get('designation');
+//
+//      Map<String, dynamic> data = doc.data();
+//      desi = data['designation'];
+//     //  if(desi!=null){
+//     //   return desi;
+//     // }
+//     // else {
+//     //   return null;
+//     // }
+//     //  print(desi);
+//      return desi;
+//      // Getting data from map
+//
+//    }
+// }
   @override
   Widget build(BuildContext context) {
-
     Size size = MediaQuery.of(context).size;
 
     return Stack(
@@ -136,8 +164,22 @@ Future<UserCredential>  fireauth(){
                           ),
                           InkWell(
                             onTap: () async {
+                              final querySnapshot = await FirebaseFirestore
+                                  .instance
+                                  .collection('users')
+                                  .where('username', isEqualTo: email)
+                                  .where('pass', isEqualTo: password)
+                                  .get();
+                              for (var doc in querySnapshot.docs) {
+                                // Getting data directly
+                                // desi = doc.get('designation');
+
+                                Map<String, dynamic> data = doc.data();
+                                desi = data['designation'];
+                                emp_no = data['emp_no'];
+                              }
                               if (email.isEmpty) {
-                               Alert(
+                                Alert(
                                   context: context,
                                   type: AlertType.info,
                                   title: "Email can't be empty",
@@ -152,28 +194,45 @@ Future<UserCredential>  fireauth(){
                                   desc: "please enter password",
                                   alertAnimation: fadeAlertAnimation,
                                 ).show();
-                              } else {
-                                if (fireauth() != null) {
-                                  print("\n\n\n\n"+fireauth().toString());
+                              } else if (desi == 'Staff') {
+                                print(desi);
                                   Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => DashBoard(),
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            TeacherHomePage(emp_no),
+                                      ));
+                                } else if(desi=='Admin') {
+                                print(desi);
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => DashBoard(),
+                                      ));
 
-                                    ),
-                                  );
-                                } else {
-                                  print("Invalid u-id");
-                                  setState(() {
-                                    Alert(
-                                            context: context,
-                                            desc:
-                                                "Invalid User-Name or Password",
-                                            type: AlertType.error,
-                                            alertAnimation: fadeAlertAnimation)
-                                        .show();
-                                  });
-                                }
+                              } else if (desi == 'no') {
+                                print("Invalid u-id");
+
+                                Alert(
+                                        context: context,
+                                        type: AlertType.info,
+                                        title: "Invalid Login",
+                                        buttons: [
+                                          DialogButton(
+                                            child: Text(
+                                              "CLOSE",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 20),
+                                            ),
+                                            onPressed: () =>
+                                                Navigator.pop(context),
+                                          ),
+                                        ],
+                                        alertAnimation: fadeAlertAnimation)
+                                    .show();
+
+                                print(desi + 'no');
                               }
                             },
                             child: actionButton(

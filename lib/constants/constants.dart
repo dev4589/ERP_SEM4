@@ -20,3 +20,5 @@ String dailyWork='/DailyWork';
 String teacherWork='/TeacherWork';
 String staffRegistration='/StaffRegistration';
 String studentform='/studentform';
+String studAttend='/studentAttendece';
+String showData='/studentRegisteredData';

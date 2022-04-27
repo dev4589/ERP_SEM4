@@ -227,25 +227,25 @@ class Dropdown {
     "Electrical",
   ];
   static List<String> class2 = [
-    "NURSERY",
-    "LKG",
-    "UKG",
+    // "NURSERY",
+    // "LKG",
+    // "UKG",
     "1ST CLASS",
     "2ND CLASS",
     "3RD CLASS",
-    "4TH CLASS",
-    "5TH CLASS",
-    "6TH CLASS",
-    "7TH CLASS",
-    "8TH CLASS",
-    "9TH CLASS",
-    "10TH CLASS",
+    // "4TH CLASS",
+    // "5TH CLASS",
+    // "6TH CLASS",
+    // "7TH CLASS",
+    // "8TH CLASS",
+    // "9TH CLASS",
+    // "10TH CLASS",
   ];
   static List<String> section = [
     "A",
     "B",
-    "C",
-    'D',
+    // "C",
+    // 'D',
   ];
   // fees_type's Dropdown :
   static List<String> fgroup = [

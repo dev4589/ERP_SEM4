@@ -34,20 +34,20 @@ class _LoginPageState extends State<LoginPage> {
                     color: Colors.white),
               ],
             ),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: EdgeInsets.all(32),
-                child: Text(
-                  "Welcome",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
+            // Align(
+            //   alignment: Alignment.topLeft,
+            //   child: Padding(
+            //     padding: EdgeInsets.all(32),
+            //     child: Text(
+            //       "Welcome",
+            //       style: TextStyle(
+            //         color: Colors.black,
+            //         fontSize: 24,
+            //         fontWeight: FontWeight.bold,
+            //       ),
+            //     ),
+            //   ),
+            // ),
             Align(
               alignment: Alignment.bottomRight,
               child: Padding(

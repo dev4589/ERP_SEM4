@@ -1,10 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:erp_sem4/TEACHER/utility/TeacherHomePageLayout.dart';
 import 'package:erp_sem4/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class TeacherHomePage extends StatefulWidget {
-  const TeacherHomePage({Key? key}) : super(key: key);
-
+String emp_no;
+TeacherHomePage(this.emp_no);
   @override
   _TeacherHomePageState createState() => _TeacherHomePageState();
 }
@@ -12,7 +13,8 @@ class TeacherHomePage extends StatefulWidget {
 class _TeacherHomePageState extends State<TeacherHomePage> {
   @override
   Widget build(BuildContext context) {
-    String name = "Parth Lashkari";
+    // final arguments=(ModalRoute.of(context)?.settings.arguments ?? <String,dynamic>{}) as Map;
+
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
@@ -38,7 +40,7 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
               child: Padding(
                 padding: EdgeInsets.all(5),
                 child: Text(
-                  "Welcome " + name,
+                  "Welcome",
                   style: TextStyle(
                     color: kPrimaryColor,
                     fontSize: 20,
@@ -47,7 +49,7 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
                 ),
               ),
             ),
-            TeacherHomePageLayout(),
+            TeacherHomePageLayout(widget.emp_no),
           ],
         ),
       ),

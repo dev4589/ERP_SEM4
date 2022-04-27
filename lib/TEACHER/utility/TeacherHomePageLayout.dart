@@ -7,7 +7,8 @@ import 'package:intl/intl.dart';
 import '../screens/student attendence.dart';
 
 class TeacherHomePageLayout extends StatefulWidget {
-  const TeacherHomePageLayout({Key? key}) : super(key: key);
+  String emp_no;
+  TeacherHomePageLayout(this.emp_no);
 
   @override
   _TeacherHomePageLayoutState createState() => _TeacherHomePageLayoutState();
@@ -184,11 +185,13 @@ class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
                                           hoverColor: Colors.cyan[50],
                                           splashColor: Colors.cyan[100],
                                           onTap: () {
-                                            Navigator.pushReplacement(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        StudentAttendance()));
+                                            // Navigator.pushReplacement(
+                                            //     context,
+                                            //     MaterialPageRoute(
+                                            //         builder: (context) =>
+                                            //             StudentAttendance()));
+                                            Navigator.pushNamed(
+                                                context, studAttend);
                                           },
                                           child: Column(
                                             mainAxisAlignment:
