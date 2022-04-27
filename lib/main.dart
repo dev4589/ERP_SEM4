@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'ADMIN/screens/dashboard.dart';
 import 'ADMIN/screens/login.dart';
 import 'ADMIN/screens/pre_admission.dart';
+import 'ADMIN/screens/show_staff.dart';
 import 'ADMIN/screens/show_student_registration.dart';
 import 'ADMIN/screens/student_profile.dart';
 import 'ADMIN/screens/student_registration.dart';
@@ -19,6 +20,7 @@ import 'ADMIN/screens/teacherWork.dart';
 import 'ADMIN/utility/demo.dart';
 import 'ADMIN/utility/show_student_register_module.dart';
 
+import 'ADMIN/utility/student_registration_form_module.dart';
 import 'constants/constants.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -86,7 +88,7 @@ class MyApp extends StatelessWidget {
         "lets": (context) => LetsTry(),
         studAttend: (context)=>StudentAttendance(),
         loginpage:(context)=> LoginPage(),
-        teacherdash:(context)=>TeacherHomePage(),
+        // teacherdash:(context)=>TeacherHomePage(),
         feesdetail:(context)=>ShowFeesDeatails(),
         dailyWork:(context)=>DailyWork(),
         teacherWork:(context)=>TeacherWork(),
