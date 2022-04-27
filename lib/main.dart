@@ -62,15 +62,16 @@ class MyApp extends StatelessWidget {
         ],
         background: Container(color: Colors.black),
       ),
-      title: 'Login',
+      title: 'Smart School',
       theme: ThemeData(
         primaryColor: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         textTheme: GoogleFonts.secularOneTextTheme(),
       ),
       debugShowCheckedModeBanner: false,
-      // initialRoute: studRegR,
+       initialRoute:splashpage,
       routes: {
+        splashpage:(context)=>SplashScreen(),
         loginpage: (context) => LoginPage(),
         dashboardR: (context) => DashBoard(),
         preAdmR: (context) => PreAdmission(),
@@ -96,7 +97,7 @@ class MyApp extends StatelessWidget {
         staffprofile:(context)=>TeacherProfile(),
         showstaff:(context)=>ShowStaff()
       },
-      home: StudentRegistration (),
+      // home: s (),
     );
   }
 }

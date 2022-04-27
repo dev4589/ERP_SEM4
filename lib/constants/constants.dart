@@ -24,3 +24,4 @@ String studAttend='/studentAttendece';
 String showData='/studentRegisteredData';
 String staffprofile='/staffprofile';
 String showstaff='stafflist';
+String splashpage='/';

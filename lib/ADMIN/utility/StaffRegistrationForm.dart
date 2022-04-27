@@ -90,7 +90,18 @@ class _StaffRegistrationFormState extends State<StaffRegistrationForm> {
         'reference': reference.text,
         'source': source.text,
       }).then((value) =>
-          Alert(context: context, type: AlertType.info, title: "Staff Added")
+          Alert(context: context, type: AlertType.info, title: "Staff Added",buttons: [
+            DialogButton(
+              child: Text(
+                "CLOSE",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20),
+              ),
+              onPressed: () =>
+                  Navigator.pop(context),
+            ),
+          ],)
               .show()
               .catchError((error) => Alert(
                   context: context,

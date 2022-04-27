@@ -149,7 +149,18 @@ class _StudentRegistrationFormState extends State<StudentRegistrationForm> {
             'religion': religionC.text,
             // 'transportation': transp.text,
           })
-          .then((value) =>  Alert(context: context, type: AlertType.info, title: "Student Added")
+          .then((value) =>  Alert(context: context, type: AlertType.info, title: "Student Added",buttons: [
+        DialogButton(
+          child: Text(
+            "CLOSE",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 20),
+          ),
+          onPressed: () =>
+              Navigator.pop(context),
+        ),
+      ],)
           .show()
           .catchError((error) => Alert(
           context: context,

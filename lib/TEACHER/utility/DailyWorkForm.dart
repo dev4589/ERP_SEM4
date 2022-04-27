@@ -120,7 +120,18 @@ class _DailyWorkFormState extends State<DailyWorkForm> {
       }).then((value) => Alert(
         context: context,
         type: AlertType.info,
-        title: 'Added Successfully',).show().catchError((error)=>Alert(
+        title: 'Added Successfully',buttons: [
+        DialogButton(
+          child: Text(
+            "CLOSE",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 20),
+          ),
+          onPressed: () =>
+              Navigator.pop(context),
+        ),
+      ],).show().catchError((error)=>Alert(
         context: context,
         type: AlertType.info,
         title: "Failed To Add",
