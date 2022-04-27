@@ -8,7 +8,7 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 void main() {
   runApp(MaterialApp(home: ShowFeesDeatails()));
 }
-
+TextEditingController grno= new TextEditingController();
 TextEditingController classc=new TextEditingController();
 TextEditingController division= new TextEditingController();
 TextEditingController name= new TextEditingController();
@@ -87,6 +87,7 @@ class _ShowFeesDeatailsState extends State<ShowFeesDeatails> {
     Future<void> addFees() {
 
       return fees.add({
+        'gr.no':grno.text,
         'Standard': classc.text,
         'Division': division.text,
         'Student_name': name,
@@ -181,6 +182,26 @@ class _ShowFeesDeatailsState extends State<ShowFeesDeatails> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: ResponsiveGridRow(children: [
+                                ResponsiveGridCol(
+                                  xl: 3,
+                                  lg: 3,
+                                  md: 6,
+                                  xs: 8,
+                                  sm: 7,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: SizedBox(
+                                      child: TextFormField(
+                                        controller:grno,
+                                        decoration: InputDecoration(
+                                          hintText:" enter grno.",
+                                          labelText: "GrNo."
+                                        )
+                                        )
+                                      )
+                                    ),
+                                  ),
+
                                 ResponsiveGridCol(
                                   xl: 3,
                                   lg: 3,
