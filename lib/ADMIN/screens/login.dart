@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
                 Container(
                   height: double.infinity,
                   width: size.width / 2,
-                  color:kPrimaryColor
+                  color:bColor
                 ),
                 Container(
                     height: double.infinity,

@@ -248,18 +248,10 @@ class _DashBoardState extends State<DashBoard> {
                           expandedIcon: Icon(Icons.arrow_drop_down),
                           contentChild: Column(
                             children: [
+
                               ListTile(
                                 onTap: () {
-                                  Navigator.pushNamed(context, teachProfR);
-                                },
-                                leading: Text(
-                                  "Teachers Profile",
-                                  style: TextStyle(fontSize: 14),
-                                ),
-                              ),
-                              ListTile(
-                                onTap: () {
-                                  Navigator.pushNamed(context, teachProfR);
+                                  Navigator.pushNamed(context, showstaff);
                                 },
                                 leading: Text(
                                   "Show Faculty",

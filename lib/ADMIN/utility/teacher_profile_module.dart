@@ -4,40 +4,36 @@ import 'package:erp_sem4/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class TeacherProfileForm extends StatefulWidget {
-  const TeacherProfileForm({Key? key}) : super(key: key);
-
+  Map data;
+  TeacherProfileForm(this.data);
   @override
   _TeacherProfileFormState createState() => _TeacherProfileFormState();
 }
 
 class _TeacherProfileFormState extends State<TeacherProfileForm> {
-  String name="Raghav J chauhan";
-  String caddress="461/2 Sarvoday Society,Navarangpura,Ahmedabad";
-  String email="Raghav123@gmail.com";
-  String gender="Male";
-  String designation="Principal";
-  String dateofjoin="25-5-2010";
-  String dob="25-8-1994";
-  String department="Academics";
-  String mno="8460785654";
-  String staffno="AFD8564";
-  String fname="Jayeshbhai";
-  String mname="Monaben";
 
-  String epfno="DSA846073232";
-  String salary="20000";
-  String location="Pune";
-  String meritalstatus="Married";
-  String emno="8460785888";
-  String paddress="461/2 Sarvoday Society,Navarangpura,Ahmedabad";
-  String qualification="Post Graduation";
-  String experience="5 Year";
-  String bankname="Bank Of Baroda";
-  String branchname="Pune";
+
 
 
   @override
   Widget build(BuildContext context) {
+    String name=widget.data['name']+" "+widget.data['fathername']+" "+widget.data['surname'];
+    String caddress=widget.data['address'];
+    String email=widget.data['email'];
+    String gender=widget.data['gender'];
+    String designation=widget.data['source'];
+    String dateofjoin=widget.data['join_date'];
+    String contactno=widget.data['cno1'];
+    String dob=widget.data['dob'];
+    String pincode=widget.data['pincode'];
+    String formno=widget.data['form_no'];
+    String fname=widget.data['fathername'];
+    String mname=widget.data['mothername'];
+    String altnumber=widget.data['cno2'];
+    String joinyear=widget.data['joinyear'];
+    String lastjob=widget.data['lastjob'];
+    String reference=widget.data['reference'];
+
     Size size = MediaQuery.of(context).size;
     final bool displayMobileLayout = MediaQuery.of(context).size.width < 800;
     return Scaffold(
@@ -193,8 +189,15 @@ class _TeacherProfileFormState extends State<TeacherProfileForm> {
                                                                 SizedBox(height:8),
                                                                 Row(
                                                                     children:[
-                                                                      Text("Department : ",style: TextStyle(fontSize: 17,),),
-                                                                       Text(department),
+                                                                      Text("Contact No : ",style: TextStyle(fontSize: 17,),),
+                                                                       Text(contactno),
+                                                                    ]
+                                                                ),
+                                                                SizedBox(height:8),
+                                                                Row(
+                                                                    children:[
+                                                                      Text("Pincode : ",style: TextStyle(fontSize: 17,),),
+                                                                      Text(pincode),
                                                                     ]
                                                                 ),
                                                                 SizedBox(height:8),
@@ -204,18 +207,12 @@ class _TeacherProfileFormState extends State<TeacherProfileForm> {
                                                                        Text(dob),
                                                                     ]
                                                                 ),
+
                                                                 SizedBox(height:8),
                                                                 Row(
                                                                     children:[
-                                                                      Text("Mobile No : ",style: TextStyle(fontSize: 17,),),
-                                                                       Text(mno),
-                                                                    ]
-                                                                ),
-                                                                SizedBox(height:8),
-                                                                Row(
-                                                                    children:[
-                                                                      Text("Staff No : ",style: TextStyle(fontSize: 17,),),
-                                                                       Text(staffno),
+                                                                      Text("Form No : ",style: TextStyle(fontSize: 17,),),
+                                                                       Text(formno),
                                                                     ]
                                                                 ),
                                                                 SizedBox(height:8),
@@ -245,110 +242,37 @@ class _TeacherProfileFormState extends State<TeacherProfileForm> {
                                                                   SizedBox(height:8),
                                                                   Row(
                                                                       children:[
-                                                                        Text("EPF No : ",style: TextStyle(fontSize: 17,),),
-                                                                         Text(epfno),
+                                                                        Text("Alternate No : ",style: TextStyle(fontSize: 17,),),
+                                                                         Text(altnumber),
                                                                       ]
                                                                   ),
                                                                   SizedBox(height:8),
                                                                   Row(
                                                                       children:[
-                                                                        Text("Merital Status : ",style: TextStyle(fontSize: 17,),),
-                                                                         Text(meritalstatus),
+                                                                        Text("join Year : ",style: TextStyle(fontSize: 17,),),
+                                                                         Text(joinyear),
                                                                       ]
                                                                   ),
                                                                   SizedBox(height:8),
                                                                   Row(
                                                                       children:[
-                                                                        Text("Qualification : ",style: TextStyle(fontSize: 17,),),
-                                                                         Text(qualification),
+                                                                        Text("Last Job : ",style: TextStyle(fontSize: 17,),),
+                                                                         Text(lastjob),
                                                                       ]
                                                                   ),
                                                                   SizedBox(height:8),
                                                                   Row(
                                                                       children:[
-                                                                        Text("Bank Name : ",style: TextStyle(fontSize: 17,),),
-                                                                         Text(bankname),
-                                                                      ]
-                                                                  ),
-                                                                  SizedBox(height:8),
-                                                                  if (MediaQuery.of(context).size.width >= 1040)
-                                                                    Text(""),
-                                                                  SizedBox(height:8),
-                                                                  if (MediaQuery.of(context).size.width >= 1040)
-                                                                    Text(""),
-
-                                                                ]
-                                                            ),
-                                                            Column(
-                                                                children:[
-                                                                  if (MediaQuery.of(context).size.width >= 1040)
-                                                                    Text(""),
-                                                                  if (MediaQuery.of(context).size.width >= 1040)
-                                                                    Text(""),
-
-                                                                  SizedBox(height:8),
-                                                                  Row(
-                                                                      children:[
-                                                                        Text("Salary : ",style: TextStyle(fontSize: 17,),),
-                                                                         Text(salary),
-                                                                      ]
-                                                                  ),
-                                                                  SizedBox(height:8),
-                                                                  Row(
-                                                                      children:[
-                                                                        Text("Emergency Contact no : ",style: TextStyle(fontSize: 17,),),
-                                                                         Text(emno),
-                                                                      ]
-                                                                  ),
-                                                                  SizedBox(height:8),
-                                                                  Row(
-                                                                      children:[
-                                                                        Text("Experience : ",style: TextStyle(fontSize: 17,),),
-                                                                        Text(experience),
-                                                                      ]
-                                                                  ),
-                                                                  SizedBox(height:8),
-                                                                  Row(
-                                                                      children:[
-                                                                        Text("Branch Name : ",style: TextStyle(fontSize: 17,),),
-                                                                         Text(branchname),
+                                                                        Text("Reference : ",style: TextStyle(fontSize: 17,),),
+                                                                         Text(reference),
                                                                       ]
                                                                   ),
 
                                                                 ]
                                                             ),
-                                                            Column(
-                                                                children:[
-                                                                  if (MediaQuery.of(context).size.width >= 1040)
-                                                                    Text(""),
-                                                                  if (MediaQuery.of(context).size.width >= 1040)
-                                                                    Text(""),
 
-                                                                  SizedBox(height:8),
-                                                                  Row(
-                                                                      children:[
-                                                                        Text("Location : ",style: TextStyle(fontSize: 17,),),
-                                                                         Text(location),
-                                                                      ]
-                                                                  ),
-                                                                  SizedBox(height:8),
-                                                                  Row(
-                                                                      children:[
-                                                                        Text("Permanent Address : ",style: TextStyle(fontSize: 17,),),
-                                                                        Container(
-                                                                          width: 150,
-                                                                            child: Text(paddress,overflow: TextOverflow.visible,
-                                                                            )),
-                                                                      ]
-                                                                  ),
-                                                                  SizedBox(height:8),
-                                                                  if (MediaQuery.of(context).size.width >= 1040)
-                                                                    Text(""),
-                                                                  SizedBox(height:8),
-                                                                  if (MediaQuery.of(context).size.width >= 1040)
-                                                                    Text(""),
-                                                                ]
-                                                            ),
+
+
 
                                                           ],
                                                         )

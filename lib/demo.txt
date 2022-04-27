@@ -1,0 +1,17 @@
+ String form_no;
+  String join_date;
+  String joinyear;
+  String name;
+  String fathername;
+  String surname;
+  String mothername;
+  String cno1;
+  String cno2;
+  String email;
+  String dob;
+  String lastjob;
+  String gender;
+  String address;
+  String pincode;
+  String reference;
+  String source;

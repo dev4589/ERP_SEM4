@@ -22,3 +22,5 @@ String staffRegistration='/StaffRegistration';
 String studentform='/studentform';
 String studAttend='/studentAttendece';
 String showData='/studentRegisteredData';
+String staffprofile='/staffprofile';
+String showstaff='stafflist';
