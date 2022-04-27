@@ -8,6 +8,7 @@ import 'package:erp_sem4/TEACHER/screens/homepage.dart';
 import 'package:erp_sem4/TEACHER/screens/student%20attendence.dart';
 import 'package:erp_sem4/ADMIN/utility/pre_admission_module.dart';
 import 'package:erp_sem4/TEACHER/screens/student%20attendence.dart';
+import 'package:erp_sem4/TEACHER/utility/Student%20Attencence%20Form.dart';
 import 'package:flutter/material.dart';
 import 'ADMIN/screens/dashboard.dart';
 import 'ADMIN/screens/login.dart';
@@ -69,7 +70,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.secularOneTextTheme(),
       ),
       debugShowCheckedModeBanner: false,
-      // initialRoute: studRegR,
+      initialRoute: loginpage,
       routes: {
         loginpage: (context) => LoginPage(),
         dashboardR: (context) => DashBoard(),
@@ -96,7 +97,7 @@ class MyApp extends StatelessWidget {
         staffprofile:(context)=>TeacherProfile(),
         showstaff:(context)=>ShowStaff()
       },
-      home: StudentRegistration (),
+      // home: StudentAttendanceForm(),
     );
   }
 }
