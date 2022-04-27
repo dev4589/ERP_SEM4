@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:erp_sem4/ADMIN/screens/login.dart';
 import 'package:erp_sem4/ADMIN/screens/teacher_profile.dart';
 import 'package:erp_sem4/constants/constants.dart';
@@ -15,6 +16,26 @@ class TeacherHomePageLayout extends StatefulWidget {
 }
 
 class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
+
+  Map<String, dynamic> mapList = {};
+
+  fireauth() async {
+    final querySnapshot = await FirebaseFirestore.instance
+        .collection('Stuff')
+        .where('emp_no', isEqualTo: widget.emp_no)
+        .get();
+    for (var doc in querySnapshot.docs) {
+      mapList=doc.data();
+    }
+  }
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fireauth();
+  }
   @override
   Widget build(BuildContext context) {
     DateTime now = DateTime.now();
@@ -223,7 +244,7 @@ class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
                                           splashColor: Colors.cyan[100],
                                           onTap: () {
                                             Navigator.pushNamed(
-                                                context, teachProfR);
+                                                context, teachProfR, arguments: {'data': mapList});
                                             // Navigator.pushReplacement(
                                             //     context,
                                             //     MaterialPageRoute(
