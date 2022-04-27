@@ -95,9 +95,9 @@ class MyApp extends StatelessWidget {
         teacherWork:(context)=>TeacherWork(),
         staffRegistration:(context)=>StaffRegistration(),
         staffprofile:(context)=>TeacherProfile(),
-        showstaff:(context)=>ShowStaff()
+        showstaff:(context)=>ShowStaff(),
+        addattendance:(context)=>StudentAttendance()
       },
-      // home: s (),
     );
   }
 }

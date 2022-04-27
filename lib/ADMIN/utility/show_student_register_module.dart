@@ -262,29 +262,25 @@ class _ShowRegisterDataFormState extends State<ShowRegisterDataForm> {
                                                         Expanded(
                                                           flex: 3,
                                                           child: Center(
-                                                            child: Container(
+                                                            child: FlatButton(
+                                                              height: 45,
+                                                              minWidth: 150,
+                                                              shape: RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius.circular(
+                                                                          10.0)),
                                                               color:
-                                                                  Colors.blue,
-                                                              child: FlatButton(
-                                                                height: 45,
-                                                                minWidth: 150,
-                                                                shape: RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            10.0)),
-                                                                color:
-                                                                    kPrimaryColor,
-                                                                onPressed: () {
-                                                                  Navigator.pushNamed(context, studProfR,arguments: {'data': data});
-                                                                },
-                                                                child: Text(
-                                                                  "view Student",
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                          17,
-                                                                      color: Colors
-                                                                          .white),
-                                                                ),
+                                                                  kPrimaryColor,
+                                                              onPressed: () {
+                                                                Navigator.pushNamed(context, studProfR,arguments: {'data': data});
+                                                              },
+                                                              child: Text(
+                                                                "view Student",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        17,
+                                                                    color: Colors
+                                                                        .white),
                                                               ),
                                                             ),
                                                           ),

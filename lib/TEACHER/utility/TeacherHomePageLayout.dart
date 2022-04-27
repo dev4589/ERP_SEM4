@@ -105,11 +105,9 @@ class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
                                           hoverColor: Colors.cyan[50],
                                           splashColor: Colors.cyan[100],
                                           onTap: () {
-                                            // Navigator.push(
-                                            //     context,
-                                            //     MaterialPageRoute(
-                                            //         builder: (context) =>
-                                            //             AddRole()));
+                                            Navigator.pushNamed(
+                                                context, showRegDataR);
+
                                           },
                                           child: Column(
                                             mainAxisAlignment:
@@ -185,14 +183,13 @@ class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
                                           hoverColor: Colors.cyan[50],
                                           splashColor: Colors.cyan[100],
                                           onTap: () {
-                                            // Navigator.pushReplacement(
+                                           // Navigator.pushReplacement(
                                             //     context,
                                             //     MaterialPageRoute(
                                             //         builder: (context) =>
                                             //             StudentAttendance()));
                                             Navigator.pushNamed(
-                                                context, studAttend);
-                                          },
+                                                context, studAttend); },
                                           child: Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
