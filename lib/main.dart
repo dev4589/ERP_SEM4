@@ -2,6 +2,7 @@ import 'package:erp_sem4/ADMIN/screens/StaffRegistration.dart';
 import 'package:erp_sem4/ADMIN/screens/StudentFees.dart';
 import 'package:erp_sem4/ADMIN/screens/slash_screen.dart';
 import 'package:erp_sem4/ADMIN/screens/teacher_profile.dart';
+import 'package:erp_sem4/ADMIN/utility/login_module.dart';
 import 'package:erp_sem4/TEACHER/screens/dailywork.dart';
 import 'package:erp_sem4/TEACHER/screens/homepage.dart';
 import 'package:erp_sem4/TEACHER/screens/student%20attendence.dart';
@@ -81,7 +82,7 @@ class MyApp extends StatelessWidget {
         staffRegistration:(context)=>StaffRegistration(),
 
       },
-      home: StudentRegistration (),
+      home: DashBoard (),
     );
   }
 }
