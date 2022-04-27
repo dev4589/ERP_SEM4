@@ -1,19 +1,20 @@
+
+import 'package:erp_sem4/ADMIN/utility/show_Staff_Form.dart';
 import 'package:erp_sem4/constants/constants.dart';
 
-import '../utility/teacher_profile_module.dart';
+import '../utility/show_student_register_module.dart';
+// import '../utility/student_attendace_module.dart';
+
 import 'package:flutter/material.dart';
 
-class TeacherProfile extends StatefulWidget {
-  const TeacherProfile({Key? key}) : super(key: key);
-
+class ShowStaff extends StatefulWidget {
   @override
-  _TeacherProfileState createState() => _TeacherProfileState();
+  _ShowStaffState createState() => _ShowStaffState();
 }
 
-class _TeacherProfileState extends State<TeacherProfile> {
+class _ShowStaffState extends State<ShowStaff> {
   @override
   Widget build(BuildContext context) {
-    final arguments = (ModalRoute.of(context)?.settings.arguments ?? <String, dynamic>{}) as Map;
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
@@ -26,7 +27,7 @@ class _TeacherProfileState extends State<TeacherProfile> {
                 Container(
                   height: double.infinity,
                   width: size.width / 2,
-                  color: kPrimaryColor,
+                  color: bColor,
                 ),
                 Container(
                     height: double.infinity,
@@ -34,7 +35,7 @@ class _TeacherProfileState extends State<TeacherProfile> {
                     color: Colors.white),
               ],
             ),
-            TeacherProfileForm(arguments['data']),
+            ShowStaffForm(),
           ],
         ),
       ),

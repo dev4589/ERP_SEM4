@@ -198,7 +198,7 @@ class _ShowRegisterDataFormState extends State<ShowRegisterDataForm> {
                                               }
                                               int i = 0;
                                               return SizedBox(
-                                                width: sizeWidth * 0.65,
+
                                                 child: Column(
                                                   children: snapshot.data!.docs
                                                       .map((DocumentSnapshot
