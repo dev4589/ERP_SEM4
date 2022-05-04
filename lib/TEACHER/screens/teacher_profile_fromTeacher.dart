@@ -1,16 +1,16 @@
 import 'package:erp_sem4/constants/constants.dart';
 
-import '../utility/teacher_profile_module.dart';
+import '../utility/teacher_profile_module_fromTeacher.dart';
 import 'package:flutter/material.dart';
 
-class TeacherProfile extends StatefulWidget {
-  const TeacherProfile({Key? key}) : super(key: key);
+class TeacherProfileForTeach extends StatefulWidget {
+  const TeacherProfileForTeach({Key? key}) : super(key: key);
 
   @override
-  _TeacherProfileState createState() => _TeacherProfileState();
+  _TeacherProfileForTeachState createState() => _TeacherProfileForTeachState();
 }
 
-class _TeacherProfileState extends State<TeacherProfile> {
+class _TeacherProfileForTeachState extends State<TeacherProfileForTeach> {
   @override
   Widget build(BuildContext context) {
     final arguments = (ModalRoute.of(context)?.settings.arguments ?? <String, dynamic>{}) as Map;
@@ -35,7 +35,7 @@ class _TeacherProfileState extends State<TeacherProfile> {
                     color: Colors.white),
               ],
             ),
-            TeacherProfileForm(arguments['data']),
+            TeacherProfileFormForTeach(arguments['data']),
           ],
         ),
       ),

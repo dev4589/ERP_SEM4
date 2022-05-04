@@ -244,7 +244,7 @@ class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
                                           splashColor: Colors.cyan[100],
                                           onTap: () {
                                             Navigator.pushNamed(
-                                                context, teachProfR, arguments: {'data': mapList});
+                                                context, teachProfR, arguments: {'data': widget.emp_no});
                                             // Navigator.pushReplacement(
                                             //     context,
                                             //     MaterialPageRoute(

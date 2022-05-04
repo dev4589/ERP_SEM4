@@ -25,3 +25,7 @@ String showData='/studentRegisteredData';
 String staffprofile='/staffprofile';
 String showstaff='stafflist';
 String splashpage='/';
+
+String showTeacherProfileForT='teachPro';
+String showTeacherProfileForTM='teachProModule';
+
