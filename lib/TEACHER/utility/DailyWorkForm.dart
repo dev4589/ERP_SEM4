@@ -10,8 +10,6 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 class DailyWorkForm extends StatefulWidget {
   const DailyWorkForm({Key? key}) : super(key: key);
 
-
-
   @override
   _DailyWorkFormState createState() => _DailyWorkFormState();
 }

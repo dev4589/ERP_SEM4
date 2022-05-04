@@ -41,34 +41,7 @@ class _LogInState extends State<LogIn> {
 
   late String email;
   late String password;
-//  fireauth() async {
-//   // var fire = FirebaseAuth.instance
-//   //     .signInWithEmailAndPassword(email: email, password: password);
-//    final querySnapshot = await FirebaseFirestore.instance
-//        .collection('users')
-//        .limit(10)
-//        .where('username',isEqualTo: email)
-//    .where('pass',isEqualTo: password)
-//        .get();
-//
-//    for (var doc in querySnapshot.docs) {
-//      // Getting data directly
-//     // desi = doc.get('designation');
-//
-//      Map<String, dynamic> data = doc.data();
-//      desi = data['designation'];
-//     //  if(desi!=null){
-//     //   return desi;
-//     // }
-//     // else {
-//     //   return null;
-//     // }
-//     //  print(desi);
-//      return desi;
-//      // Getting data from map
-//
-//    }
-// }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

@@ -8,9 +8,7 @@ import 'package:erp_sem4/TEACHER/screens/homepage.dart';
 import 'package:erp_sem4/TEACHER/screens/student%20attendence.dart';
 import 'package:erp_sem4/ADMIN/utility/pre_admission_module.dart';
 import 'package:erp_sem4/TEACHER/screens/student%20attendence.dart';
-import 'package:erp_sem4/TEACHER/screens/teacher_profile_fromTeacher.dart';
 import 'package:erp_sem4/TEACHER/utility/Student%20Attencence%20Form.dart';
-import 'package:erp_sem4/TEACHER/utility/teacher_profile_module_fromTeacher.dart';
 import 'package:flutter/material.dart';
 import 'ADMIN/screens/dashboard.dart';
 import 'ADMIN/screens/login.dart';
@@ -84,22 +82,18 @@ class MyApp extends StatelessWidget {
         studRegR: (context) => StudentRegistration(),
         studentform: (context) => StudentRegistrationForm(),
         teachProfR: (context) => TeacherProfile(),
-        // teacherdash: (context) => TeacherHomePage(),
         feesdetail: (context) => ShowFeesDeatails(),
-        dailyWork: (context) => DailyWork(),
         teacherWork: (context) => TeacherWork(),
         staffRegistration: (context) => StaffRegistration(),
         "lets": (context) => LetsTry(),
-        studAttend: (context) => StudentAttendance(),
         loginpage: (context) => LoginPage(),
-        // teacherdash:(context)=>TeacherHomePage(),
         feesdetail: (context) => ShowFeesDeatails(),
-        dailyWork: (context) => DailyWork(),
         teacherWork: (context) => TeacherWork(),
         staffRegistration: (context) => StaffRegistration(),
         staffprofile: (context) => TeacherProfile(),
         showstaff: (context) => ShowStaff(),
-        // showTeacherProfileForT:(context)=>TeacherProfileForTeach(),
+        dailyWork: (context) => DailyWork(),
+        studAttend: (context) => StudentAttendance(),
       },
     );
   }

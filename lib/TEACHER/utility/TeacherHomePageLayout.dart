@@ -7,28 +7,28 @@ import 'package:intl/intl.dart';
 
 import '../screens/student attendence.dart';
 
+String emp_no_data = '';
+
 class TeacherHomePageLayout extends StatefulWidget {
   String emp_no;
-  TeacherHomePageLayout(this.emp_no);
 
+  TeacherHomePageLayout(this.emp_no);
   @override
   _TeacherHomePageLayoutState createState() => _TeacherHomePageLayoutState();
 }
 
 class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
-
   Map<String, dynamic> mapList = {};
 
   fireauth() async {
     final querySnapshot = await FirebaseFirestore.instance
-        .collection('Stuff')
+        .collection('Staff')
         .where('emp_no', isEqualTo: widget.emp_no)
         .get();
     for (var doc in querySnapshot.docs) {
-      mapList=doc.data();
+      mapList = doc.data();
     }
   }
-
 
   @override
   void initState() {
@@ -36,6 +36,7 @@ class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
     super.initState();
     fireauth();
   }
+
   @override
   Widget build(BuildContext context) {
     DateTime now = DateTime.now();
@@ -114,8 +115,6 @@ class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
                                   crossAxisSpacing: 10,
                                   shrinkWrap: true,
                                   children: [
-
-
                                     Card(
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
@@ -128,7 +127,6 @@ class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
                                           onTap: () {
                                             Navigator.pushNamed(
                                                 context, showRegDataR);
-
                                           },
                                           child: Column(
                                             mainAxisAlignment:
@@ -164,7 +162,6 @@ class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
                                           onTap: () {
                                             Navigator.pushNamed(
                                                 context, dailyWork);
-
 
                                             // Navigator.push(
                                             //     context,
@@ -204,13 +201,14 @@ class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
                                           hoverColor: Colors.cyan[50],
                                           splashColor: Colors.cyan[100],
                                           onTap: () {
-                                           // Navigator.pushReplacement(
+                                            // Navigator.pushReplacement(
                                             //     context,
                                             //     MaterialPageRoute(
                                             //         builder: (context) =>
                                             //             StudentAttendance()));
                                             Navigator.pushNamed(
-                                                context, studAttend); },
+                                                context, studAttend);
+                                          },
                                           child: Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
@@ -244,7 +242,8 @@ class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
                                           splashColor: Colors.cyan[100],
                                           onTap: () {
                                             Navigator.pushNamed(
-                                                context, teachProfR, arguments: {'data': widget.emp_no});
+                                                context, teachProfR,
+                                                arguments: {'data': mapList});
                                             // Navigator.pushReplacement(
                                             //     context,
                                             //     MaterialPageRoute(
@@ -312,7 +311,6 @@ class _TeacherHomePageLayoutState extends State<TeacherHomePageLayout> {
                                             ],
                                           ),
                                         )),
-
                                   ],
                                 )),
                               )
