@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:erp_sem4/ADMIN/screens/login.dart';
 import 'package:erp_sem4/ADMIN/screens/student_registration.dart';
 import 'package:erp_sem4/ADMIN/screens/teacher_profile.dart';
 import 'package:erp_sem4/constants/constants.dart';
@@ -285,7 +286,11 @@ class _DashBoardState extends State<DashBoard> {
                             leading: Icon(Icons.logout),
                             title: Text("Logout"),
                             onTap: () {
-                              Navigator.pop(context);
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          LoginPage()));
                             },
                           ),
                         )
