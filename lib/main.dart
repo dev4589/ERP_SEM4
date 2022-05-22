@@ -70,7 +70,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.secularOneTextTheme(),
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: splashpage,
+      initialRoute: 'lets',
       routes: {
         splashpage: (context) => SplashScreen(),
         loginpage: (context) => LoginPage(),
@@ -85,7 +85,7 @@ class MyApp extends StatelessWidget {
         feesdetail: (context) => ShowFeesDeatails(),
         teacherWork: (context) => TeacherWork(),
         staffRegistration: (context) => StaffRegistration(),
-        "lets": (context) => LetsTry(),
+        "lets": (context) => demoR(),
         loginpage: (context) => LoginPage(),
         feesdetail: (context) => ShowFeesDeatails(),
         teacherWork: (context) => TeacherWork(),
